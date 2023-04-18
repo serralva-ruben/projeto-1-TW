@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="quiz.css">
   <script src="script.js"></script>
 </head>
-<body>
-<div class="quiz-container">
+<body onload="refreshPage()">
+<div class="quiz-container" id="pageStart">
   <h1>Quiz sobre música</h1>
 
   <form>
@@ -68,7 +68,7 @@
     <fieldset>
         <legend>Pergunta 7</legend>
         <p>Que instrumento Jimi Hendrix tocava famosamente?</p>
-        <label><input type="radio" name="q7" value="a" checked> Guitarra elétrica</label><br>
+        <label><input type="radio" name="q7" value="a"> Guitarra elétrica</label><br>
         <label><input type="radio" name="q7" value="b"> Bateria</label><br>
         <label><input type="radio" name="q7" value="c"> Teclado</label><br>
         <label><input type="radio" name="q7" value="d"> Baixo elétrico</label><br>
@@ -139,7 +139,7 @@
 
 
 
-    <input type="button" value="Verificar respostas" onclick="checkAnswers()">
+    <input type="button" value="Verificar respostas" onclick="checkAnswers(), refreshPage()">
   </form>
 </div>
 </body>
