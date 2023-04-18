@@ -14,7 +14,6 @@ function checkAnswers() {
         q12: "a",
         q13: "c",
         q14: "a"
-        // add correct answers for each question
     };
 
     let score = 0;
@@ -39,3 +38,42 @@ function refreshPage(){
         checked.checked = false;
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    // window.scrollTo(0, document.body.scrollHeight);
+    const questions = document.querySelectorAll('.question');
+    for (let i = 1; i < questions.length; i++) {
+        questions[i].style.display = 'none';
+    }
+
+    const radios = document.querySelectorAll('input[type="radio"]');
+    const submitBtn = document.getElementById('submit-btn');
+    const answers = [];
+
+    radios.forEach(radio => {
+        radio.addEventListener('click', () => {
+            const currentQuestion = radio.parentNode.parentNode;
+            const nextQuestion = currentQuestion.nextElementSibling;
+            currentQuestion.classList.add('answered');
+
+            const answer = {
+                questionId: currentQuestion.getAttribute('id'),
+                value: radio.value
+            };
+            answers.push(answer);
+            if (nextQuestion !== null) {
+                nextQuestion.style.display = 'block';
+                // nextQuestion.classList.add("scroll-container");
+                nextQuestion.scrollIntoView({behavior: 'smooth', block: 'start'});
+            } else {
+                submitBtn.style.display = 'block';
+            }
+        });
+    });
+    submitBtn.addEventListener('click', () => {
+        questions.forEach(question => {
+            question.style.display = 'none';
+        });
+        submitBtn.style.display = 'none';
+    });
+});
