@@ -15,6 +15,7 @@ function checkAnswers() {
     let q12Answer = document.getElementsByName("q12");
     let q13Answer = document.getElementsByName("q13");
     let q14Answer = document.getElementsByName("q14");
+    let q15Answer = document.getElementsByName("q15");
 
     for (let i=0; i < q1Answer.length; i++) {
       if (q1Answer[i].checked && q1Answer[i].value == "a") {score++;}
@@ -27,11 +28,12 @@ function checkAnswers() {
       if (q8Answer[i].checked && q8Answer[i].value == "a") {score++;}
       if (q9Answer[i].checked && q9Answer[i].value == "a") {score++;}
       if (q10Answer[i].checked && q10Answer[i].value == "a") {score++;}
-      if (q11Answer[i].checked && q11Answer[i].value == "b") {score++;}
-      if (q12Answer[i].checked && q12Answer[i].value == "a") {score++;}
-      if (q13Answer[i].checked && q13Answer[i].value == "c") {score++;}
-      if (q14Answer[i].checked && q14Answer[i].value == "a") {score++;}
+      if (q11Answer[i].checked && q11Answer[i].value == "a") {score++;}
+      if (q12Answer[i].checked && q12Answer[i].value == "b") {score++;}
+      if (q13Answer[i].checked && q13Answer[i].value == "a") {score++;}
+      if (q14Answer[i].checked && q14Answer[i].value == "c") {score++;}
+      if (q15Answer[i].checked && q15Answer[i].value == "a") {score++;}
     }
     
-    alert("Você acertou " + score + " de " + 14 + " perguntas.");
+    alert("Você acertou " + score + " de " + 15 + " perguntas.");
   }
