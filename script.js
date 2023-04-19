@@ -13,7 +13,8 @@ function checkAnswers() {
         q11: "b",
         q12: "a",
         q13: "c",
-        q14: "a"
+        q14: "a",
+        q15: "a"
     };
 
     let score = 0;
