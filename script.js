@@ -32,15 +32,6 @@ function checkAnswers() {
     alert("Você acertou " + score + " de " + questionNames.length + " perguntas.");
 }
 
-// function refreshPage() {
-//     document.getElementById("pageStart").scrollIntoView({ behavior: 'smooth' });
-//     let radio = document.querySelectorAll('input[type="radio"]');
-//     for (const checked of radio) {
-//         checked.checked = false;
-//     }
-// }
-
-// question counter
 function updateCounter() {
     const questions = document.querySelectorAll('.question');
     const counter = document.querySelector('.question-counter');
@@ -92,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             questions[currentQuestionIndex].style.display = 'none'
             questions[currentQuestionIndex-1].style.display = 'block'
         }
+        updateCounter()
     });
 
     nextBtn.addEventListener('click', () => {
@@ -100,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             questions[currentQuestionIndex].style.display = 'none'
             questions[currentQuestionIndex+1].style.display = 'block'
         }
+        updateCounter()
     });
 
     updateCounter();
