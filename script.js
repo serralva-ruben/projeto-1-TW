@@ -51,6 +51,7 @@ function updateCounter() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    //window.scrollTo(0, document.body.scrollHeight);
     const questions = document.querySelectorAll('.question');
     for (let i = 1; i < questions.length; i++) {
         questions[i].style.display = 'none';
@@ -58,6 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const radios = document.querySelectorAll('input[type="radio"]');
     const submitBtn = document.getElementById('submit-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const backBtn = document.getElementById('back-btn');
     const answers = [];
 
     radios.forEach(radio => {
@@ -83,12 +86,21 @@ document.addEventListener('DOMContentLoaded', () => {
             currentQuestion.style.display = 'none';
         });
     });
+
     submitBtn.addEventListener('click', () => {
         questions.forEach(question => {
             question.style.display = 'none';
         });
         submitBtn.style.display = 'none';
         document.querySelector('.question-counter').style.display = 'none';
+    });
+
+    backBtn.addEventListener('click', () => {
+       
+    });
+
+    nextBtn.addEventListener('click', () => {
+        
     });
 
     updateCounter();
