@@ -63,6 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const radios = document.querySelectorAll('input[type="radio"]');
     const submitBtn = document.getElementById('submit-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const backBtn = document.getElementById('back-btn');
     const answers = [];
 
     radios.forEach(radio => {
@@ -70,30 +72,36 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentQuestion = radio.parentNode.parentNode;
             const nextQuestion = currentQuestion.nextElementSibling;
             currentQuestion.classList.add('answered');
-
             const answer = {
                 questionId: currentQuestion.getAttribute('id'),
                 value: radio.value
             };
             answers.push(answer);
-            if (nextQuestion !== null) {
-                nextQuestion.style.display = 'block';
-                // nextQuestion.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } 
-            
-            else {
-                //submitBtn.style.display = 'block';
-            }
+            if (nextQuestion !== null) {nextQuestion.style.display = 'block';} 
             updateCounter();
             currentQuestion.style.display = 'none';
         });
     });
+
     submitBtn.addEventListener('click', () => {
         questions.forEach(question => {
             question.style.display = 'none';
         });
         submitBtn.style.display = 'none';
         document.querySelector('.question-counter').style.display = 'none';
+    });
+
+    backBtn.addEventListener('click', () => {
+       
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentQuestionIndex
+
+        for (i=0;i<questions.length;i++){
+            string += questions[i].style.display;
+        }
+        alert(string)
     });
 
     updateCounter();
