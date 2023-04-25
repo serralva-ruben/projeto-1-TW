@@ -51,7 +51,6 @@ function updateCounter() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    //window.scrollTo(0, document.body.scrollHeight);
     const questions = document.querySelectorAll('.question');
     for (let i = 1; i < questions.length; i++) {
         questions[i].style.display = 'none';
@@ -68,20 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentQuestion = radio.parentNode.parentNode;
             const nextQuestion = currentQuestion.nextElementSibling;
             currentQuestion.classList.add('answered');
-
             const answer = {
                 questionId: currentQuestion.getAttribute('id'),
                 value: radio.value
             };
             answers.push(answer);
-            if (nextQuestion !== null) {
-                nextQuestion.style.display = 'block';
-                // nextQuestion.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } 
-            
-            else {
-                //submitBtn.style.display = 'block';
-            }
+            if (nextQuestion !== null) {nextQuestion.style.display = 'block';} 
             updateCounter();
             currentQuestion.style.display = 'none';
         });
@@ -100,7 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     nextBtn.addEventListener('click', () => {
-        
+        currentQuestionIndex
+
+        for (i=0;i<questions.length;i++){
+            string += questions[i].style.display;
+        }
+        alert(string)
     });
 
     updateCounter();
