@@ -10,8 +10,6 @@
 <body onload="refreshPage()">
 <div class="quiz-container" id="pageStart">
   <h1>Quiz sobre música</h1>
-  <div class="question-counter"></div>
-
   <form>
     <fieldset id="q1" class="question">
         <legend>Pergunta 1</legend>
@@ -203,10 +201,13 @@
     
     <input type="submit" value="Verificar respostas" id="submit-btn" onclick="checkAnswers(), refreshPage()">
     <!-- <input type="submit" value="Verificar respostas" id="submit-btn" onclick="checkAnswers(), refreshPage()"> -->
-    <div id="buttons">
-        <input type="button" value="Verificar respostas" id="submit-btn" onclick="checkAnswers(), refreshPage()">
-        <input type="button" value="Back" id="back-btn" onclick="">
-        <input type="button" value="Next" id="next-btn" onclick="">
+    <div id="bottomBar">
+        <div id="buttons">
+            <input type="button" value="Verificar respostas" id="submit-btn" onclick="checkAnswers(), refreshPage()">
+            <input type="button" value="Back" id="back-btn" onclick="">
+            <input type="button" value="Next" id="next-btn" onclick=""> 
+        </div>
+        <div class="question-counter"></div>
     </div>
 
   </form>

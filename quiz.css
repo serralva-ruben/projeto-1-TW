@@ -99,4 +99,9 @@ input[type="radio"] {
     font-size: 18px;
     font-weight: bold;
     background-color: red;
-  }
+}
+
+.bottomBar div{
+    background-color: #0050b2;
+    top: 10px;
+}
