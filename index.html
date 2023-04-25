@@ -3,12 +3,14 @@
 <head>
   <title>Quiz sobre música</title>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="quiz.css">
   <script src="script.js"></script>
 </head>
 <body onload="refreshPage()">
 <div class="quiz-container" id="pageStart">
   <h1>Quiz sobre música</h1>
+  <div class="question-counter"></div>
 
   <form>
     <fieldset id="q1" class="question">
@@ -137,7 +139,7 @@
         <label><input type="radio" name="q14" value="d"> G N' R Lies</label><br>
     </fieldset>
 
-    <input type="button" value="Verificar respostas" id="submit-btn" onclick="checkAnswers(), refreshPage()">
+    <input type="submit" value="Verificar respostas" id="submit-btn" onclick="checkAnswers(), refreshPage()">
 
   </form>
 </div>

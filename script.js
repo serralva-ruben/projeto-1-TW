@@ -31,16 +31,25 @@ function checkAnswers() {
     alert("Você acertou " + score + " de " + questionNames.length + " perguntas.");
 }
 
-function refreshPage(){
-    document.getElementById("pageStart").scrollIntoView({behavior: 'smooth'});
-    let radio = document.querySelectorAll('input[type="radio"]');
-    for(const checked of radio){
-        checked.checked = false;
-    }
+// function refreshPage() {
+//     document.getElementById("pageStart").scrollIntoView({ behavior: 'smooth' });
+//     let radio = document.querySelectorAll('input[type="radio"]');
+//     for (const checked of radio) {
+//         checked.checked = false;
+//     }
+// }
+
+// question counter
+function updateCounter() {
+    const questions = document.querySelectorAll('.question');
+    const counter = document.querySelector('.question-counter');
+    console.log(counter + " counter");
+    const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
+    counter.innerText = `Pergunta: ${currentQuestionIndex + 1} / ${questions.length}`;
 }
 
+
 document.addEventListener('DOMContentLoaded', () => {
-    // window.scrollTo(0, document.body.scrollHeight);
     const questions = document.querySelectorAll('.question');
     for (let i = 1; i < questions.length; i++) {
         questions[i].style.display = 'none';
@@ -63,11 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
             answers.push(answer);
             if (nextQuestion !== null) {
                 nextQuestion.style.display = 'block';
-                // nextQuestion.classList.add("scroll-container");
-                nextQuestion.scrollIntoView({behavior: 'smooth', block: 'start'});
-            } else {
-                submitBtn.style.display = 'block';
+                // nextQuestion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } 
+            
+            else {
+                //submitBtn.style.display = 'block';
             }
+            updateCounter();
+            currentQuestion.style.display = 'none';
         });
     });
     submitBtn.addEventListener('click', () => {
@@ -75,5 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
             question.style.display = 'none';
         });
         submitBtn.style.display = 'none';
+        document.querySelector('.question-counter').style.display = 'none';
     });
+
+    updateCounter();
 });
+
