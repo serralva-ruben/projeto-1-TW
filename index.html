@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Quiz sobre música</title>
   <meta charset="UTF-8">
@@ -148,6 +148,59 @@
         <label><input type="radio" name="q15" value="d"> G N' R Lies</label><br>
     </fieldset>
 
+    <fieldset id="q17" class="question">
+        <legend>Pergunta 4</legend>
+        <p>Quais dos seguintes instrumentos fazem parte da bateria?</p>
+        <label><input type="checkbox" name="q17" value="a">Caixa</label><br>
+        <label><input type="checkbox" name="q17" value="b">Violão</label><br>
+        <label><input type="checkbox" name="q17" value="c">Bumbo</label><br>
+        <label><input type="checkbox" name="q17" value="d">Prato</label><br>
+    </fieldset>
+
+    <fieldset id="q18" class="question">
+        <legend>Pergunta 4</legend>
+        <p>Quais dos seguintes álbuns são do Nirvana?</p>
+        <label><input type="checkbox" name="q18" value="a">Nevermind</label><br>
+        <label><input type="checkbox" name="q18" value="b">Ten</label><br>
+        <label><input type="checkbox" name="q18" value="c">In Utero</label><br>
+        <label><input type="checkbox" name="q18" value="d">OK Computer</label><br>
+    </fieldset>
+
+    <fieldset id="q19" class="question">
+        <legend>Pergunta 5</legend>
+        <p>Qual é o nome do álbum mais vendido de todos os tempos?</p>
+        <select name="q19">
+            <option value="a">The Dark Side of the Moon</option>
+            <option value="b">Thriller</option>
+            <option value="c">Sgt. Pepper's Lonely Hearts Club Band</option>
+            <option value="d">Hotel California</option>
+        </select>
+    </fieldset>
+
+    <fieldset id="q20" class="question">
+        <legend>Pergunta 5</legend>
+        <p>Qual é a nacionalidade da cantora Shakira?</p>
+        <select name="q20">
+            <option value="a">Espanhola</option>
+            <option value="b">Colombiana</option>
+            <option value="c">Argentina</option>
+            <option value="d">Portuguesa</option>
+        </select>
+    </fieldset>
+
+    <fieldset id="q21" class="question">
+        <legend>Intro</legend>
+        <p>what's your name?</p>
+        <label>Answer: <input type="text" name="q21"></label>
+    </fieldset>
+
+    <fieldset id="q22" class="question">
+        <legend>Pergunta 7</legend>
+        <p>On a scale of 1 to 5, 5 being alot, how much do you like rap music?</p>
+        <input type="range" name="q22" min="1" max="5">
+    </fieldset>
+
+    
     <input type="submit" value="Verificar respostas" id="submit-btn" onclick="checkAnswers(), refreshPage()">
 
   </form>

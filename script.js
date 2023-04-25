@@ -14,7 +14,12 @@ function checkAnswers() {
         q12: "a",
         q13: "c",
         q14: "a",
-        q15: "a"
+        q15: "a",
+        q16: ["a", "b"],
+        q17: ["a", "c", "d"],
+        q18: ["a", "c"],
+        q19: "b",
+        q20: "b"
     };
 
     let score = 0;
@@ -93,4 +98,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateCounter();
 });
+
 
