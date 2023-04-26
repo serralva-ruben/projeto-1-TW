@@ -26,12 +26,20 @@ function checkAnswers() {
     const questionNames = Object.keys(correctAnswers);
 
     for (const questionName of questionNames) {
-        const answerOptions = document.getElementsByName(questionName);
+        const answerInputs = document.getElementsByName(questionName);
+        let correctCount = 0;
 
-        for (const option of answerOptions) {
-            if (option.checked && option.value == correctAnswers[questionName]) {
-                score++;
+        for (const input of answerInputs) {
+            if (input.type === "radio" && input.checked && input.value == correctAnswers[questionName]) {
+                correctCount++;
+            } else if (input.type === "checkbox" && input.checked && correctAnswers[questionName].includes(input.value)) {
+                correctCount++;
+            } else if (input.type === "select-one" && input.value == correctAnswers[questionName]) {
+                correctCount++;
             }
+        }
+        if (correctCount > 0) {
+            score++;
         }
     }
     alert("Você acertou " + score + " de " + questionNames.length + " perguntas.");
@@ -40,7 +48,6 @@ function checkAnswers() {
 function updateCounter() {
     const questions = document.querySelectorAll('.question');
     const counter = document.querySelector('.question-counter');
-    console.log(counter + " counter");
     const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
     counter.innerText = `Pergunta: ${currentQuestionIndex + 1} / ${questions.length}`;
 }
@@ -68,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 value: radio.value
             };
             answers.push(answer);
-            if (nextQuestion !== null) {nextQuestion.style.display = 'block';} 
+            if (nextQuestion !== null) { nextQuestion.style.display = 'block'; }
             updateCounter();
             currentQuestion.style.display = 'none';
         });
@@ -84,23 +91,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     backBtn.addEventListener('click', () => {
         const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
-        if(currentQuestionIndex>0){
+        if (currentQuestionIndex > 0) {
             questions[currentQuestionIndex].style.display = 'none'
-            questions[currentQuestionIndex-1].style.display = 'block'
+            questions[currentQuestionIndex - 1].style.display = 'block'
         }
         updateCounter()
     });
 
     nextBtn.addEventListener('click', () => {
         const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
-        if(currentQuestionIndex<questions.length-1){
+        if (currentQuestionIndex < questions.length - 1) {
             questions[currentQuestionIndex].style.display = 'none'
-            questions[currentQuestionIndex+1].style.display = 'block'
+            questions[currentQuestionIndex + 1].style.display = 'block'
         }
         updateCounter()
     });
 
     updateCounter();
 });
-
-

@@ -1,216 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Quiz sobre música</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="quiz.css">
-  <script src="script.js"></script>
+    <title>Quiz sobre música</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="quiz.css">
+    <script src="script.js"></script>
 </head>
-<body onload="refreshPage()">
-<div class="quiz-container" id="pageStart">
-  <h1>Quiz sobre música</h1>
-  <form>
-    <fieldset id="q1" class="question">
-        <legend>Pergunta 1</legend>
-        <p>Quem foi o vocalista da banda Queen?</p>
-        <label><input type="radio" name="q1" value="a"> Freddie Mercury</label><br>
-        <label><input type="radio" name="q1" value="b"> David Bowie</label><br>
-        <label><input type="radio" name="q1" value="c"> Mick Jagger</label><br>
-        <label><input type="radio" name="q1" value="d"> Elton John</label><br>
-    </fieldset>
 
-    <fieldset id="q2" class="question">
-        <legend>Pergunta 2</legend>
-        <p>Em que ano foi lançada a música "Bohemian Rhapsody"?</p>
-        <label><input type="radio" name="q2" value="a"> 1971</label><br>
-        <label><input type="radio" name="q2" value="b"> 1975</label><br>
-        <label><input type="radio" name="q2" value="c"> 1977</label><br>
-        <label><input type="radio" name="q2" value="d"> 1981</label><br>
-    </fieldset>
+<body>
+    <div class="quiz-container" id="pageStart">
+        <h1>Quiz sobre música</h1>
+        <form>
+            <fieldset id="q1" class="question">
+                <legend>Pergunta 1</legend>
+                <p>Quem foi o vocalista da banda Queen?</p>
+                <label><input type="radio" name="q1" value="a"> Freddie Mercury</label><br>
+                <label><input type="radio" name="q1" value="b"> David Bowie</label><br>
+                <label><input type="radio" name="q1" value="c"> Mick Jagger</label><br>
+                <label><input type="radio" name="q1" value="d"> Elton John</label><br>
+            </fieldset>
 
-    <fieldset id="q3" class="question">
-        <legend>Pergunta 3</legend>
-        <p>Quem é considerado o "Rei do Pop"?</p>
-        <label><input type="radio" name="q3" value="a"> Prince</label><br>
-        <label><input type="radio" name="q3" value="b"> Michael Jackson</label><br>
-        <label><input type="radio" name="q3" value="c"> Elvis Presley</label><br>
-        <label><input type="radio" name="q3" value="d"> Stevie Wonder</label><br>
-    </fieldset>
+            <fieldset id="q2" class="question">
+                <legend>Pergunta 2</legend>
+                <p>Em que ano foi lançada a música "Bohemian Rhapsody"?</p>
+                <label><input type="radio" name="q2" value="a"> 1971</label><br>
+                <label><input type="radio" name="q2" value="b"> 1975</label><br>
+                <label><input type="radio" name="q2" value="c"> 1977</label><br>
+                <label><input type="radio" name="q2" value="d"> 1981</label><br>
+            </fieldset>
 
-    <fieldset id="q4" class="question">
-        <legend>Pergunta 4</legend>
-        <p>Qual foi o nome do primeiro álbum solo de Michael Jackson?</p>
-        <label><input type="radio" name="q4" value="a"> Off the Wall</label><br>
-        <label><input type="radio" name="q4" value="b"> Thriller</label><br>
-        <label><input type="radio" name="q4" value="c"> Bad</label><br>
-        <label><input type="radio" name="q4" value="d"> Dangerous</label><br>
-    </fieldset>
+            <fieldset id="q3" class="question">
+                <legend>Pergunta 3</legend>
+                <p>Quem é considerado o "Rei do Pop"?</p>
+                <label><input type="radio" name="q3" value="a"> Prince</label><br>
+                <label><input type="radio" name="q3" value="b"> Michael Jackson</label><br>
+                <label><input type="radio" name="q3" value="c"> Elvis Presley</label><br>
+                <label><input type="radio" name="q3" value="d"> Stevie Wonder</label><br>
+            </fieldset>
 
-    <fieldset id="q5" class="question">
-        <legend>Pergunta 5</legend>
-        <p>Quem escreveu a música "Stairway to Heaven"?</p>
-        <label><input type="radio" name="q5" value="a"> Jimmy Page e Robert Plant</label><br>
-        <label><input type="radio" name="q5" value="b"> John Lennon e Paul McCartney</label><br>
-        <label><input type="radio" name="q5" value="c"> Mick Jagger e Keith Richards</label><br>
-        <label><input type="radio" name="q5" value="d"> David Bowie</label><br>
-    </fieldset>
+            <fieldset id="q4" class="question">
+                <legend>Pergunta 4</legend>
+                <p>Qual foi o nome do primeiro álbum solo de Michael Jackson?</p>
+                <label><input type="radio" name="q4" value="a"> Off the Wall</label><br>
+                <label><input type="radio" name="q4" value="b"> Thriller</label><br>
+                <label><input type="radio" name="q4" value="c"> Bad</label><br>
+                <label><input type="radio" name="q4" value="d"> Dangerous</label><br>
+            </fieldset>
 
-    <fieldset id="q6" class="question">
-        <legend>Pergunta 6</legend>
-        <p>Qual foi o nome do primeiro single dos Beatles?</p>
-        <label><input type="radio" name="q6" value="a"> Love Me Do</label><br>
-        <label><input type="radio" name="q6" value="b"> I Want to Hold Your Hand</label><br>
-        <label><input type="radio" name="q6" value="c"> Please Please Me</label><br>
-        <label><input type="radio" name="q6" value="d"> Twist and Shout</label><br>
-    </fieldset>
+            <fieldset id="q5" class="question">
+                <legend>Pergunta 5</legend>
+                <p>Quem escreveu a música "Stairway to Heaven"?</p>
+                <label><input type="radio" name="q5" value="a"> Jimmy Page e Robert Plant</label><br>
+                <label><input type="radio" name="q5" value="b"> John Lennon e Paul McCartney</label><br>
+                <label><input type="radio" name="q5" value="c"> Mick Jagger e Keith Richards</label><br>
+                <label><input type="radio" name="q5" value="d"> David Bowie</label><br>
+            </fieldset>
 
-    <fieldset id="q7" class="question">
-        <legend>Pergunta 7</legend>
-        <p>Que instrumento Jimi Hendrix tocava famosamente?</p>
-        <label><input type="radio" name="q7" value="a"> Guitarra elétrica</label><br>
-        <label><input type="radio" name="q7" value="b"> Bateria</label><br>
-        <label><input type="radio" name="q7" value="c"> Teclado</label><br>
-        <label><input type="radio" name="q7" value="d"> Baixo elétrico</label><br>
-    </fieldset>
-    
-    <fieldset id="q8" class="question">
-        <legend>Pergunta 8</legend>
-        <p>Quem foi o vocalista da banda Led Zeppelin?</p>
-        <label><input type="radio" name="q8" value="a"> Robert Plant</label><br>
-        <label><input type="radio" name="q8" value="b"> Jimmy Page</label><br>
-        <label><input type="radio" name="q8" value="c"> John Bonham</label><br>
-        <label><input type="radio" name="q8" value="d"> John Paul Jones</label><br>
-    </fieldset>
+            <fieldset id="q6" class="question">
+                <legend>Pergunta 6</legend>
+                <p>Qual foi o nome do primeiro single dos Beatles?</p>
+                <label><input type="radio" name="q6" value="a"> Love Me Do</label><br>
+                <label><input type="radio" name="q6" value="b"> I Want to Hold Your Hand</label><br>
+                <label><input type="radio" name="q6" value="c"> Please Please Me</label><br>
+                <label><input type="radio" name="q6" value="d"> Twist and Shout</label><br>
+            </fieldset>
 
-    <fieldset id="q9" class="question">
-      <legend>Pergunta 9</legend>
-      <p>Em que ano a banda Nirvana lançou a música de sucesso "Smells Like Teen Spirit"?</p>
-      <label><input type="radio" name="q9" value="a"> 1991</label><br>
-      <label><input type="radio" name="q9" value="b"> 1993</label><br>
-      <label><input type="radio" name="q9" value="c"> 1995</label><br>
-      <label><input type="radio" name="q9" value="d"> 1997</label><br>
-    </fieldset>
+            <fieldset id="q7" class="question">
+                <legend>Pergunta 7</legend>
+                <p>Que instrumento Jimi Hendrix tocava famosamente?</p>
+                <label><input type="radio" name="q7" value="a"> Guitarra elétrica</label><br>
+                <label><input type="radio" name="q7" value="b"> Bateria</label><br>
+                <label><input type="radio" name="q7" value="c"> Teclado</label><br>
+                <label><input type="radio" name="q7" value="d"> Baixo elétrico</label><br>
+            </fieldset>
 
-    <fieldset id="q10" class="question">
-        <legend>Pergunta 10</legend>
-        <p>Qual era o apelido de Elvis Presley</p>
-        <label><input type="radio" name="q10" value="a"> The King</label><br>
-        <label><input type="radio" name="q10" value="b"> The Boss</label><br>
-        <label><input type="radio" name="q10" value="c"> The Duke</label><br>
-        <label><input type="radio" name="q10" value="d"> The Prince</label><br>
-    </fieldset>
+            <fieldset id="q8" class="question">
+                <legend>Pergunta 8</legend>
+                <p>Quem foi o vocalista da banda Led Zeppelin?</p>
+                <label><input type="radio" name="q8" value="a"> Robert Plant</label><br>
+                <label><input type="radio" name="q8" value="b"> Jimmy Page</label><br>
+                <label><input type="radio" name="q8" value="c"> John Bonham</label><br>
+                <label><input type="radio" name="q8" value="d"> John Paul Jones</label><br>
+            </fieldset>
 
-    <fieldset id="q11" class="question">
-        <legend>Pergunta 11</legend>
-        <p>Quem escreveu a música "Like a Rolling Stone"?</p>
-        <label><input type="radio" name="q11" value="a"> Bob Dylan</label><br>
-        <label><input type="radio" name="q11" value="b"> Bruce Springsteen</label><br>
-        <label><input type="radio" name="q11" value="c"> Neil Young</label><br>
-        <label><input type="radio" name="q11" value="d"> Tom Petty</label><br>
-    </fieldset>
+            <fieldset id="q9" class="question">
+                <legend>Pergunta 9</legend>
+                <p>Em que ano a banda Nirvana lançou a música de sucesso "Smells Like Teen Spirit"?</p>
+                <label><input type="radio" name="q9" value="a"> 1991</label><br>
+                <label><input type="radio" name="q9" value="b"> 1993</label><br>
+                <label><input type="radio" name="q9" value="c"> 1995</label><br>
+                <label><input type="radio" name="q9" value="d"> 1997</label><br>
+            </fieldset>
 
-    <fieldset id="q12" class="question">
-        <legend>Pergunta 12</legend>
-        <p>Qual foi o nome do álbum mais vendido de Whitney Houston?</p>
-        <label><input type="radio" name="q12" value="a"> Whitney Houston</label><br>
-        <label><input type="radio" name="q12" value="b"> The Bodyguard</label><br>
-        <label><input type="radio" name="q12" value="c"> I'm Your Baby Tonight</label><br>
-        <label><input type="radio" name="q12" value="d"> Whitney</label><br>
-    </fieldset>
+            <fieldset id="q10" class="question">
+                <legend>Pergunta 10</legend>
+                <p>Qual era o apelido de Elvis Presley</p>
+                <label><input type="radio" name="q10" value="a"> The King</label><br>
+                <label><input type="radio" name="q10" value="b"> The Boss</label><br>
+                <label><input type="radio" name="q10" value="c"> The Duke</label><br>
+                <label><input type="radio" name="q10" value="d"> The Prince</label><br>
+            </fieldset>
 
-    <fieldset id="q13" class="question">
-        <legend>Pergunta 13</legend>
-        <p>Quem foi o vocalista da banda The Doors?</p>
-        <label><input type="radio" name="q13" value="a"> Jim Morrison</label><br>
-        <label><input type="radio" name="q13" value="b"> Ray Manzarek</label><br>
-        <label><input type="radio" name="q13" value="c"> Robby Krieger</label><br>
-        <label><input type="radio" name="q13" value="d"> John Densmore</label><br>
-    </fieldset>
+            <fieldset id="q11" class="question">
+                <legend>Pergunta 11</legend>
+                <p>Quem escreveu a música "Like a Rolling Stone"?</p>
+                <label><input type="radio" name="q11" value="a"> Bob Dylan</label><br>
+                <label><input type="radio" name="q11" value="b"> Bruce Springsteen</label><br>
+                <label><input type="radio" name="q11" value="c"> Neil Young</label><br>
+                <label><input type="radio" name="q11" value="d"> Tom Petty</label><br>
+            </fieldset>
 
-    <fieldset id="q14" class="question">
-        <legend>Pergunta 14</legend>
-        <p>Em que ano a banda Pink Floyd lançou o álbum "The Dark Side of the Moon"?</p>
-        <label><input type="radio" name="q14" value="a"> 1969</label><br>
-        <label><input type="radio" name="q14" value="b"> 1971</label><br>
-        <label><input type="radio" name="q14" value="c"> 1973</label><br>
-        <label><input type="radio" name="q14" value="d"> 1975</label><br>
-    </fieldset>
+            <fieldset id="q12" class="question">
+                <legend>Pergunta 12</legend>
+                <p>Qual foi o nome do álbum mais vendido de Whitney Houston?</p>
+                <label><input type="radio" name="q12" value="a"> Whitney Houston</label><br>
+                <label><input type="radio" name="q12" value="b"> The Bodyguard</label><br>
+                <label><input type="radio" name="q12" value="c"> I'm Your Baby Tonight</label><br>
+                <label><input type="radio" name="q12" value="d"> Whitney</label><br>
+            </fieldset>
 
-    <fieldset id="q15" class="question">
-        <legend>Pergunta 15</legend>
-        <p>Qual foi o nome do primeiro álbum lançado pela banda Guns N' Roses?</p>
-        <label><input type="radio" name="q15" value="a"> Appetite for Destruction</label><br>
-        <label><input type="radio" name="q15" value="b"> Use Your Illusion I</label><br>
-        <label><input type="radio" name="q15" value="c"> Use Your Illusion II</label><br>
-        <label><input type="radio" name="q15" value="d"> G N' R Lies</label><br>
-    </fieldset>
+            <fieldset id="q13" class="question">
+                <legend>Pergunta 13</legend>
+                <p>Quem foi o vocalista da banda The Doors?</p>
+                <label><input type="radio" name="q13" value="a"> Jim Morrison</label><br>
+                <label><input type="radio" name="q13" value="b"> Ray Manzarek</label><br>
+                <label><input type="radio" name="q13" value="c"> Robby Krieger</label><br>
+                <label><input type="radio" name="q13" value="d"> John Densmore</label><br>
+            </fieldset>
 
-    <fieldset id="q17" class="question">
-        <legend>Pergunta 4</legend>
-        <p>Quais dos seguintes instrumentos fazem parte da bateria?</p>
-        <label><input type="checkbox" name="q17" value="a">Caixa</label><br>
-        <label><input type="checkbox" name="q17" value="b">Violão</label><br>
-        <label><input type="checkbox" name="q17" value="c">Bumbo</label><br>
-        <label><input type="checkbox" name="q17" value="d">Prato</label><br>
-    </fieldset>
+            <fieldset id="q14" class="question">
+                <legend>Pergunta 14</legend>
+                <p>Em que ano a banda Pink Floyd lançou o álbum "The Dark Side of the Moon"?</p>
+                <label><input type="radio" name="q14" value="a"> 1969</label><br>
+                <label><input type="radio" name="q14" value="b"> 1971</label><br>
+                <label><input type="radio" name="q14" value="c"> 1973</label><br>
+                <label><input type="radio" name="q14" value="d"> 1975</label><br>
+            </fieldset>
 
-    <fieldset id="q18" class="question">
-        <legend>Pergunta 4</legend>
-        <p>Quais dos seguintes álbuns são do Nirvana?</p>
-        <label><input type="checkbox" name="q18" value="a">Nevermind</label><br>
-        <label><input type="checkbox" name="q18" value="b">Ten</label><br>
-        <label><input type="checkbox" name="q18" value="c">In Utero</label><br>
-        <label><input type="checkbox" name="q18" value="d">OK Computer</label><br>
-    </fieldset>
+            <fieldset id="q15" class="question">
+                <legend>Pergunta 15</legend>
+                <p>Qual foi o nome do primeiro álbum lançado pela banda Guns N' Roses?</p>
+                <label><input type="radio" name="q15" value="a"> Appetite for Destruction</label><br>
+                <label><input type="radio" name="q15" value="b"> Use Your Illusion I</label><br>
+                <label><input type="radio" name="q15" value="c"> Use Your Illusion II</label><br>
+                <label><input type="radio" name="q15" value="d"> G N' R Lies</label><br>
+            </fieldset>
 
-    <fieldset id="q19" class="question">
-        <legend>Pergunta 5</legend>
-        <p>Qual é o nome do álbum mais vendido de todos os tempos?</p>
-        <select name="q19">
-            <option value="a">The Dark Side of the Moon</option>
-            <option value="b">Thriller</option>
-            <option value="c">Sgt. Pepper's Lonely Hearts Club Band</option>
-            <option value="d">Hotel California</option>
-        </select>
-    </fieldset>
+            <fieldset id="q16" class="question">
+                <legend>Pergunta 16</legend>
+                <p>Qual dos seguintes artistas participou do álbum "The Chronic" de Dr. Dre?</p>
+                <label><input type="checkbox" name="q16" value="a">Snoop Dogg</label><br>
+                <label><input type="checkbox" name="q16" value="b">Ice Cube</label><br>
+                <label><input type="checkbox" name="q16" value="c">Tupac</label><br>
+                <label><input type="checkbox" name="q16" value="d">Eminem</label><br>
+            </fieldset>
 
-    <fieldset id="q20" class="question">
-        <legend>Pergunta 5</legend>
-        <p>Qual é a nacionalidade da cantora Shakira?</p>
-        <select name="q20">
-            <option value="a">Espanhola</option>
-            <option value="b">Colombiana</option>
-            <option value="c">Argentina</option>
-            <option value="d">Portuguesa</option>
-        </select>
-    </fieldset>
+            <fieldset id="q17" class="question">
+                <legend>Pergunta 17</legend>
+                <p>Quais dos seguintes instrumentos fazem parte da bateria?</p>
+                <label><input type="checkbox" name="q17" value="a">Caixa</label><br>
+                <label><input type="checkbox" name="q17" value="b">Violão</label><br>
+                <label><input type="checkbox" name="q17" value="c">Bumbo</label><br>
+                <label><input type="checkbox" name="q17" value="d">Prato</label><br>
+            </fieldset>
 
-    <fieldset id="q21" class="question">
-        <legend>Intro</legend>
-        <p>what's your name?</p>
-        <label>Answer: <input type="text" name="q21"></label>
-    </fieldset>
+            <fieldset id="q18" class="question">
+                <legend>Pergunta 18</legend>
+                <p>Quais dos seguintes álbuns são do Nirvana?</p>
+                <label><input type="checkbox" name="q18" value="a">Nevermind</label><br>
+                <label><input type="checkbox" name="q18" value="b">Ten</label><br>
+                <label><input type="checkbox" name="q18" value="c">In Utero</label><br>
+                <label><input type="checkbox" name="q18" value="d">OK Computer</label><br>
+            </fieldset>
 
-    <fieldset id="q22" class="question">
-        <legend>Pergunta 7</legend>
-        <p>On a scale of 1 to 5, 5 being alot, how much do you like rap music?</p>
-        <input type="range" name="q22" min="1" max="5">
-    </fieldset>
+            <fieldset id="q19" class="question">
+                <legend>Pergunta 19</legend>
+                <p>Qual é o nome do álbum mais vendido de todos os tempos?</p>
+                <select name="q19">
+                    <option value="a">The Dark Side of the Moon</option>
+                    <option value="b">Thriller</option>
+                    <option value="c">Sgt. Pepper's Lonely Hearts Club Band</option>
+                    <option value="d">Hotel California</option>
+                </select>
+            </fieldset>
 
-    
-    <input type="submit" value="Verificar respostas" id="submit-btn" onclick="checkAnswers(), refreshPage()">
-    <!-- <input type="submit" value="Verificar respostas" id="submit-btn" onclick="checkAnswers(), refreshPage()"> -->
-    <div id="bottomBar">
-        <div id="buttons">
-            <input type="button" value="Verificar respostas" id="submit-btn" onclick="checkAnswers(), refreshPage()">
-            <input type="button" value="Back" id="back-btn" onclick="">
-            <input type="button" value="Next" id="next-btn" onclick=""> 
-        </div>
-        <div class="question-counter"></div>
+            <fieldset id="q20" class="question">
+                <legend>Pergunta 20</legend>
+                <p>Qual é a nacionalidade da cantora Shakira?</p>
+                <select name="q20">
+                    <option value="a">Espanhola</option>
+                    <option value="b">Colombiana</option>
+                    <option value="c">Argentina</option>
+                    <option value="d">Portuguesa</option>
+                </select>
+            </fieldset>
+
+            <fieldset id="q21" class="question">
+                <legend>Pergunta 21</legend>
+                <p>what's your name?</p>
+                <label>Answer: <input type="text" name="q21"></label>
+            </fieldset>
+
+            <fieldset id="q22" class="question">
+                <legend>Pergunta 22</legend>
+                <p>On a scale of 1 to 5, 5 being alot, how much do you like rap music?</p>
+                <input type="range" name="q22" min="1" max="5">
+            </fieldset>
+
+            <div id="bottomBar">
+                <div id="buttons">
+                    <input type="button" value="Verificar respostas" id="submit-btn"
+                        onclick="checkAnswers(), location.reload()">
+                    <input type="button" value="Back" id="back-btn" onclick="">
+                    <input type="button" value="Next" id="next-btn" onclick="">
+                </div>
+                <div class="question-counter"></div>
+            </div>
+
+        </form>
     </div>
-
-  </form>
-</div>
 </body>
+
 </html>
