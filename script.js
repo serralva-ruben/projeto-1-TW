@@ -1,3 +1,5 @@
+const answers = [];
+
 function checkAnswers() {
     const correctAnswers = {
         q1: "a",
@@ -45,6 +47,31 @@ function checkAnswers() {
     alert("Você acertou " + score + " de " + questionNames.length + " perguntas.");
 }
 
+function start(){
+    const questions = document.querySelectorAll('.question');
+    const progressDiv = document.getElementById('progress')
+    for (let i=0; i<questions.length;i++){
+        progressDiv.innerHTML += "<div class='progressSquare' id='sq"+i+"'>0</div>"
+    }
+}
+
+function updateAnsweredViewer(){
+    let squareDivs = []
+    for(let i=0;i<document.querySelectorAll('.question').length;i++){
+        squareDivs[i] = document.getElementById("sq"+i)
+    }
+
+    for(let i=0;i<document.querySelectorAll('.question').length;i++){
+        for(let j=0;j<answers.length;j++){
+            if(squareDivs[i].id == 'sq'+(parseInt(answers[j].questionId.match(/\d+/)[0])-1)) {
+                const div = squareDivs[i];
+                div.innerHTML = 1;
+                div.style.backgroundColor = "green"
+            }
+        }
+    }
+}
+
 function updateCounter() {
     const questions = document.querySelectorAll('.question');
     const counter = document.querySelector('.question-counter');
@@ -63,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = document.getElementById('submit-btn');
     const nextBtn = document.getElementById('next-btn');
     const backBtn = document.getElementById('back-btn');
-    const answers = [];
 
     radios.forEach(radio => {
         radio.addEventListener('click', () => {
@@ -78,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (nextQuestion !== null) { nextQuestion.style.display = 'block'; }
             updateCounter();
             currentQuestion.style.display = 'none';
+            updateAnsweredViewer()
         });
     });
 
@@ -96,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
             questions[currentQuestionIndex - 1].style.display = 'block'
         }
         updateCounter()
+        updateAnsweredViewer()
     });
 
     nextBtn.addEventListener('click', () => {
@@ -105,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
             questions[currentQuestionIndex + 1].style.display = 'block'
         }
         updateCounter()
+        updateAnsweredViewer()
     });
 
     updateCounter();
