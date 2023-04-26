@@ -87,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const radios = document.querySelectorAll('input[type="radio"]');
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const submitBtn = document.getElementById('submit-btn');
     const nextBtn = document.getElementById('next-btn');
     const backBtn = document.getElementById('back-btn');
@@ -105,6 +106,20 @@ document.addEventListener('DOMContentLoaded', () => {
             updateCounter();
             currentQuestion.style.display = 'none';
             updateAnsweredViewer()
+        });
+    });
+    //not working yet
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function(){
+            const currentQuestion = radio.parentNode.parentNode;
+            const nextQuestion = currentQuestion.nextElementSibling;
+            currentQuestion.classList.add('answered');
+            const answer = {
+                questionId: currentQuestion.getAttribute('id'),
+                //value: radio.value
+            };
+            updateAnsweredViewer()
+            updateCounter()
         });
     });
 
