@@ -46,10 +46,20 @@ function checkAnswers() {
 }
 
 function start(){
+
     const questions = document.querySelectorAll('.question');
     const progressDiv = document.getElementById('progress')
     for (let i=0; i<questions.length;i++){
-        progressDiv.innerHTML += "<div class='progressSquare' id='sq"+i+"'>0</div>"
+        progressDiv.innerHTML += "<div c lass='progressSquare' id='sq"+i+"'>Q"+(i+1)+"</div>"
+    }
+    for (let i=0; i<questions.length;i++){
+        document.getElementById("sq"+i).addEventListener('click', ()=>{
+            const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
+            questions[currentQuestionIndex].style.display = 'none';
+            questions[i].style.display = 'block';
+            updateAnsweredViewer()
+            updateCounter()
+        })
     }
 }
 
@@ -164,6 +174,5 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCounter()
         updateAnsweredViewer()
     });
-
     updateCounter();
 });

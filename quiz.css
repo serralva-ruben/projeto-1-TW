@@ -106,4 +106,10 @@ input[type="radio"] {
     background-color : red;
     display: inline-flex;
     padding: 10px;
+    border-style: double;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: rgb(255, 100, 100);
+    cursor: pointer;
+    
 }
