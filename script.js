@@ -1,5 +1,3 @@
-const answers = [];
-
 function checkAnswers() {
     const correctAnswers = {
         q1: "a",
@@ -59,16 +57,8 @@ function updateAnsweredViewer(){
     let squareDivs = []
     for(let i=0;i<document.querySelectorAll('.question').length;i++){
         squareDivs[i] = document.getElementById("sq"+i)
-    }
-
-    for(let i=0;i<document.querySelectorAll('.question').length;i++){
-        for(let j=0;j<answers.length;j++){
-            if(squareDivs[i].id == 'sq'+(parseInt(answers[j].questionId.match(/\d+/)[0])-1)) {
-                const div = squareDivs[i];
-                div.innerHTML = 1;
-                div.style.backgroundColor = "green"
-            }
-        }
+        if(document.querySelectorAll('.question')[i].classList.contains('answered')){squareDivs[i].style.background = "green";}
+        else squareDivs[i].style.background = "red";
     }
 }
 
@@ -88,6 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const radios = document.querySelectorAll('input[type="radio"]');
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const selections = document.querySelectorAll('select');
+    const inputs = document.querySelectorAll('input[type="text"]');
+    const sliders = document.querySelectorAll('input[type="range"]');
     const submitBtn = document.getElementById('submit-btn');
     const nextBtn = document.getElementById('next-btn');
     const backBtn = document.getElementById('back-btn');
@@ -97,33 +90,53 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentQuestion = radio.parentNode.parentNode;
             const nextQuestion = currentQuestion.nextElementSibling;
             currentQuestion.classList.add('answered');
-            const answer = {
-                questionId: currentQuestion.getAttribute('id'),
-                value: radio.value
-            };
-            answers.push(answer);
-            if (nextQuestion !== null) { nextQuestion.style.display = 'block'; }
+            if (nextQuestion !== null) { currentQuestion.style.display = 'none'; nextQuestion.style.display = 'block'; }
             updateCounter();
-            currentQuestion.style.display = 'none';
             updateAnsweredViewer()
         });
     });
-    //needs ajustments
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function(){
-            const currentQuestion = checkbox.parentNode.parentNode;
+    //some adjustments needed
+    checkboxes.forEach(cb => {
+        cb.addEventListener('click', () => {
+            const currentQuestion = cb.parentNode.parentNode;
             const nextQuestion = currentQuestion.nextElementSibling;
             currentQuestion.classList.add('answered');
-            const answer = {
-                questionId: currentQuestion.getAttribute('id'),
-                value: checkbox.value
-            };
-            answers.push(answer);
+            if (nextQuestion !== null) { currentQuestion.style.display = 'none'; nextQuestion.style.display = 'block'; }
+            updateCounter();
             updateAnsweredViewer()
-            updateCounter()
         });
     });
 
+    selections.forEach(dropdown => {
+        dropdown.addEventListener('change', () => {
+            const currentQuestion = dropdown.parentNode;
+            const nextQuestion = currentQuestion.nextElementSibling;
+            currentQuestion.classList.add('answered');
+            if (nextQuestion !== null) { currentQuestion.style.display = 'none'; nextQuestion.style.display = 'block'; }
+            updateCounter();
+            updateAnsweredViewer()
+        });
+    });
+
+    inputs.forEach(input => {
+        input.addEventListener('input', () => {
+            const currentQuestion = input.parentNode.parentNode;
+            if(input.value.length>0 && !currentQuestion.classList.contains('answered')) {currentQuestion.classList.add('answered');}
+            else if(input.value.length===0 && currentQuestion.classList.contains('answered')) {currentQuestion.classList.remove('answered')}
+            updateCounter();
+            updateAnsweredViewer()
+        });
+    });
+
+    sliders.forEach(slider => {
+        slider.addEventListener('input', () => {
+            const currentQuestion = slider.parentNode;
+            currentQuestion.classList.add('answered');
+            updateCounter();
+            updateAnsweredViewer()
+        });
+    });
+    
     submitBtn.addEventListener('click', () => {
         questions.forEach(question => {
             question.style.display = 'none';

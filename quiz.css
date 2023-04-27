@@ -103,7 +103,7 @@ input[type="radio"] {
 }
 
 #progress div{
-    background-color :#d21515;
+    background-color : red;
     display: inline-flex;
     padding: 10px;
 }
