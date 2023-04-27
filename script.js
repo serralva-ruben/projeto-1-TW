@@ -108,16 +108,17 @@ document.addEventListener('DOMContentLoaded', () => {
             updateAnsweredViewer()
         });
     });
-    //not working yet
+    //needs ajustments
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function(){
-            const currentQuestion = radio.parentNode.parentNode;
+            const currentQuestion = checkbox.parentNode.parentNode;
             const nextQuestion = currentQuestion.nextElementSibling;
             currentQuestion.classList.add('answered');
             const answer = {
                 questionId: currentQuestion.getAttribute('id'),
-                //value: radio.value
+                value: checkbox.value
             };
+            answers.push(answer);
             updateAnsweredViewer()
             updateCounter()
         });
