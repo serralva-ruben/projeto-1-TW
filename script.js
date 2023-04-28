@@ -4,18 +4,18 @@ function checkAnswers() {
         q2: "5",
         q3: "Michael Jackson",
         q4: "Off the Wall",
-        q5: "a",
+        q5: "c",
         q6: "d",
         q7: "a",
         q8: "b",
-        q13: "c",
-        q14: "a",
-        q15: "a",
-        q16: ["a", "b"],
-        q17: ["a", "c", "d"],
-        q18: ["a", "c"],
-        q19: "b",
-        q20: "b"
+        q9: "b",
+        q10: "3",
+        q11: "a",
+        q12: "b",
+        q13: ["a", "c", "d"],
+        q14: ["a", "c"],
+        q15: "b",
+        q16: "a"
     };
 
     let score = 0;
