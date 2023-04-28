@@ -11,11 +11,11 @@ function checkAnswers() {
         q9: "b",
         q10: "3",
         q11: "a",
-        q12: "b",
-        q13: ["a", "c", "d"],
+        q12: ["a","d"],
+        q13: ["a", "b", "d"],
         q14: ["a", "c"],
         q15: "b",
-        q16: "a"
+        q16: "d"
     };
 
     let score = 0;
