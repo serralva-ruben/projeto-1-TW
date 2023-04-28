@@ -135,11 +135,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     sliders.forEach(slider => {
+        const sliderValue = slider.parentElement.querySelector('.slider-value');
         slider.addEventListener('input', () => {
+            sliderValue.textContent = slider.value;
             const currentQuestion = slider.parentNode;
             currentQuestion.classList.add('answered');
             updateCounter();
-            updateAnsweredViewer()
+            updateAnsweredViewer();
         });
     });
     
