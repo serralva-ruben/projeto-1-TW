@@ -30,11 +30,11 @@ function checkAnswers() {
         let correctCount = 0;
 
         for (const input of answerInputs) {
-            if (input.type === "radio" && input.checked && input.value == correctAnswers[questionName]) {
+            if (input.type === "radio" && input.checked && input.value === correctAnswers[questionName]) {
                 correctCount++;
             } else if (input.type === "checkbox" && input.checked && correctAnswers[questionName].includes(input.value)) {
                 correctCount++;
-            } else if (input.type === "select-one" && input.value == correctAnswers[questionName]) {
+            } else if (input.type === "select-one" && input.value === correctAnswers[questionName]) {
                 correctCount++;
             }
         }
@@ -50,7 +50,7 @@ function start(){
     const questions = document.querySelectorAll('.question');
     const progressDiv = document.getElementById('progress')
     for (let i=0; i<questions.length;i++){
-        progressDiv.innerHTML += "<div c lass='progressSquare' id='sq"+i+"'>Q"+(i+1)+"</div>"
+        progressDiv.innerHTML += "<div class='progressSquare' id='sq"+i+"'>Q"+(i+1)+"</div>"
     }
     for (let i=0; i<questions.length;i++){
         document.getElementById("sq"+i).addEventListener('click', ()=>{
@@ -176,3 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     updateCounter();
 });
+
+function refreshPage() {
+    window.location.reload();
+}
