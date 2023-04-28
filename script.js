@@ -12,7 +12,7 @@ function checkAnswers() {
         q10: "3",
         q11: "a",
         q12: ["a","d"],
-        q13: ["a", "b", "d"],
+        q13: ["a", "c", "d"],
         q14: ["a", "c"],
         q15: "b",
         q16: "d"
