@@ -1,0 +1,142 @@
+body {
+    background-color: #00ffcc;
+    font-family: sans-serif;
+    height: 100%;
+    margin: 0;
+}
+
+.quiz-container {
+    background-color: #c5fff2;
+    border: 1px solid #000000;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 50px auto;
+    width: 90%;
+    text-align: center;
+    flex-grow: 1;
+    flex-basis: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    color: #000000;
+    margin-top: 0;
+    text-align: center;
+}
+
+fieldset {
+    text-align: left;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+fieldset legend {
+    color: #444;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    text-shadow: 1px 1px #ddd;
+}
+
+fieldset p {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+label {
+    color: #444;
+    display: block;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px #ddd;
+}
+
+.question-image {
+    float: right;
+    margin-left: 20px;
+    max-width: 300px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+#bottomBar {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+#bottomBar input[type="button"] {
+    background-color: #0c78fb;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    margin-right: 5px;
+}
+
+#bottomBar input[type="button"]:hover {
+    background-color: #88a5be;
+    transition: 0.3s;
+    padding-top: 8px;
+    box-shadow: 0 5px 5px -3px #000000;
+}
+
+#bottomBar div {
+    padding: 10px;
+}
+
+.result {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    max-width: 600px;
+    margin: 50px auto;
+    width: 90%;
+}
+
+.result h2 {
+    color: #444;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 0;
+    text-shadow: 1px 1px #ffffff;
+}
+
+.result p {
+    color: #666;
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.result p span {
+    color: #479dff;
+    font-weight: bold;
+}
+
+#progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#progress div {
+    background-color: red;
+    min-width: 30px;
+    min-height: 30px;
+    padding: 5px;
+    border-style: double;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: rgb(255, 100, 100);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+}
