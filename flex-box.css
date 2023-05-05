@@ -1,62 +1,83 @@
 body {
-    background-color: #00ffcc;
-    font-family: sans-serif;
+    background-color: #010b25;
+    font-family: 'Bebas Neue', cursive;
     height: 100%;
     margin: 0;
 }
 
 .quiz-container {
-    background-color: #c5fff2;
-    border: 1px solid #000000;
-    padding: 20px;
-    max-width: 1000px;
+    background-color: #05a89d;
+    border: 4px solid #ffdd00;
+    padding: 10px;
+    max-width: 1200px;
     margin: 50px auto;
     width: 90%;
     text-align: center;
-    flex-grow: 1;
-    flex-basis: 0;
     display: flex;
     flex-direction: column;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
 }
 
 h1 {
-    color: #000000;
+    color: #021c50;
     margin-top: 0;
     text-align: center;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 4rem;
+    text-shadow: 1px 1px #ffffff;
 }
 
 fieldset {
     text-align: left;
     margin: 0 auto;
-    max-width: 800px;
+    border: 2px solid #ffdd00;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.62);
+    max-width: 1000px;
 }
 
 fieldset legend {
-    color: #444;
-    font-size: 24px;
+    color: #ffdd00;
+    font-size: 3rem;
     font-weight: bold;
     margin-bottom: 10px;
     text-align: center;
-    text-shadow: 1px 1px #ddd;
+    text-shadow: 2px 2px #000000;
+    font-family: 'Bebas Neue', cursive;
 }
 
 fieldset p {
-    color: #666;
-    font-size: 18px;
+    color: #000000;
+    text-shadow: 1px 1px #ffffff;
+    font-weight: bold;
+    font-size: 2.2rem;
     margin-bottom: 5px;
+    font-family: 'Bebas Neue', cursive;
 }
 
 label {
-    color: #444;
-    display: block;
+    color: #ffffff;
+    display: flex;
     margin-bottom: 5px;
-    text-shadow: 1px 1px #ddd;
+    text-shadow: 1px 1px #000000;
+    align-items: center;
+    font-size: 1.6rem;
+    font-family: 'Bebas Neue', cursive;
 }
+
 
 .question-image {
     float: right;
     margin-left: 20px;
-    max-width: 300px;
+    max-width: 400px;
+    border: 2px solid #333;
+    border-radius: 5px;
+}
+
+.question-counter {
+    color: #ffffff;
+    text-shadow: 2px 2px #000000;
+    font-size: 1.5rem;
+    font-family: 'Bebas Neue', cursive;
 }
 
 input[type="radio"] {
@@ -66,23 +87,26 @@ input[type="radio"] {
 #bottomBar {
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 10px;
 }
 
 #bottomBar input[type="button"] {
-    background-color: #0c78fb;
-    border: none;
+    background-color: #021c50;
+    border: 1px solid #000000;
     color: white;
     cursor: pointer;
-    font-size: 16px;
-    padding: 10px;
+    font-size: 1.6rem;
+    padding: 20px;
     margin-right: 5px;
+    font-family: 'Bebas Neue', cursive;
+    text-shadow: 2px 2px #000000;
 }
 
 #bottomBar input[type="button"]:hover {
-    background-color: #88a5be;
+    background-color: #4d8b96;
     transition: 0.3s;
-    padding-top: 8px;
+    padding-top: 18px;
     box-shadow: 0 5px 5px -3px #000000;
 }
 
@@ -91,14 +115,20 @@ input[type="radio"] {
 }
 
 .result {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
+    background-color: #000000;
+    border: 4px solid #ffdd00;
+    padding: 50px;
     text-align: center;
-    max-width: 600px;
+    max-width: 800px;
     margin: 50px auto;
     width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
 }
+
 
 .result h2 {
     color: #444;
@@ -106,6 +136,7 @@ input[type="radio"] {
     font-weight: bold;
     margin-top: 0;
     text-shadow: 1px 1px #ffffff;
+    align-self: flex-start;
 }
 
 .result p {
@@ -124,17 +155,18 @@ input[type="radio"] {
     justify-content: center;
     align-items: center;
     margin-top: 50px;
+    margin-bottom: 15px;
 }
 
 #progress div {
-    background-color: red;
+    background-color: #9f9f9f;
     min-width: 30px;
     min-height: 30px;
     padding: 5px;
     border-style: double;
     border-radius: 10px;
     border-width: 1px;
-    border-color: rgb(255, 100, 100);
+    border-color: rgb(0, 0, 0);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -142,12 +174,14 @@ input[type="radio"] {
     margin-right: 5px;
 }
 
+
 /* Mobile devices */
 @media (max-width: 480px) {
     .quiz-container {
         padding: 10px;
         margin: 30px auto;
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
     }
 
     .question-image {
@@ -191,7 +225,8 @@ input[type="radio"] {
     .quiz-container {
         padding: 10px;
         margin: 30px auto;
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
     }
 
     .question-image {
@@ -238,12 +273,12 @@ input[type="radio"] {
     }
 
     #bottomBar {
-        display: grid;
-        grid-template-columns: repeat(2, auto);
+        display: flex;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
         padding: 10px;
-        grid-column-gap: 5px;
+        gap: 5px;
     }
 
     #bottomBar input[type="button"] {
@@ -281,6 +316,7 @@ input[type="radio"] {
         max-width: 1200px;
         margin: 50px auto;
     }
+
     fieldset {
         max-width: 90%;
     }
