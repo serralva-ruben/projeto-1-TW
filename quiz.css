@@ -1,3 +1,26 @@
+
+/* For Desktop View */
+@media screen and (min-width: 1024px) {
+    body {      
+      font-size: small;
+    }
+    .question p{
+      font-size: large;
+    }
+  }
+
+  /* For Mobile Phones Portrait or Landscape View */
+  @media screen and (max-device-width: 640px) {
+    body {
+      width: 400px;
+      height: 200px;
+      font-size: x-large;
+    }
+    .question p{
+      font-size: xx-large;
+    }
+  }
+
 body {
     background-color: #00ffcc;
     font-family: sans-serif;
@@ -107,8 +130,7 @@ input[type="radio"]:hover {
     top: 10px;
     right: 10px;
     font-size: 18px;
-    font-weight: bold;
-    background-color: #88a5be;
+    font-weight: bold;    
 }
 
 .bottomBar div{

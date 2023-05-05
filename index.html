@@ -13,6 +13,8 @@
     <div class="quiz-container" id="pageStart">
         <h1>Quiz sobre música</h1>
         <form>
+
+            <!-- radio questions -->
             <fieldset id="q1" class="question">
                 <legend>Pergunta 1</legend>
                 <p>Quem foi o vocalista da banda Queen?</p>
@@ -148,6 +150,7 @@
                 <label><input type="radio" name="q15" value="d"> G N' R Lies</label><br>
             </fieldset>
 
+            <!-- checkbox questions -->
             <fieldset id="q16" class="question">
                 <legend>Pergunta 16</legend>
                 <p>Qual dos seguintes artistas participou do álbum "The Chronic" de Dr. Dre?</p>
@@ -175,6 +178,7 @@
                 <label><input type="checkbox" name="q18" value="d">OK Computer</label><br>
             </fieldset>
 
+            <!-- select questions -->
             <fieldset id="q19" class="question">
                 <legend>Pergunta 19</legend>
                 <p>Qual é o nome do álbum mais vendido de todos os tempos?</p>
@@ -193,16 +197,18 @@
                     <option value="a">Espanhola</option>
                     <option value="b">Colombiana</option>
                     <option value="c">Argentina</option>
-                    <option value="d">Portuguesa</option>
+                    <option value="d" selected>Portuguesa</option>
                 </select>
             </fieldset>
 
+            <!-- single-line-text questions -->
             <fieldset id="q21" class="question">
                 <legend>Pergunta 21</legend>
-                <p>what's your name?</p>
-                <label>Answer: <input type="text" name="q21"></label>
+                <p>Qual o seu nome?</p>
+                <label><input type="text" name="q21" size="35" maxlength="50" placeholder="Escreva seu nome aqui"></label>
             </fieldset>
 
+            <!-- range questions -->
             <fieldset id="q22" class="question">
                 <legend>Pergunta 22</legend>
                 <p>On a scale of 1 to 5, 5 being alot, how much do you like rap music?</p>
