@@ -1,63 +1,81 @@
-
-
-
-
 body {
-    background-color: #00ffcc;
-    font-family: sans-serif;
+    background-color: #010b25;
+    font-family: 'Bebas Neue', cursive;
     height: 100%;
     margin: 0;
 }
 
 .quiz-container {
-    background-color: #c5fff2;
-    border: 1px solid #000000;
-    padding: 20px;
-    max-width: 1000px;
+    background-color: #05a89d;
+    border: 4px solid #ffdd00;
+    padding: 10px;
+    max-width: 1200px;
     margin: 50px auto;
     width: 90%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
 }
 
 h1 {
-    color: #000000;
+    color: #021c50;
     margin-top: 0;
     text-align: center;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 4rem;
+    text-shadow: 1px 1px #ffffff;
 }
 
 fieldset {
     text-align: left;
     margin: 0 auto;
-    max-width: 800px; /* adjust the value as needed */
+    border: 2px solid #ffdd00;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.62);
+    max-width: 1000px;
 }
 
-
 fieldset legend {
-    color: #444;
-    font-size: 24px;
+    color: #ffdd00;
+    font-size: 3rem;
     font-weight: bold;
     margin-bottom: 10px;
     text-align: center;
-    text-shadow: 1px 1px #ddd;
+    text-shadow: 2px 2px #000000;
+    font-family: 'Merriweather', serif;
 }
 
 fieldset p {
-    color: #666;
-    font-size: 18px;
+    color: #000000;
+    text-shadow: 1px 1px #ffffff;
+    font-weight: bold;
+    font-size: 2.2rem;
     margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
 }
 
 label {
-    color: #444;
+    color: #ffffff;
     display: block;
     margin-bottom: 5px;
-    text-shadow: 1px 1px #ddd;
+    text-shadow: 2px 2px #000000;
+    font-size: 1.6rem;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .question-image {
     float: right;
     margin-left: 20px;
-    max-width: 300px;
+    max-width: 400px;
+    border: 2px solid #333;
+    border-radius: 5px;
+}
+
+.question-counter {
+    color: #ffffff;
+    text-shadow: 2px 2px #000000;
+    font-size: 1.5rem;
+    font-family: 'Open Sans', sans-serif;
 }
 
 input[type="radio"] {
@@ -65,25 +83,30 @@ input[type="radio"] {
 }
 
 #bottomBar {
-    display: flex;
-    justify-content: center; /* Centers the buttons horizontally */
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-content: center;
+    align-items: center;
     padding: 10px;
+    grid-column-gap: 5px;
 }
 
-#bottomBar input[type="button"]{
-    background-color: #0c78fb;
-    border: none;
+#bottomBar input[type="button"] {
+    background-color: #021c50;
+    border: 1px solid #000000;
     color: white;
     cursor: pointer;
-    font-size: 16px;
-    padding: 10px;
-    margin-right: 5px; /* Adds a small space between buttons */
+    font-size: 1.6rem;
+    padding: 20px;
+    margin-right: 5px;
+    font-family: 'Lato', sans-serif;
+    text-shadow: 2px 2px #000000;
 }
 
 #bottomBar input[type="button"]:hover {
-    background-color: #88a5be;
+    background-color: #4d8b96;
     transition: 0.3s;
-    padding-top: 8px;
+    padding-top: 18px;
     box-shadow: 0 5px 5px -3px #000000;
 }
 
@@ -91,15 +114,18 @@ input[type="radio"] {
     padding: 10px;
 }
 
-
 .result {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
+    background-color: #000000;
+    border: 4px solid #ffdd00;
+    padding: 50px;
     text-align: center;
-    max-width: 600px;
+    max-width: 800px;
     margin: 50px auto;
     width: 90%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
 }
 
 .result h2 {
@@ -108,12 +134,14 @@ input[type="radio"] {
     font-weight: bold;
     margin-top: 0;
     text-shadow: 1px 1px #ffffff;
+    grid-row: 1;
 }
 
 .result p {
     color: #666;
     font-size: 18px;
     margin-top: 0;
+    grid-row: 2;
 }
 
 .result p span {
@@ -126,19 +154,20 @@ input[type="radio"] {
     justify-content: center;
     align-items: center;
     margin-top: 50px;
+    margin-bottom: 15px;
 }
 
-#progress div{
-    background-color : red;
-    display: inline-flex;
+#progress div {
+    background-color: #9f9f9f;
     min-width: 30px;
     min-height: 30px;
     padding: 5px;
     border-style: double;
     border-radius: 10px;
     border-width: 1px;
-    border-color: rgb(255, 100, 100);
+    border-color: rgb(0, 0, 0);
     cursor: pointer;
+    display: grid;
     align-items: center;
     justify-content: center;
     margin-right: 5px;
@@ -250,7 +279,7 @@ input[type="radio"] {
 
     #bottomBar input[type="button"] {
         margin-right: 5px;
-        margin-bottom: 0;
+        margin-bottom: 5px;
     }
 
     #progress {
@@ -270,6 +299,10 @@ input[type="radio"] {
     .quiz-container {
         max-width: 1000px;
         margin: 50px auto;
+    }
+
+    fieldset {
+        max-width: 90%;
     }
 }
 

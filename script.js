@@ -64,7 +64,7 @@ function updateAnsweredViewer(){
     for(let i=0;i<document.querySelectorAll('.question').length;i++){
         squareDivs[i] = document.getElementById("sq"+i)
         if(document.querySelectorAll('.question')[i].classList.contains('answered')){squareDivs[i].style.background = "green";}
-        else squareDivs[i].style.background = "red";
+        else squareDivs[i].style.background = "#9f9f9f";
     }
 }
 
