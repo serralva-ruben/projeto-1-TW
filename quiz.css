@@ -24,14 +24,18 @@
 body {
     background-color: #00ffcc;
     font-family: sans-serif;
+    height: 100%;
+    margin: 0;
 }
 
 .quiz-container {
     background-color: #c5fff2;
     border: 1px solid #000000;
-    margin: 50px auto;
     padding: 20px;
-    width: 600px;
+    max-width: 1000px;
+    margin: 50px auto;
+    width: 90%;
+    text-align: center;
 }
 
 h1 {
@@ -41,10 +45,11 @@ h1 {
 }
 
 fieldset {
-    border: none;
-    margin: 0;
-    padding: 0;
+    text-align: left;
+    margin: 0 auto;
+    max-width: 800px; /* adjust the value as needed */
 }
+
 
 fieldset legend {
     color: #444;
@@ -68,42 +73,52 @@ label {
     text-shadow: 1px 1px #ddd;
 }
 
+.question-image {
+    float: right;
+    margin-left: 20px;
+    max-width: 300px;
+}
+
 input[type="radio"] {
     margin-right: 5px;
 }
 
-input[type="radio"]:hover {
-    margin-left: 4px;
-    transition: 0.2s;
-
+#bottomBar {
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    padding: 10px;
 }
 
-#buttons input[type="button"]{
-    background-color: #0070f9;
+#bottomBar input[type="button"]{
+    background-color: #0c78fb;
     border: none;
     color: white;
     cursor: pointer;
     font-size: 16px;
     padding: 10px;
-    display: inline-flex;
-    flex-wrap: wrap;
-    margin-bottom: 10px;    
+    margin-right: 5px; /* Adds a small space between buttons */
 }
 
-#buttons input[type="button"]:hover {
+#bottomBar input[type="button"]:hover {
     background-color: #88a5be;
     transition: 0.3s;
     padding-top: 8px;
-    box-shadow: 0px 5px 5px -3px #000000;
+    box-shadow: 0 5px 5px -3px #000000;
 }
+
+#bottomBar div {
+    padding: 10px;
+}
+
 
 .result {
     background-color: #fff;
     border: 1px solid #ddd;
-    margin: 50px auto;
     padding: 20px;
     text-align: center;
-    width: 400px;
+    max-width: 600px;
+    margin: 50px auto;
+    width: 90%;
 }
 
 .result h2 {
@@ -125,15 +140,35 @@ input[type="radio"]:hover {
     font-weight: bold;
 }
 
+<<<<<<< HEAD
 .question-counter {
     position: absolute;
     top: 10px;
     right: 10px;
     font-size: 18px;
     font-weight: bold;    
+=======
+#progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
 }
 
-.bottomBar div{
-    background-color: #0050b2;
-    top: 10px;
+#progress div{
+    background-color : red;
+    display: inline-flex;
+    min-width: 30px;
+    min-height: 30px;
+    padding: 5px;
+    border-style: double;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: rgb(255, 100, 100);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+>>>>>>> 88db00010e6448ddaf60bc87854e0750ff4f7d87
 }
+
