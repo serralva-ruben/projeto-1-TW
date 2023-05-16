@@ -53,8 +53,9 @@ function start(){
             const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
             questions[currentQuestionIndex].style.display = 'none';
             questions[i].style.display = 'block';
-            updateAnsweredViewer()
-            updateCounter()
+            updateCurrentQuestionBorder();
+            updateAnsweredViewer();
+            updateCounter();
         })
     }
 }
@@ -73,6 +74,19 @@ function updateCounter() {
     const counter = document.querySelector('.question-counter');
     const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
     counter.innerText = `Pergunta: ${currentQuestionIndex + 1} / ${questions.length}`;
+}
+
+function updateCurrentQuestionBorder() {
+    let squareDivs = []
+    const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
+
+    for(let i=0;i<document.querySelectorAll('.question').length;i++){
+        squareDivs[i] = document.getElementById("sq"+i)
+    }
+    squareDivs.forEach(squareDiv => {
+        squareDiv.style.border = "";
+    })
+    squareDivs[currentQuestionIndex].style.border = "2px dashed red";
 }
 
 
@@ -97,19 +111,32 @@ document.addEventListener('DOMContentLoaded', () => {
             const nextQuestion = currentQuestion.nextElementSibling;
             currentQuestion.classList.add('answered');
             if (nextQuestion !== null) { currentQuestion.style.display = 'none'; nextQuestion.style.display = 'block'; }
+            updateCurrentQuestionBorder();
             updateCounter();
-            updateAnsweredViewer()
+            updateAnsweredViewer();
         });
     });
-    //some adjustments needed
+    
     checkboxes.forEach(cb => {
         cb.addEventListener('click', () => {
             const currentQuestion = cb.parentNode.parentNode;
             const nextQuestion = currentQuestion.nextElementSibling;
-            currentQuestion.classList.add('answered');
-            if (nextQuestion !== null) { currentQuestion.style.display = 'none'; nextQuestion.style.display = 'block'; }
+            const checkboxesInCurrentQuestion = currentQuestion.querySelectorAll('input[type="checkbox"]');
+            
+            // Check if any checkboxes in the current question are checked
+            let anyChecked = Array.from(checkboxesInCurrentQuestion).some(checkbox => checkbox.checked);
+            
+            // If at least one checkbox is checked, add the 'answered' class
+            // Otherwise, remove the 'answered' class
+            if (anyChecked) {
+                currentQuestion.classList.add('answered');
+            } else {
+                currentQuestion.classList.remove('answered');
+            }
+
+            updateCurrentQuestionBorder();
             updateCounter();
-            updateAnsweredViewer()
+            updateAnsweredViewer();
         });
     });
 
@@ -120,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentQuestion = currentQuestion.parentNode;
             }
             currentQuestion.classList.add('answered');
+            updateCurrentQuestionBorder();
             updateCounter();
             updateAnsweredViewer();
         });
@@ -130,8 +158,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentQuestion = input.parentNode.parentNode;
             if(input.value.length>0 && !currentQuestion.classList.contains('answered')) {currentQuestion.classList.add('answered');}
             else if(input.value.length===0 && currentQuestion.classList.contains('answered')) {currentQuestion.classList.remove('answered')}
+            updateCurrentQuestionBorder();
             updateCounter();
-            updateAnsweredViewer()
+            updateAnsweredViewer();
         });
     });
 
@@ -144,6 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentQuestion = currentQuestion.parentNode;
             }
             currentQuestion.classList.add('answered');
+            updateCurrentQuestionBorder();
             updateCounter();
             updateAnsweredViewer();
         });
@@ -163,8 +193,9 @@ document.addEventListener('DOMContentLoaded', () => {
             questions[currentQuestionIndex].style.display = 'none'
             questions[currentQuestionIndex - 1].style.display = 'block'
         }
-        updateCounter()
-        updateAnsweredViewer()
+        updateCurrentQuestionBorder();
+        updateCounter();
+        updateAnsweredViewer();
     });
 
     nextBtn.addEventListener('click', () => {
@@ -173,8 +204,9 @@ document.addEventListener('DOMContentLoaded', () => {
             questions[currentQuestionIndex].style.display = 'none'
             questions[currentQuestionIndex + 1].style.display = 'block'
         }
-        updateCounter()
-        updateAnsweredViewer()
+        updateCurrentQuestionBorder();
+        updateCounter();
+        updateAnsweredViewer();
     });
     updateCounter();
 });
