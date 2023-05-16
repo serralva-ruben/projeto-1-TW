@@ -58,6 +58,9 @@ function start(){
             updateCounter();
         })
     }
+    updateCounter();
+    updateCurrentQuestionBorder();
+    updateAnsweredViewer();
 }
 
 function updateAnsweredViewer(){
@@ -88,7 +91,6 @@ function updateCurrentQuestionBorder() {
     })
     squareDivs[currentQuestionIndex].style.border = "2px dashed red";
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const questions = document.querySelectorAll('.question');
@@ -208,7 +210,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCounter();
         updateAnsweredViewer();
     });
-    updateCounter();
 });
 
 function refreshPage() {
