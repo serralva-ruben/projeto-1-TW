@@ -26,17 +26,12 @@ function checkAnswers() {
         let correctCount = 0;
 
         for (const input of answerInputs) {
-            if (input.type === "radio" && input.checked && input.value === correctAnswers[questionName]) {
-                correctCount++;
-            } else if (input.type === "checkbox" && input.checked && correctAnswers[questionName].includes(input.value)) {
-                correctCount++;
-            } else if (input.type === "select-one" && input.value === correctAnswers[questionName]) {
-                correctCount++;
-            }
+            if ((input.type === "radio" && input.checked && input.value === correctAnswers[questionName]) ||
+                (input.type === "checkbox" && input.checked && correctAnswers[questionName].includes(input.value)) ||
+                (input.type === "select-one" && input.value === correctAnswers[questionName])) 
+                {correctCount++;}
         }
-        if (correctCount > 0) {
-            score++;
-        }
+        if (correctCount > 0) {score++;}
     }
     alert("Você acertou " + score + " de " + questionNames.length + " perguntas.");
 }
