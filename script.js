@@ -115,12 +115,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     selections.forEach(dropdown => {
         dropdown.addEventListener('change', () => {
-            const currentQuestion = dropdown.parentNode;
-            const nextQuestion = currentQuestion.nextElementSibling;
+            let currentQuestion = dropdown.parentNode;
+            while (!currentQuestion.classList.contains('question')) {
+                currentQuestion = currentQuestion.parentNode;
+            }
             currentQuestion.classList.add('answered');
-            if (nextQuestion !== null) { currentQuestion.style.display = 'none'; nextQuestion.style.display = 'block'; }
             updateCounter();
-            updateAnsweredViewer()
+            updateAnsweredViewer();
         });
     });
 
@@ -138,7 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const sliderValue = slider.parentElement.querySelector('.slider-value');
         slider.addEventListener('input', () => {
             sliderValue.textContent = slider.value;
-            const currentQuestion = slider.parentNode;
+            let currentQuestion = slider.parentNode;
+            while (!currentQuestion.classList.contains('question')) {
+                currentQuestion = currentQuestion.parentNode;
+            }
             currentQuestion.classList.add('answered');
             updateCounter();
             updateAnsweredViewer();
