@@ -2,8 +2,8 @@ function checkAnswers() {
     const correctAnswers = {
         q1: "a",
         q2: "5",
-        q3: "Michael Jackson",
-        q4: "Off the Wall",
+        q3: "michael jackson",
+        q4: "off the wall",
         q5: "c",
         q6: "d",
         q7: "a",
@@ -28,7 +28,9 @@ function checkAnswers() {
         for (const input of answerInputs) {
             if ((input.type === "radio" && input.checked && input.value === correctAnswers[questionName]) ||
                 (input.type === "checkbox" && input.checked && correctAnswers[questionName].includes(input.value)) ||
-                (input.type === "select-one" && input.value === correctAnswers[questionName])) { correctCount++; }
+                (input.type === "select-one" && input.value === correctAnswers[questionName]) ||
+                (input.type === "text" && input.value.toLowerCase() === correctAnswers[questionName])
+                ) { correctCount++; }
         }
         if (correctCount > 0) { score++; }
     }
@@ -93,6 +95,19 @@ function updateCurrentQuestionBorder() {
     squareDivs[currentQuestionIndex].style.border = "2px dashed red";
 }
 
+function validateInput(input, value) {
+    if (value && value.trim() !== "") { // Check if value is not undefined and not an empty string
+        const regexPattern = /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
+        const isValid = regexPattern.test(value.trim());
+  
+    if (!isValid) {
+        input.style.backgroundColor = 'red'; // Set red background color for invalid input
+    } else {
+        input.style.backgroundColor = 'green'; // Remove the background color if input is valid
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const questions = document.querySelectorAll('.question');
     for (let i = 1; i < questions.length; i++) {
@@ -152,12 +167,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = input.value.trim();
             const isValid = validateInput(input, value);
 
-            if (isValid && !currentQuestion.classList.contains('answered')) {
+            if (input.value.length>0 && isValid && !currentQuestion.classList.contains('answered')) {
                 currentQuestion.classList.add('answered');
-                window.setTimeout(alert("correct"), 1000);
-            } else if (!isValid && currentQuestion.classList.contains('answered')) {
+            } else if (input.value.length===0 && !isValid && currentQuestion.classList.contains('answered')) {
                 currentQuestion.classList.remove('answered');
-                alert("Input incorect");
             }
             update();
         });
@@ -209,27 +222,6 @@ function update() {
     updateAnsweredViewer();
     updateNextBackButtons();
     validateInput();
-}
-
-let typingTimer;
-let delay = 2000; // Delay in milliseconds
-
-function validateInput(input, value) {
-  clearTimeout(typingTimer); // Clear the previous timer
-
-  if (value && value.trim() !== "") { // Check if value is not undefined and not an empty string
-    const regexPattern = /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
-    const isValid = regexPattern.test(value.trim());
-
-    if (!isValid) {
-      input.style.backgroundColor = 'red'; // Set red background color for invalid input
-    } else {
-      input.style.backgroundColor = ''; // Remove the background color if input is valid
-      typingTimer = setTimeout(() => {
-        alert("Please enter a valid input.");
-      }, delay);
-    }
-  }
 }
 
 
