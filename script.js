@@ -108,6 +108,20 @@ function validateInput(input, value) {
     }
 }
 
+function validateInput(input, value) {
+
+    if (value && value.trim() !== "") { // Check if value is not undefined and not an empty string
+    const regexPattern = /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
+    const isValid = regexPattern.test(value.trim());
+
+    if (!isValid) {
+        input.style.backgroundColor = 'red'; // Set red background color for invalid input
+    } else {
+        input.style.backgroundColor = 'green'; // Remove the background color if input is valid
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const questions = document.querySelectorAll('.question');
     for (let i = 1; i < questions.length; i++) {
@@ -230,27 +244,6 @@ function update() {
     updateAnsweredViewer();
     updateNextBackButtons();
     validateInput();
-}
-
-let typingTimer;
-let delay = 2000; // Delay in milliseconds
-
-function validateInput(input, value) {
-  clearTimeout(typingTimer); // Clear the previous timer
-
-  if (value && value.trim() !== "") { // Check if value is not undefined and not an empty string
-    const regexPattern = /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
-    const isValid = regexPattern.test(value.trim());
-
-    if (!isValid) {
-      input.style.backgroundColor = 'red'; // Set red background color for invalid input
-    } else {
-      input.style.backgroundColor = ''; // Remove the background color if input is valid
-      typingTimer = setTimeout(() => {
-        alert("Please enter a valid input.");
-      }, delay);
-    }
-  }
 }
 
 function refreshPage() {
