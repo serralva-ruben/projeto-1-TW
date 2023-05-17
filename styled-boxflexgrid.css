@@ -15,7 +15,7 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
@@ -125,7 +125,7 @@ input[type="radio"] {
     display: grid;
     grid-template-rows: auto 1fr auto;
     grid-template-columns: 1fr;
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 .result h2 {
@@ -312,7 +312,18 @@ input[type="radio"] {
         max-width: 1200px;
         margin: 50px auto;
     }
+
     fieldset {
         max-width: 90%;
     }
+}
+
+.invalid {
+    border-color: red;
+}
+
+.error-text {
+    display: none;
+    color: red;
+    font-size: 12px;
 }

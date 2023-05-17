@@ -11,7 +11,7 @@ function checkAnswers() {
         q9: "b",
         q10: "3",
         q11: "a",
-        q12: ["a","d"],
+        q12: ["a", "d"],
         q13: ["a", "c", "d"],
         q14: ["a", "c"],
         q15: "b",
@@ -28,23 +28,22 @@ function checkAnswers() {
         for (const input of answerInputs) {
             if ((input.type === "radio" && input.checked && input.value === correctAnswers[questionName]) ||
                 (input.type === "checkbox" && input.checked && correctAnswers[questionName].includes(input.value)) ||
-                (input.type === "select-one" && input.value === correctAnswers[questionName])) 
-                {correctCount++;}
+                (input.type === "select-one" && input.value === correctAnswers[questionName])) { correctCount++; }
         }
-        if (correctCount > 0) {score++;}
+        if (correctCount > 0) { score++; }
     }
     alert("Você acertou " + score + " de " + questionNames.length + " perguntas.");
 }
 
-function start(){
+function start() {
 
     const questions = document.querySelectorAll('.question');
     const progressDiv = document.getElementById('progress')
-    for (let i=0; i<questions.length;i++){
-        progressDiv.innerHTML += "<div class='progressSquare' id='sq"+i+"'>Q"+(i+1)+"</div>"
+    for (let i = 0; i < questions.length; i++) {
+        progressDiv.innerHTML += "<div class='progressSquare' id='sq" + i + "'>Q" + (i + 1) + "</div>"
     }
-    for (let i=0; i<questions.length;i++){
-        document.getElementById("sq"+i).addEventListener('click', ()=>{
+    for (let i = 0; i < questions.length; i++) {
+        document.getElementById("sq" + i).addEventListener('click', () => {
             const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
             questions[currentQuestionIndex].style.display = 'none';
             questions[i].style.display = 'block';
@@ -54,11 +53,11 @@ function start(){
     update()
 }
 
-function updateAnsweredViewer(){
+function updateAnsweredViewer() {
     let squareDivs = []
-    for(let i=0;i<document.querySelectorAll('.question').length;i++){
-        squareDivs[i] = document.getElementById("sq"+i)
-        if(document.querySelectorAll('.question')[i].classList.contains('answered')){squareDivs[i].style.background = "green";}
+    for (let i = 0; i < document.querySelectorAll('.question').length; i++) {
+        squareDivs[i] = document.getElementById("sq" + i)
+        if (document.querySelectorAll('.question')[i].classList.contains('answered')) { squareDivs[i].style.background = "green"; }
         else squareDivs[i].style.background = "#9f9f9f";
     }
 }
@@ -75,9 +74,9 @@ function updateNextBackButtons() {
     const backBtn = document.getElementById('back-btn');
     const questions = document.querySelectorAll('.question')
     const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
-    if(currentQuestionIndex==0) backBtn.style.backgroundColor = "Grey";
+    if (currentQuestionIndex == 0) backBtn.style.backgroundColor = "Grey";
     else backBtn.style.backgroundColor = "#021c50"
-    if(currentQuestionIndex==questions.length-1) nextBtn.style.backgroundColor = "Grey";
+    if (currentQuestionIndex == questions.length - 1) nextBtn.style.backgroundColor = "Grey";
     else nextBtn.style.backgroundColor = "#021c50"
 }
 
@@ -85,8 +84,8 @@ function updateCurrentQuestionBorder() {
     let squareDivs = []
     const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
 
-    for(let i=0;i<document.querySelectorAll('.question').length;i++){
-        squareDivs[i] = document.getElementById("sq"+i)
+    for (let i = 0; i < document.querySelectorAll('.question').length; i++) {
+        squareDivs[i] = document.getElementById("sq" + i)
     }
     squareDivs.forEach(squareDiv => {
         squareDiv.style.border = "";
@@ -118,20 +117,20 @@ document.addEventListener('DOMContentLoaded', () => {
             update();
         });
     });
-    
+
     checkboxes.forEach(cb => {
         cb.addEventListener('click', () => {
             const currentQuestion = cb.parentNode.parentNode;
             const nextQuestion = currentQuestion.nextElementSibling;
             const checkboxesInCurrentQuestion = currentQuestion.querySelectorAll('input[type="checkbox"]');
-            
+
             // Check if any checkboxes in the current question are checked
             let anyChecked = Array.from(checkboxesInCurrentQuestion).some(checkbox => checkbox.checked);
-            
+
             // If at least one checkbox is checked, add the 'answered' class
             // Otherwise, remove the 'answered' class
-            if (anyChecked) {currentQuestion.classList.add('answered');}
-            else {currentQuestion.classList.remove('answered');}
+            if (anyChecked) { currentQuestion.classList.add('answered'); }
+            else { currentQuestion.classList.remove('answered'); }
             update();
         });
     });
@@ -150,9 +149,17 @@ document.addEventListener('DOMContentLoaded', () => {
     inputs.forEach(input => {
         input.addEventListener('input', () => {
             const currentQuestion = input.parentNode.parentNode;
-            if(input.value.length>0 && !currentQuestion.classList.contains('answered')) {currentQuestion.classList.add('answered');}
-            else if(input.value.length===0 && currentQuestion.classList.contains('answered')) {currentQuestion.classList.remove('answered')}
-            update()
+            const value = input.value.trim();
+            const isValid = validateInput(value);
+
+            if (isValid && !currentQuestion.classList.contains('answered')) {
+                currentQuestion.classList.add('answered');
+                window.setTimeout(alert("correct"), 1000);
+            } else if (!isValid && currentQuestion.classList.contains('answered')) {
+                currentQuestion.classList.remove('answered');
+                alert("Input incorect");
+            }
+            update();
         });
     });
 
@@ -168,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
             update();
         });
     });
-    
+
     submitBtn.addEventListener('click', () => {
         questions.forEach(question => {
             question.style.display = 'none';
@@ -196,12 +203,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function update(){
+function update() {
     updateCurrentQuestionBorder();
     updateCounter();
     updateAnsweredViewer();
     updateNextBackButtons();
+    validateInput();
 }
+
+let typingTimer;
+let delay = 2000; // Delay in milliseconds
+
+function validateInput(value) {
+  clearTimeout(typingTimer); // Clear the previous timer
+
+  if (value && value.trim() !== "") { // Check if value is not undefined and not an empty string
+    const regexPattern = /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
+    const isValid = regexPattern.test(value.trim());
+
+    if (!isValid) {
+      alert("Please enter a valid input.");
+    } else {
+      // Start the timer to show the alert after the delay
+      typingTimer = setTimeout(() => {
+        alert("Please enter a valid input.");
+      }, delay);
+    }
+  }
+}
+
 
 function refreshPage() {
     window.location.reload();
