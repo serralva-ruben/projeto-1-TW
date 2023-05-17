@@ -100,26 +100,14 @@ function validateInput(input, value) {
         const regexPattern = /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
         const isValid = regexPattern.test(value.trim());
   
-    if (!isValid) {
-        input.style.backgroundColor = 'red'; // Set red background color for invalid input
-    } else {
-        input.style.backgroundColor = 'green'; // Remove the background color if input is valid
+        if (!isValid) {
+            input.style.backgroundColor = 'red'; // Set red background color for invalid input
+        } else {
+            input.style.backgroundColor = 'green'; // Remove the background color if input is valid
         }
+        return isValid;
     }
-}
-
-function validateInput(input, value) {
-
-    if (value && value.trim() !== "") { // Check if value is not undefined and not an empty string
-    const regexPattern = /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
-    const isValid = regexPattern.test(value.trim());
-
-    if (!isValid) {
-        input.style.backgroundColor = 'red'; // Set red background color for invalid input
-    } else {
-        input.style.backgroundColor = 'green'; // Remove the background color if input is valid
-        }
-    }
+    return false;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -177,26 +165,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     inputs.forEach(input => {
         input.addEventListener('input', () => {
-          const currentQuestion = input.parentNode.parentNode;
-          const value = input.value.trim();
-          const isValid = validateInput(input, value);
-      
-          if (isValid && !currentQuestion.classList.contains('answered')) {
-            currentQuestion.classList.add('answered');
-            input.style.backgroundColor = ''; // Remove the background color if input is valid
-            const questionIndex = Array.from(document.querySelectorAll('.question')).indexOf(currentQuestion);
-            const progressSquare = document.getElementById("sq" + questionIndex);
-            progressSquare.style.background = "green"; // Update the progress square color to green
-          } else if (!isValid && currentQuestion.classList.contains('answered')) {
-            currentQuestion.classList.remove('answered');
-            input.style.backgroundColor = 'red'; // Set red background color for invalid input
-            const questionIndex = Array.from(document.querySelectorAll('.question')).indexOf(currentQuestion);
-            const progressSquare = document.getElementById("sq" + questionIndex);
-            progressSquare.style.background = "#9f9f9f"; // Reset the progress square color to default
-          }
-          update();
+            const currentQuestion = input.parentNode.parentNode;
+            const value = input.value.trim();
+            const isValid = validateInput(input, value);
+        
+            if (isValid && !currentQuestion.classList.contains('answered')) {
+                currentQuestion.classList.add('answered');
+                const questionIndex = Array.from(document.querySelectorAll('.question')).indexOf(currentQuestion);
+                const progressSquare = document.getElementById("sq" + questionIndex);
+                progressSquare.style.background = "green"; // Update the progress square color to green
+            } else if (!isValid && currentQuestion.classList.contains('answered')) {
+                currentQuestion.classList.remove('answered');
+                const questionIndex = Array.from(document.querySelectorAll('.question')).indexOf(currentQuestion);
+                const progressSquare = document.getElementById("sq" + questionIndex);
+                progressSquare.style.background = "#9f9f9f"; // Reset the progress square color to default
+            }
+            update();
         });
-      });
+    });
 
     sliders.forEach(slider => {
         const sliderValue = slider.parentElement.querySelector('.slider-value');
