@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         input.addEventListener('input', () => {
             const currentQuestion = input.parentNode.parentNode;
             const value = input.value.trim();
-            const isValid = validateInput(value);
+            const isValid = validateInput(input, value);
 
             if (isValid && !currentQuestion.classList.contains('answered')) {
                 currentQuestion.classList.add('answered');
@@ -214,7 +214,7 @@ function update() {
 let typingTimer;
 let delay = 2000; // Delay in milliseconds
 
-function validateInput(value) {
+function validateInput(input, value) {
   clearTimeout(typingTimer); // Clear the previous timer
 
   if (value && value.trim() !== "") { // Check if value is not undefined and not an empty string
@@ -222,9 +222,9 @@ function validateInput(value) {
     const isValid = regexPattern.test(value.trim());
 
     if (!isValid) {
-      alert("Please enter a valid input.");
+      input.style.backgroundColor = 'red'; // Set red background color for invalid input
     } else {
-      // Start the timer to show the alert after the delay
+      input.style.backgroundColor = ''; // Remove the background color if input is valid
       typingTimer = setTimeout(() => {
         alert("Please enter a valid input.");
       }, delay);
