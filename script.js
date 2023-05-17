@@ -48,14 +48,10 @@ function start(){
             const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
             questions[currentQuestionIndex].style.display = 'none';
             questions[i].style.display = 'block';
-            updateCurrentQuestionBorder();
-            updateAnsweredViewer();
-            updateCounter();
+            update()
         })
     }
-    updateCounter();
-    updateCurrentQuestionBorder();
-    updateAnsweredViewer();
+    update()
 }
 
 function updateAnsweredViewer(){
@@ -72,6 +68,17 @@ function updateCounter() {
     const counter = document.querySelector('.question-counter');
     const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
     counter.innerText = `Pergunta: ${currentQuestionIndex + 1} / ${questions.length}`;
+}
+
+function updateNextBackButtons() {
+    const nextBtn = document.getElementById('next-btn');
+    const backBtn = document.getElementById('back-btn');
+    const questions = document.querySelectorAll('.question')
+    const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
+    if(currentQuestionIndex==0) backBtn.style.backgroundColor = "Grey";
+    else backBtn.style.backgroundColor = "#021c50"
+    if(currentQuestionIndex==questions.length-1) nextBtn.style.backgroundColor = "Grey";
+    else nextBtn.style.backgroundColor = "#021c50"
 }
 
 function updateCurrentQuestionBorder() {
@@ -108,9 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const nextQuestion = currentQuestion.nextElementSibling;
             currentQuestion.classList.add('answered');
             if (nextQuestion !== null) { currentQuestion.style.display = 'none'; nextQuestion.style.display = 'block'; }
-            updateCurrentQuestionBorder();
-            updateCounter();
-            updateAnsweredViewer();
+            update();
         });
     });
     
@@ -125,15 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // If at least one checkbox is checked, add the 'answered' class
             // Otherwise, remove the 'answered' class
-            if (anyChecked) {
-                currentQuestion.classList.add('answered');
-            } else {
-                currentQuestion.classList.remove('answered');
-            }
-
-            updateCurrentQuestionBorder();
-            updateCounter();
-            updateAnsweredViewer();
+            if (anyChecked) {currentQuestion.classList.add('answered');}
+            else {currentQuestion.classList.remove('answered');}
+            update();
         });
     });
 
@@ -144,9 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentQuestion = currentQuestion.parentNode;
             }
             currentQuestion.classList.add('answered');
-            updateCurrentQuestionBorder();
-            updateCounter();
-            updateAnsweredViewer();
+            update();
         });
     });
 
@@ -155,9 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentQuestion = input.parentNode.parentNode;
             if(input.value.length>0 && !currentQuestion.classList.contains('answered')) {currentQuestion.classList.add('answered');}
             else if(input.value.length===0 && currentQuestion.classList.contains('answered')) {currentQuestion.classList.remove('answered')}
-            updateCurrentQuestionBorder();
-            updateCounter();
-            updateAnsweredViewer();
+            update()
         });
     });
 
@@ -170,9 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentQuestion = currentQuestion.parentNode;
             }
             currentQuestion.classList.add('answered');
-            updateCurrentQuestionBorder();
-            updateCounter();
-            updateAnsweredViewer();
+            update();
         });
     });
     
@@ -190,9 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
             questions[currentQuestionIndex].style.display = 'none'
             questions[currentQuestionIndex - 1].style.display = 'block'
         }
-        updateCurrentQuestionBorder();
-        updateCounter();
-        updateAnsweredViewer();
+        update();
     });
 
     nextBtn.addEventListener('click', () => {
@@ -201,11 +192,16 @@ document.addEventListener('DOMContentLoaded', () => {
             questions[currentQuestionIndex].style.display = 'none'
             questions[currentQuestionIndex + 1].style.display = 'block'
         }
-        updateCurrentQuestionBorder();
-        updateCounter();
-        updateAnsweredViewer();
+        update();
     });
 });
+
+function update(){
+    updateCurrentQuestionBorder();
+    updateCounter();
+    updateAnsweredViewer();
+    updateNextBackButtons();
+}
 
 function refreshPage() {
     window.location.reload();
