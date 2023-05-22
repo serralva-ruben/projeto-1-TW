@@ -78,9 +78,9 @@ function updateNextBackButtons() {
     const backBtn = document.getElementById('back-btn');
     const questions = document.querySelectorAll('.question')
     const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
-    if (currentQuestionIndex == 0) backBtn.style.backgroundColor = "Grey";
+    if (currentQuestionIndex === 0) backBtn.style.backgroundColor = "Grey";
     else backBtn.style.backgroundColor = "#021c50"
-    if (currentQuestionIndex == questions.length - 1) nextBtn.style.backgroundColor = "Grey";
+    if (currentQuestionIndex === questions.length - 1) nextBtn.style.backgroundColor = "Grey";
     else nextBtn.style.backgroundColor = "#021c50"
 }
 
@@ -139,7 +139,6 @@ document.addEventListener('DOMContentLoaded', () => {
     checkboxes.forEach(cb => {
         cb.addEventListener('click', () => {
             const currentQuestion = cb.parentNode.parentNode;
-            const nextQuestion = currentQuestion.nextElementSibling;
             const checkboxesInCurrentQuestion = currentQuestion.querySelectorAll('input[type="checkbox"]');
 
             // Check if any checkboxes in the current question are checked
