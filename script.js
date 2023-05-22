@@ -3,7 +3,7 @@ function checkAnswers() {
         q1: "a",
         q2: "5",
         q3: "michael jackson",
-        q4: "off the wall",
+        q4: "got to be there",
         q5: "c",
         q6: "d",
         q7: "a",
@@ -29,13 +29,15 @@ function checkAnswers() {
             if ((input.type === "radio" && input.checked && input.value === correctAnswers[questionName]) ||
                 (input.type === "checkbox" && input.checked && correctAnswers[questionName].includes(input.value)) ||
                 (input.type === "select-one" && input.value === correctAnswers[questionName]) ||
-                (input.type === "text" && input.value.toLowerCase() === correctAnswers[questionName])
-                ) { correctCount++; }
+                (input.type === "text" && input.value.toLowerCase() === correctAnswers[questionName]) ||
+                (input.type === "range" && input.value === correctAnswers[questionName])
+            ) { correctCount++; }
         }
         if (correctCount > 0) { score++; }
     }
     alert("Você acertou " + score + " de " + questionNames.length + " perguntas.");
 }
+
 
 function start() {
 
@@ -103,7 +105,7 @@ function validateInput(input, value) {
         if (!isValid) {
             input.style.backgroundColor = 'red'; // Set red background color for invalid input
         } else {
-            input.style.backgroundColor = 'green'; // Remove the background color if input is valid
+            input.style.backgroundColor = ''; // Remove the background color if input is valid
         }
         return isValid;
     }
@@ -128,12 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
     radios.forEach(radio => {
         radio.addEventListener('click', () => {
             const currentQuestion = radio.parentNode.parentNode;
-            const nextQuestion = currentQuestion.nextElementSibling;
             currentQuestion.classList.add('answered');
-            if (nextQuestion !== null) { currentQuestion.style.display = 'none'; nextQuestion.style.display = 'block'; }
             update();
         });
     });
+
 
     checkboxes.forEach(cb => {
         cb.addEventListener('click', () => {
