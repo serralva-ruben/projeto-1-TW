@@ -1,4 +1,5 @@
 function checkAnswers() {
+    // Object containing the correct answers for each question
     const correctAnswers = {
         q1: "a",
         q2: "5",
@@ -18,34 +19,44 @@ function checkAnswers() {
         q16: "d"
     };
 
-    let score = 0;
-    const questionNames = Object.keys(correctAnswers);
+    let score = 0;  // Variable to keep track of the score
+    const questionNames = Object.keys(correctAnswers);  // Array of question names
 
+    // Iterate over each question
     for (const questionName of questionNames) {
+        // Get the input elements for the current question
         const answerInputs = document.getElementsByName(questionName);
-        let correctCount = 0;
+        let correctCount = 0;   // Counter for the number of correct answers
 
+        // Iterate over each answer input for the current question
         for (const input of answerInputs) {
+            // Check the type of the input and compare the user's answer with the correct answer(s)
             if ((input.type === "radio" && input.checked && input.value === correctAnswers[questionName]) ||
                 (input.type === "checkbox" && input.checked && correctAnswers[questionName].includes(input.value)) ||
                 (input.type === "select-one" && input.value === correctAnswers[questionName]) ||
                 (input.type === "text" && input.value.toLowerCase() === correctAnswers[questionName]) ||
                 (input.type === "range" && input.value === correctAnswers[questionName])
-            ) { correctCount++; }
+            ) { correctCount++; }   // Increment the correct count if the answer is correct
         }
-        if (correctCount > 0) { score++; }
+        if (correctCount > 0) {
+            score++; // Increment the score if at least one answer is correct
+        }
     }
-    alert("Você acertou " + score + " de " + questionNames.length + " perguntas.");
+    alert("Acertaste em " + score + " de " + questionNames.length + " perguntas."); // Display the score in an alert
 }
 
 
 function start() {
-
+    // Get all the question elements and the progress div
     const questions = document.querySelectorAll('.question');
     const progressDiv = document.getElementById('progress')
+
+    // Add a progress square for each question
     for (let i = 0; i < questions.length; i++) {
         progressDiv.innerHTML += "<div class='progressSquare' id='sq" + i + "'>Q" + (i + 1) + "</div>"
     }
+
+    // Add click event listeners to the progress squares
     for (let i = 0; i < questions.length; i++) {
         document.getElementById("sq" + i).addEventListener('click', () => {
             const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
@@ -59,10 +70,15 @@ function start() {
 
 function updateAnsweredViewer() {
     let squareDivs = []
+    // Get all the question elements and their corresponding progress squares
     for (let i = 0; i < document.querySelectorAll('.question').length; i++) {
         squareDivs[i] = document.getElementById("sq" + i)
-        if (document.querySelectorAll('.question')[i].classList.contains('answered')) { squareDivs[i].style.background = "green"; }
-        else squareDivs[i].style.background = "#9f9f9f";
+        // Update the background color of the progress square based on whether the question is answered or not
+        if (document.querySelectorAll('.question')[i].classList.contains('answered')) {
+            squareDivs[i].style.background = "green";
+        } else {
+            squareDivs[i].style.background = "#9f9f9f";
+        }
     }
 }
 
@@ -70,6 +86,8 @@ function updateCounter() {
     const questions = document.querySelectorAll('.question');
     const counter = document.querySelector('.question-counter');
     const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
+
+    // Update the question counter text
     counter.innerText = `Pergunta: ${currentQuestionIndex + 1} / ${questions.length}`;
 }
 
@@ -78,19 +96,31 @@ function updateNextBackButtons() {
     const backBtn = document.getElementById('back-btn');
     const questions = document.querySelectorAll('.question')
     const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
-    if (currentQuestionIndex === 0) backBtn.style.backgroundColor = "Grey";
-    else backBtn.style.backgroundColor = "#021c50"
-    if (currentQuestionIndex === questions.length - 1) nextBtn.style.backgroundColor = "Grey";
-    else nextBtn.style.backgroundColor = "#021c50"
+
+    // Update the background color of the next and back buttons based on the current question
+    if (currentQuestionIndex === 0) {
+        backBtn.style.backgroundColor = "Grey";
+    } else {
+        backBtn.style.backgroundColor = "#021c50";
+    }
+
+    if (currentQuestionIndex === questions.length - 1) {
+        nextBtn.style.backgroundColor = "Grey";
+    } else {
+        nextBtn.style.backgroundColor = "#021c50";
+    }
 }
 
 function updateCurrentQuestionBorder() {
     let squareDivs = []
     const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
 
+    // Get all the question elements and their corresponding progress squares
     for (let i = 0; i < document.querySelectorAll('.question').length; i++) {
         squareDivs[i] = document.getElementById("sq" + i)
     }
+
+    // Reset the border for all progress squares and set the border for the current question's progress square
     squareDivs.forEach(squareDiv => {
         squareDiv.style.border = "";
     })
@@ -98,14 +128,15 @@ function updateCurrentQuestionBorder() {
 }
 
 function validateInput(input, value) {
-    if (value && value.trim() !== "") { // Check if value is not undefined and not an empty string
+    if (value && value.trim() !== "") {
+        // Check if the value is not undefined and not an empty string
         const regexPattern = /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
         const isValid = regexPattern.test(value.trim());
-  
+
         if (!isValid) {
             input.style.backgroundColor = 'red'; // Set red background color for invalid input
         } else {
-            input.style.backgroundColor = ''; // Remove the background color if input is valid
+            input.style.backgroundColor = ''; // If input is valid it will remain as it is
         }
         return isValid;
     }
@@ -114,10 +145,13 @@ function validateInput(input, value) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const questions = document.querySelectorAll('.question');
+
+    // Hide all questions except the first one
     for (let i = 1; i < questions.length; i++) {
         questions[i].style.display = 'none';
     }
 
+    // Add event listeners to the answer inputs
     const radios = document.querySelectorAll('input[type="radio"]');
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const selections = document.querySelectorAll('select');
@@ -127,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('next-btn');
     const backBtn = document.getElementById('back-btn');
 
+    // Radio buttons
     radios.forEach(radio => {
         radio.addEventListener('click', () => {
             const currentQuestion = radio.parentNode.parentNode;
@@ -135,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
+    // Checkboxes
     checkboxes.forEach(cb => {
         cb.addEventListener('click', () => {
             const currentQuestion = cb.parentNode.parentNode;
@@ -152,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Select dropdowns
     selections.forEach(dropdown => {
         dropdown.addEventListener('change', () => {
             let currentQuestion = dropdown.parentNode;
@@ -163,12 +199,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Text inputs
     inputs.forEach(input => {
         input.addEventListener('input', () => {
             const currentQuestion = input.parentNode.parentNode;
             const value = input.value.trim();
             const isValid = validateInput(input, value);
-        
+
+            // Add or remove the 'answered' class based on the validity of the input
             if (isValid && !currentQuestion.classList.contains('answered')) {
                 currentQuestion.classList.add('answered');
                 const questionIndex = Array.from(document.querySelectorAll('.question')).indexOf(currentQuestion);
@@ -184,6 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Range sliders
     sliders.forEach(slider => {
         const sliderValue = slider.parentElement.querySelector('.slider-value');
         slider.addEventListener('input', () => {
@@ -197,7 +236,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Submit button
     submitBtn.addEventListener('click', () => {
+        // Hide all questions and the submit button after clicking the submit button
         questions.forEach(question => {
             question.style.display = 'none';
         });
@@ -205,6 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.question-counter').style.display = 'none';
     });
 
+    // Back button
     backBtn.addEventListener('click', () => {
         const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
         if (currentQuestionIndex > 0) {
@@ -214,6 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
         update();
     });
 
+    // Next button
     nextBtn.addEventListener('click', () => {
         const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
         if (currentQuestionIndex < questions.length - 1) {
