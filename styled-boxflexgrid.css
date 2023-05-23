@@ -63,12 +63,23 @@ label {
     font-family: 'Montserrat', sans-serif;
 }
 
+.question {
+    height: 500px;
+    min-height: 500px;
+    overflow: auto;
+}
+
 .question-image {
     float: right;
-    margin-left: 20px;
-    max-width: 400px;
+    margin-left: 10px;
+    margin-right: 20px;
+    margin-top: 100px;
+    max-width: 350px;
     border: 2px solid #333;
     border-radius: 5px;
+    
+    height: 250px;
+    
 }
 
 .question-counter {
