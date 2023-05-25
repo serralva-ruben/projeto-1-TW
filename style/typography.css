@@ -1,0 +1,68 @@
+h1 {
+    color: #021c50;
+    margin-top: 0;
+    text-align: center;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 4rem;
+    text-shadow: 1px 1px #ffffff;
+}
+
+label {
+    color: #ffffff;
+    display: block;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px #000000;
+    font-size: 1.6rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+fieldset legend {
+    color: #ffdd00;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    text-shadow: 2px 2px #000000;
+    font-family: 'Merriweather', serif;
+}
+
+fieldset p {
+    color: #000000;
+    text-shadow: 1px 1px #ffffff;
+    font-weight: bold;
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.result h2 {
+    color: #444;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 0;
+    text-shadow: 1px 1px #ffffff;
+}
+
+.result p {
+    color: #666;
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.result p span {
+    color: #479dff;
+    font-weight: bold;
+}
+
+.question-counter {
+    color: #ffffff;
+    text-shadow: 2px 2px #000000;
+    font-size: 1.5rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.error-text {
+    display: none;
+    color: red;
+    font-size: 12px;
+}
