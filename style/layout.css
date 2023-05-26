@@ -107,8 +107,9 @@ fieldset {
 }
 
 .resultIMG {
-    width:5%;
+    width:20%;
     height: auto;
+    margin-left: 30%;
 }
 
 #resultList {
@@ -116,5 +117,19 @@ fieldset {
     grid-template-columns: repeat(4,1fr);
     flex-direction: column;
     align-items: center;
+    margin-inline: 10%;
 
+}
+
+ul li {
+    list-style: none;
+    background-color: rgb(21, 197, 250);
+    padding: 10%;
+    margin: 5%;
+    border-radius: 20px;
+    border-style: dotted;
+    
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    align-items: center;
 }
