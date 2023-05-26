@@ -1,7 +1,5 @@
 import { validateInput } from "./scripts/validator.js";
 
-let result = {};
-
 function checkAnswers() {
     const correctAnswers = {
         q1: "a",
@@ -25,6 +23,9 @@ function checkAnswers() {
     let score = 0;
     const questionNames = Object.keys(correctAnswers);
 
+    //This will hold a dictionary with the question keys and boolean values that has the results
+    let result = {};
+
     for (const questionName of questionNames) {
         const answerInputs = document.getElementsByName(questionName);
         let correctCount = 0;
@@ -41,17 +42,11 @@ function checkAnswers() {
         }
         else{result[questionName] = false}
     }
-
+    
     const params = new URLSearchParams();
-    params.set('result',JSON.stringify(result))
-    const url = './summaryPage/summary.html' + '?' + params.toString();
-
-    window.location.href = url
-
-
-    // let finish = document.getElementById('finish')
-    // let answer = (`Acertaste em ${score} de ${questionNames.length} perguntas.`)
-    // finish.innerHTML += `<div> ${answer} </div>`
+    params.set('result', JSON.stringify(result))
+    params.set('score', score)
+    window.location.href = './summaryPage/summary.html' + '?' + params.toString();
 }
 
 function checkInputCorrectness(input, questionName, correctAnswers) {
@@ -170,25 +165,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('next-btn');
     const backBtn = document.getElementById('back-btn');
 
-    radios.forEach(radio => {
-        radio.addEventListener('click', handleRadioClick);
-    });
+    radios.forEach(radio => {radio.addEventListener('click', handleRadioClick);});
 
-    checkboxes.forEach(cb => {
-        cb.addEventListener('click', handleCheckBoxes);
-    });
+    checkboxes.forEach(cb => {cb.addEventListener('click', handleCheckBoxes);});
 
-    selections.forEach(dropdown => {
-        dropdown.addEventListener('change', handleDropdown);
-    });
+    selections.forEach(dropdown => {dropdown.addEventListener('change', handleDropdown);});
 
-    inputs.forEach(input => {
-        input.addEventListener('input', handleTextInput);
-    });
+    inputs.forEach(input => {input.addEventListener('input', handleTextInput);});
 
-    sliders.forEach(slider => {
-        slider.addEventListener('input', handleSliderInput);
-    });
+    sliders.forEach(slider => {slider.addEventListener('input', handleSliderInput);});
 
 
     function handleRadioClick() {
@@ -246,10 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
         update();
     }
 
-    submitBtn.addEventListener('click', () => {
-        // Hide all questions and the submit button after clicking the submit button
-        checkAnswers()
-    });
+    submitBtn.addEventListener('click', () => {checkAnswers()});
 
     backBtn.addEventListener('click', () => {
         const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
@@ -278,6 +260,4 @@ function update() {
     validateInput();
 }
 
-function refreshPage() {
-    window.location.reload();
-}
+function refreshPage() {window.location.reload();}

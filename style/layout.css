@@ -105,3 +105,16 @@ fieldset {
     justify-content: center;
     margin-right: 5px;
 }
+
+.resultIMG {
+    width:5%;
+    height: auto;
+}
+
+#resultList {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    flex-direction: column;
+    align-items: center;
+
+}
