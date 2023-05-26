@@ -6,10 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/main.css">
-    <script src="script.js"></script>
+    <script src="script.js" type="module"></script>
+    
 </head>
 
-<body onload="start()">
+<body>
     <div class="quiz-container" id="pageStart">
         <h1>Quiz sobre música</h1>
         <form>
@@ -188,9 +189,9 @@
             </fieldset>
 
             <div id="bottomBar">
-                <input type="button" value="Verificar respostas" id="submit-btn" onclick="checkAnswers(); refreshPage();">
-                <input type="button" value="Back" id="back-btn" onclick="">
-                <input type="button" value="Next" id="next-btn" onclick=""> 
+                <input type="button" value="Verificar respostas" id="submit-btn">
+                <input type="button" value="Back" id="back-btn">
+                <input type="button" value="Next" id="next-btn"> 
                 <div class="question-counter"></div>
             </div>
         </form>

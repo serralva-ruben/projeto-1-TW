@@ -1,3 +1,7 @@
+import { validateInput } from "./scripts/validator.js";
+
+
+
 function checkAnswers() {
     const correctAnswers = {
         q1: "a",
@@ -31,13 +35,14 @@ function checkAnswers() {
                 correctCount++;
             }
         }
-
         if (correctCount > 0) {
             score++;
         }
     }
-
-    alert(`Acertaste em ${score} de ${questionNames.length} perguntas.`);
+    let finish = document.getElementById('finish')
+    let answer = (`Acertaste em ${score} de ${questionNames.length} perguntas.`)
+    finish.innerHTML += "<div>hfsdiuhfsuidfh</div>"
+    // alert(`Acertaste em ${score} de ${questionNames.length} perguntas.`);
 }
 
 function checkInputCorrectness(input, questionName, correctAnswers) {
@@ -55,11 +60,15 @@ function checkInputCorrectness(input, questionName, correctAnswers) {
         return true;
 }
 
-
-
-
 function start() {
-    const questions = document.querySelectorAll('.question');
+    if(document.title=='Quiz sobre música') {
+        progressBarSetup()
+        update()
+    }
+}
+
+function progressBarSetup(){
+    const questions = document.querySelectorAll('.question')
     const progressDiv = document.getElementById('progress')
 
     // Add a progress square for each question
@@ -76,7 +85,6 @@ function start() {
             update()
         })
     }
-    update()
 }
 
 function updateAnsweredViewer() {
@@ -99,8 +107,6 @@ function updateCounter() {
     const questions = document.querySelectorAll('.question');
     const counter = document.querySelector('.question-counter');
     const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
-
-    // Update the question counter text
     counter.innerText = `Pergunta: ${currentQuestionIndex + 1} / ${questions.length}`;
 }
 
@@ -140,143 +146,133 @@ function updateCurrentQuestionBorder() {
     squareDivs[currentQuestionIndex].style.border = "2px dashed red";
 }
 
-function validateInput(input, value) {
-    if (value && value.trim() !== "") {
-        // Check if the value is not undefined and not an empty string
-        const regexPattern = /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
-        const isValid = regexPattern.test(value.trim());
-
-        if (!isValid) {
-            input.style.backgroundColor = 'red'; 
-        } else {
-            input.style.backgroundColor = ''; 
+if(document.title=='Quiz sobre música'){
+    document.addEventListener('DOMContentLoaded', () => {
+        const questions = document.querySelectorAll('.question');
+        start();
+        // Hide all questions except the first one
+        for (let i = 1; i < questions.length; i++) {
+            questions[i].style.display = 'none';
         }
-        return isValid;
-    }
-    return false;
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const questions = document.querySelectorAll('.question');
-
-    // Hide all questions except the first one
-    for (let i = 1; i < questions.length; i++) {
-        questions[i].style.display = 'none';
-    }
-
-    const radios = document.querySelectorAll('input[type="radio"]');
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    const selections = document.querySelectorAll('select');
-    const inputs = document.querySelectorAll('input[type="text"]');
-    const sliders = document.querySelectorAll('input[type="range"]');
-    const submitBtn = document.getElementById('submit-btn');
-    const nextBtn = document.getElementById('next-btn');
-    const backBtn = document.getElementById('back-btn');
-
-    radios.forEach(radio => {
-        radio.addEventListener('click', handleRadioClick);
-    });
-
-    checkboxes.forEach(cb => {
-        cb.addEventListener('click', handleCheckBoxes);
-    });
-
-    selections.forEach(dropdown => {
-        dropdown.addEventListener('change', handleDropdown);
-    });
-
-    inputs.forEach(input => {
-        input.addEventListener('input', handleTextInput);
-    });
-
-    sliders.forEach(slider => {
-        slider.addEventListener('input', handleSliderInput);
-    });
-
-
-
-    function handleRadioClick() {
-        const currentQuestion = this.parentNode.parentNode;
-        currentQuestion.classList.add('answered');
-        update();
-    }
-
-    function handleCheckBoxes() {
-        const currentQuestion = this.parentNode.parentNode;
-        const checkboxesInCurrentQuestion = currentQuestion.querySelectorAll('input[type="checkbox"]');
-        let anyChecked = Array.from(checkboxesInCurrentQuestion).some(checkbox => checkbox.checked);
-        if (anyChecked) { currentQuestion.classList.add('answered'); }
-        else { currentQuestion.classList.remove('answered'); }
-        update();
-    }
-
-    function handleDropdown() {
-        let currentQuestion = this.parentNode;
-        while (!currentQuestion.classList.contains('question')) {
-            currentQuestion = currentQuestion.parentNode;
-        }
-        currentQuestion.classList.add('answered');
-        update();
-    }
-
-    function handleTextInput() {
-        const currentQuestion = this.parentNode.parentNode;
-        const value = this.value.trim();
-        const isValid = validateInput(this, value);
-
-        // Add or remove the 'answered' class based on the validity of the input
-        if (isValid && !currentQuestion.classList.contains('answered')) {
-            currentQuestion.classList.add('answered');
-            const questionIndex = Array.from(document.querySelectorAll('.question')).indexOf(currentQuestion);
-            const progressSquare = document.getElementById("sq" + questionIndex);
-            progressSquare.style.background = "green";
-        } else if (!isValid && currentQuestion.classList.contains('answered')) {
-            currentQuestion.classList.remove('answered');
-            const questionIndex = Array.from(document.querySelectorAll('.question')).indexOf(currentQuestion);
-            const progressSquare = document.getElementById("sq" + questionIndex);
-            progressSquare.style.background = "#9f9f9f";
-        }
-        update();
-    }
-
-    function handleSliderInput() {
-        const sliderValue = this.parentElement.querySelector('.slider-value');
-        sliderValue.textContent = this.value;
-        let currentQuestion = this.parentNode;
-        while (!currentQuestion.classList.contains('question')) {
-            currentQuestion = currentQuestion.parentNode;
-        }
-        currentQuestion.classList.add('answered');
-        update();
-    }
-
-    submitBtn.addEventListener('click', () => {
-        // Hide all questions and the submit button after clicking the submit button
-        questions.forEach(question => {
-            question.style.display = 'none';
+    
+        const radios = document.querySelectorAll('input[type="radio"]');
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const selections = document.querySelectorAll('select');
+        const inputs = document.querySelectorAll('input[type="text"]');
+        const sliders = document.querySelectorAll('input[type="range"]');
+        const submitBtn = document.getElementById('submit-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const backBtn = document.getElementById('back-btn');
+    
+        radios.forEach(radio => {
+            radio.addEventListener('click', handleRadioClick);
         });
-        submitBtn.style.display = 'none';
-        document.querySelector('.question-counter').style.display = 'none';
-    });
-
-    backBtn.addEventListener('click', () => {
-        const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
-        if (currentQuestionIndex > 0) {
-            questions[currentQuestionIndex].style.display = 'none'
-            questions[currentQuestionIndex - 1].style.display = 'block'
+    
+        checkboxes.forEach(cb => {
+            cb.addEventListener('click', handleCheckBoxes);
+        });
+    
+        selections.forEach(dropdown => {
+            dropdown.addEventListener('change', handleDropdown);
+        });
+    
+        inputs.forEach(input => {
+            input.addEventListener('input', handleTextInput);
+        });
+    
+        sliders.forEach(slider => {
+            slider.addEventListener('input', handleSliderInput);
+        });
+    
+    
+        function handleRadioClick() {
+            const currentQuestion = this.parentNode.parentNode;
+            currentQuestion.classList.add('answered');
+            update();
         }
-        update();
-    });
-
-    nextBtn.addEventListener('click', () => {
-        const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
-        if (currentQuestionIndex < questions.length - 1) {
-            questions[currentQuestionIndex].style.display = 'none'
-            questions[currentQuestionIndex + 1].style.display = 'block'
+    
+        function handleCheckBoxes() {
+            const currentQuestion = this.parentNode.parentNode;
+            const checkboxesInCurrentQuestion = currentQuestion.querySelectorAll('input[type="checkbox"]');
+            let anyChecked = Array.from(checkboxesInCurrentQuestion).some(checkbox => checkbox.checked);
+            if (anyChecked) { currentQuestion.classList.add('answered'); }
+            else { currentQuestion.classList.remove('answered'); }
+            update();
         }
-        update();
+    
+        function handleDropdown() {
+            let currentQuestion = this.parentNode;
+            while (!currentQuestion.classList.contains('question')) {
+                currentQuestion = currentQuestion.parentNode;
+            }
+            currentQuestion.classList.add('answered');
+            update();
+        }
+    
+        function handleTextInput() {
+            const currentQuestion = this.parentNode.parentNode;
+            const value = this.value.trim();
+            const isValid = validateInput(this, value);
+    
+            // Add or remove the 'answered' class based on the validity of the input
+            if (isValid && !currentQuestion.classList.contains('answered')) {
+                currentQuestion.classList.add('answered');
+                const questionIndex = Array.from(document.querySelectorAll('.question')).indexOf(currentQuestion);
+                const progressSquare = document.getElementById("sq" + questionIndex);
+                progressSquare.style.background = "green";
+            } else if (!isValid && currentQuestion.classList.contains('answered')) {
+                currentQuestion.classList.remove('answered');
+                const questionIndex = Array.from(document.querySelectorAll('.question')).indexOf(currentQuestion);
+                const progressSquare = document.getElementById("sq" + questionIndex);
+                progressSquare.style.background = "#9f9f9f";
+            }
+            update();
+        }
+    
+        function handleSliderInput() {
+            const sliderValue = this.parentElement.querySelector('.slider-value');
+            sliderValue.textContent = this.value;
+            let currentQuestion = this.parentNode;
+            while (!currentQuestion.classList.contains('question')) {
+                currentQuestion = currentQuestion.parentNode;
+            }
+            currentQuestion.classList.add('answered');
+            update();
+        }
+    
+        submitBtn.addEventListener('click', () => {
+            // Hide all questions and the submit button after clicking the submit button
+            questions.forEach(question => {
+                question.style.display = 'none';
+            });
+            ;
+            // refreshPage();
+            submitBtn.style.display = 'none';
+            document.querySelector('.question-counter').style.display = 'none';
+    
+            window.location.href = './summaryPage/summary.html';
+            checkAnswers()
+        });
+    
+        backBtn.addEventListener('click', () => {
+            const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
+            if (currentQuestionIndex > 0) {
+                questions[currentQuestionIndex].style.display = 'none'
+                questions[currentQuestionIndex - 1].style.display = 'block'
+            }
+            update();
+        });
+    
+        nextBtn.addEventListener('click', () => {
+            const currentQuestionIndex = Array.from(document.querySelectorAll('.question')).findIndex(question => question.style.display !== 'none');
+            if (currentQuestionIndex < questions.length - 1) {
+                questions[currentQuestionIndex].style.display = 'none'
+                questions[currentQuestionIndex + 1].style.display = 'block'
+            }
+            update();
+        });
     });
-});
+}
 
 function update() {
     updateCurrentQuestionBorder();
