@@ -1,6 +1,6 @@
 import { validateInput } from "./scripts/validator.js";
 
-
+let result;
 
 function checkAnswers() {
     const correctAnswers = {
@@ -36,13 +36,15 @@ function checkAnswers() {
             }
         }
         if (correctCount > 0) {
+            result[questionName] = true
             score++;
         }
+        else{result[question] = false}
     }
+    alert(result)
     let finish = document.getElementById('finish')
     let answer = (`Acertaste em ${score} de ${questionNames.length} perguntas.`)
-    finish.innerHTML += "<div>hfsdiuhfsuidfh</div>"
-    // alert(`Acertaste em ${score} de ${questionNames.length} perguntas.`);
+    finish.innerHTML += `<div> ${answer} </div>`
 }
 
 function checkInputCorrectness(input, questionName, correctAnswers) {
@@ -64,6 +66,10 @@ function start() {
     if(document.title=='Quiz sobre música') {
         progressBarSetup()
         update()
+    }
+    if(document.title=='Quiz sobre música : summary'){
+        let finish = document.getElementById('finish')
+        finish.innerHTML += "<div>hfsdiuhfsuidfh</div>"
     }
 }
 
@@ -144,6 +150,12 @@ function updateCurrentQuestionBorder() {
         squareDiv.style.border = "";
     })
     squareDivs[currentQuestionIndex].style.border = "2px dashed red";
+}
+
+if(document.title=='Quiz sobre música : summary'){
+    document.addEventListener('DOMContentLoaded', () =>{
+        start();
+    })
 }
 
 if(document.title=='Quiz sobre música'){
@@ -242,10 +254,8 @@ if(document.title=='Quiz sobre música'){
     
         submitBtn.addEventListener('click', () => {
             // Hide all questions and the submit button after clicking the submit button
-            questions.forEach(question => {
-                question.style.display = 'none';
-            });
-            ;
+            questions.forEach(question => {question.style.display = 'none';});
+            
             // refreshPage();
             submitBtn.style.display = 'none';
             document.querySelector('.question-counter').style.display = 'none';
