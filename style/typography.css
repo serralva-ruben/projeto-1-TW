@@ -66,3 +66,21 @@ fieldset p {
     color: red;
     font-size: 12px;
 }
+
+#restart {
+    font-size: 30px;
+}
+
+#restart a {
+    text-decoration: none;
+    color: rgb(206, 187, 84);
+}
+
+#restart a:hover {
+    color:#fff200;
+    margin: 10px;
+    background: rgb(0, 174, 255);
+    border-style: dashed;
+    border-radius: 10px;
+    border-color: #021c50;
+}
