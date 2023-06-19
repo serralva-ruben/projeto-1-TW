@@ -19,10 +19,6 @@ const QuizSchema = new mongoose.Schema({
         type: String,
         required: true
       },
-      isCorrect: {
-        type: Boolean,
-        required: true
-      }
     }]
   }]
 });

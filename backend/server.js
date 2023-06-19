@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 
 const userRoute =  require("./routes/user.route");
 const authRoute = require("./routes/auth.route");
+const quizRoute = require("./routes/quiz.route");
 
 const cors = require('cors');
 
@@ -19,6 +20,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
+app.use("/api/quiz", quizRoute)
 
 
 const connect = async () => {
