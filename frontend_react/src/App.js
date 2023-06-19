@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import RegisterComponent from './components/RegisterComponent';
-import LoginComponent from './components/LoginComponent';
+import RegisterComponent from './components/LoginRegister/RegisterComponent';
+import LoginComponent from './components/LoginRegister/LoginComponent';
 import ProtectedRoutes from './components/ProtectedRoutes';
 import PublicRoute from './components/PublicRoute';
 import QuizComponent from './components/QuizComponent';
@@ -12,7 +12,6 @@ function App() {
     <div className="App">
       <Routes>
         {/* <Route path="/" element={<Navigate to="/Login" replace />} /> */}
-
         <Route element={<ProtectedRoutes />}>
           <Route path="/" element={<QuizComponent />} />
         </Route>

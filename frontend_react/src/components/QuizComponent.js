@@ -3,6 +3,18 @@ import QuestionComponent from './QuestionComponent';
 import Navbar from './Navbar';
 
 const QuizComponent = () => {
+    const [quizzes, setQuizzes] = useState([]);
+
+    useEffect(() => {
+        fetchQuizzes();
+    }, []);
+
+    const fetchQuizzes = async () => {
+        const response = await fetch('http://localhost:8020/api/quiz/'); // replace with your actual API endpoint
+        const data = await response.json();
+
+        setQuizzes(data);
+    };
     // this would ideally come from a backend API
     const questions = [
         {
@@ -23,14 +35,22 @@ const QuizComponent = () => {
 
     return (
         <div className="quiz-container" id="pageStart">
-            <Navbar />
+            <Navbar/>
             <h1>Quiz sobre música</h1>
-            <form>
+            <form style={styles.formStyle}>
                 {questions.map((question) => <QuestionComponent key={question.id} question={question} />)}
                 {/* Add your bottom bar here */}
             </form>
         </div>
     );
 };
+
+const styles = {
+    formStyle: {
+        margin: '10vw',
+        padding: '5vw',
+
+    }
+}
 
 export default QuizComponent;
