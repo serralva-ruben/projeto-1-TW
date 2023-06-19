@@ -14,7 +14,7 @@ function Navbar() {
         <div style={styles.navBarContainer}>
             <ul style={styles.list}>
                 <Link to="/index/" style={styles.Typography}> Home </Link>
-                <button class onClick={logout} style={styles.Typography}>logout</button>
+                <button onClick={logout} style={styles.Typography}>logout</button>
             </ul>
         </div>
     );
