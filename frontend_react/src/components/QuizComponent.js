@@ -19,11 +19,12 @@ const QuizComponent = () => {
         setQuizzes(data);
     };
 
-    const components = {
+    const componentMapping = {
         radio: RadioComponent,
         text: TextInputComponent,
         select: SelectComponent,
-        checkbox: CheckboxComponent
+        checkbox: CheckboxComponent,
+        range: SliderComponent
     };
 
     return (
@@ -33,18 +34,18 @@ const QuizComponent = () => {
             <form style={styles.formStyle}>
                 {quizzes.map((quiz, quizIndex) =>
                     quiz.questions.map((question, questionIndex) => {
-                        const Component = components[question.type];
+                        const Component = componentMapping[question.questionType];
                         if (Component) {
                             return <Component key={`${quizIndex}-${questionIndex}`} question={question} />;
                         } else {
                             // Log an error, render a fallback UI, or do nothing.
-                            console.error(`No component found for question type: ${question.type}`);
+                            console.error(`No component found for question type: ${question.questionType}`);
                             return null;
                         }
                     })
                 )}
                 {/* Add your bottom bar here */}
-            </form>
+        </form>
         </div>
     );
 };

@@ -8,9 +8,13 @@ const TextInputComponent = ({ question }) => {
     }
 
     return (
-        <div>
-            <label>{question.text}</label>
-            <input type="text" value={value} onChange={handleChange} />
+        <div className="question">
+            <h2>{question.questionText}</h2>
+            <input
+                type="text"
+                value={value}
+                onChange={handleChange}
+            />
         </div>
     )
 }

@@ -8,9 +8,15 @@ const SliderComponent = ({ question }) => {
     }
 
     return (
-        <div>
-            <label>{question.text}</label>
-            <input type="range" min="0" max="100" value={value} onChange={handleChange} />
+        <div className="question">
+            <h2>{question.questionText}</h2>
+            <input
+                type="range"
+                min="0"
+                max="100"
+                value={value}
+                onChange={handleChange}
+            />
         </div>
     )
 }

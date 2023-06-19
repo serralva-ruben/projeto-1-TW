@@ -8,12 +8,12 @@ const RadioComponent = ({ question }) => {
     }
 
     return (
-        <div>
-            <label>{question.text}</label>
-            {question.options.map((option, index) => (
+        <div className="question">
+            <h2>{question.questionText}</h2>
+            {question.answerOptions.map((option, index) => (
                 <label key={index}>
-                    <input type="radio" value={option.value} checked={value === option.value} onChange={handleChange} />
-                    {option.label}
+                    <input type="radio" name={question.questionText} value={option.answerText} checked={value === option.answerText} onChange={handleChange} />
+                    {option.answerText}
                 </label>
             ))}
         </div>

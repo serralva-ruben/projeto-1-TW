@@ -8,11 +8,11 @@ const SelectComponent = ({ question }) => {
     }
 
     return (
-        <div>
-            <label>{question.text}</label>
+        <div className="question">
+            <h2>{question.questionText}</h2>
             <select value={value} onChange={handleChange}>
-                {question.options.map((option, index) => (
-                    <option key={index} value={option.value}>{option.label}</option>
+                {question.answerOptions.map((option, index) => (
+                    <option key={index} value={option.answerText}>{option.answerText}</option>
                 ))}
             </select>
         </div>
