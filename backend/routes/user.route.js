@@ -1,10 +1,11 @@
-import express from "express";
-import { deleteUser, getUser } from "../controllers/user.controller.js";
-import { verifyToken } from "../middleware/jwt.js";
+const express = require("express");
+const { deleteUser, getUser, updateUser } = require("../controllers/user.controller.js");
 
 const router = express.Router();
 
-router.delete("/:id", verifyToken, deleteUser);
 router.get("/:id", getUser);
+// router.post("/score", addScore);
+router.put("/", updateUser)
+router.delete("/:id", deleteUser);
 
-export default router;
+module.exports = router;

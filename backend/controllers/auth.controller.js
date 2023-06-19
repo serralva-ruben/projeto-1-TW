@@ -1,64 +1,58 @@
-import User from "../models/user.model.js";
-import createError from "../utils/createError.js";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
+const User = require('../models/user.model');
+const bcrypt =  require("bcrypt");
+const jwt =  require("jsonwebtoken");
+const dotenv = require("dotenv");
 
 dotenv.config();
 
 
-export const register = async (req, res, next) => {
-  try {
-    const hash = bcrypt.hashSync(req.body.password, 5);
-    const newUser = new User({
-      ...req.body,
-      password: hash,
-    });
-
-    newUser.save(); // Remove 'await' here
-    res.status(201).send("User has been created.");
-  } catch (err) {
-    console.log(err);
-    next(err);
-  }
-};
-
-
-
-export const login = async (req, res, next) => {
-  try {
-    const user = await User.findOne({ email: req.body.email });
-
-    if (!user) {
-      return next(createError(404, "User not found!"));
-    }
-
-    const isCorrect = bcrypt.compareSync(req.body.password, user.password);
-    if (!isCorrect)
-      return next(createError(400, "Wrong password or username!"));
-
-    const token = jwt.sign(
-      {
-        id: user._id,
-        isSeller: user.isSeller,
-      },
-      process.env.JWT_KEY
-    );
-
-    const { password, ...info } = user._doc;
-    res
-      .cookie("accessToken", token, {
-        httpOnly: true,
+const register = async (req, res, next) => {
+  bcrypt.hash(req.body.password, 10, function(err, hashedPass){
+    if(err){
+      res.json({
+        error: err
       })
-      .status(200)
-      .send(info);
-  } catch (err) {
-    console.log(err);
-    next(err);
-  }
+    }
+    let user = new User({
+      email: req.body.email,
+      password: hashedPass,
+    })
+    user.save().then(user=>{
+      res.json({
+        message: 'User added successfully!'
+      })
+    })
+    .catch(error => {
+      res.json({
+        message: 'An error occured!',
+      })
+    })
+  })
 };
 
-export const logout = async (req, res) => {
+const login = async (req, res, next) => {
+  let email = req.body.email;
+  let password = req.body.password;
+
+  User.findOne({$or: [{email:email},{name:email}]}).then(user => {
+    console.log(user)
+    if(user){
+      bcrypt.compare(password, user.password, function(err, result){
+        if(err) {res.json({error: err})}
+        if(result){
+          let token = jwt.sign({name: user.name}, 'private key :) I hope no one knows me')
+          res.json({
+            message: 'Login Successful!',
+            token: token,
+          })
+        }
+        else{res.json({message: 'Password not matched!'})}
+      })
+    }else{res.json({message: 'No user found!'})}
+  })
+};
+
+const logout = async (req, res) => {
   res
     .clearCookie("accessToken", {
       sameSite: "none",
@@ -67,3 +61,9 @@ export const logout = async (req, res) => {
     .status(200)
     .send("User has been logged out.");
 };
+
+module.exports = {
+  register,
+  login,
+  logout,
+}

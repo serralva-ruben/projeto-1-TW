@@ -1,16 +1,24 @@
-import express from "express";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import userRoute from "./routes/user.route.js";
-import authRoute from "./routes/auth.route.js";
-import cookieParser from "cookie-parser";
-import cors from "cors";
-// const cors = require('cors');
+require('dotenv').config()
+
+const express = require('express')
+const mongoose = require('mongoose')
+
+const userRoute =  require("./routes/user.route");
+const authRoute = require("./routes/auth.route");
+
+const cors = require('cors');
+
 
 const app = express();
 const port = 8020;
-dotenv.config();
-mongoose.set("strictQuery", true);
+
+
+app.use(cors());
+// { origin: "http://localhost:3000", credentials: true }
+app.use(express.json());
+
+app.use("/api/auth", authRoute);
+app.use("/api/users", userRoute);
 
 
 const connect = async () => {
@@ -21,14 +29,6 @@ const connect = async () => {
     console.log(error);
   }
 };
-
-app.use(cors());
-// { origin: "http://localhost:5500", credentials: true }
-app.use(express.json());
-app.use(cookieParser());
-
-app.use("/api/auth", authRoute);
-app.use("/api/users", userRoute);
 
 
 app.use((err, req, res, next) => {

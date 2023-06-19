@@ -21,9 +21,9 @@ registrationForm.addEventListener("submit", async (event) => {
             body: JSON.stringify({ email, password }),
         });
 
-        if (response.status === 201) {
+        if (response.status === 200) {
             alert("Registration successful!");
-            window.location.href = "/login.html"; // Redirect to login page
+            window.location.href = "http://127.0.0.1:5500/frontend/login.html"; // Redirect to login page
         } else {
             // Display an error message to the user
             alert("Registration failed!");
