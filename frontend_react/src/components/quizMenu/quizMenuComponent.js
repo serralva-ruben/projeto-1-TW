@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar';
-import musicBackgroundImage from '../../media/covers/music_quiz_cover.jpg'
+import musicBackgroundImage from '../../media/covers/music_cover.jpg'
 import literatureBackgroundImage from '../../media/covers/literature_cover.jpg';
-import moviesBackgroundImage from '../../media/covers/pexels-movies.jpg'
+import moviesBackgroundImage from '../../media/covers/movie_cover.jpg'
 
 
 
