@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link, useNavigate } from "react-router-dom";
+import UserContext from "../../UserContext";
 
 function LoginComponent() {
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const login = async (event) => {
     event.preventDefault();
@@ -26,6 +28,7 @@ function LoginComponent() {
       if (response.ok && answer.token) {
         console.log("Login successful:", answer);
         localStorage.setItem('jwt',answer.token)
+        setUser(answer.user)
         navigate("/");
       } else {
         throw new Error(answer.message || "Login failed");

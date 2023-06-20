@@ -51,9 +51,20 @@ const login = async (req, res, next) => {
         }
         if (result) {
           let token = jwt.sign({ name: user.name }, 'private key :) I hope no one knows me')
+
+          // Create a user object to send, without the password
+          let userResponse = {
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            scores: user.scores,
+            // Add any other user fields I may want to send
+          }
+
           return res.json({
             message: 'Login Successful!',
             token: token,
+            user: userResponse,
           })
         }
         else { 
@@ -65,6 +76,7 @@ const login = async (req, res, next) => {
     }
   })
 };
+
 
 module.exports = {
   register,

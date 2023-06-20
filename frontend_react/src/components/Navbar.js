@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link, useNavigate } from "react-router-dom"
-
+import UserContext from '../UserContext'
 
 function Navbar() {
     const navigate = useNavigate();
+    const { user } = useContext(UserContext);
 
     const logout = () => {
         localStorage.removeItem('jwt');
@@ -16,7 +17,7 @@ function Navbar() {
                 <Link to="/" style={styles.Typography}> Home </Link>
                 <button onClick={logout} style={styles.Typography}>logout</button>
             </ul>
-            <div></div>
+            <div>{user && user.username}</div>
         </div>
     );
 }
