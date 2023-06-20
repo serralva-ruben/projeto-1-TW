@@ -12,6 +12,16 @@ const styles = {
         padding: '5vw',
         margin: '2vh'
     },
+    img: {
+        width: '20vw',
+        height: '20vw',
+        objectFit: 'cover',
+        borderRadius: '15%',
+        borderColor: 'Black',
+        borderWidth: '3px',
+        borderStyle:'solid',
+        marginRight: '1rem'
+    }
 }
 
 export default styles

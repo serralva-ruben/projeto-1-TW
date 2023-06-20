@@ -22,10 +22,7 @@ function Navbar() {
     );
 }
 
-
 export default Navbar;
-
-
 
 const styles = {
     navBarContainer: {
@@ -61,5 +58,4 @@ const styles = {
       transition: "background-color 0.3s ease",
       boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.2)",
     },
-  };
-  
+};

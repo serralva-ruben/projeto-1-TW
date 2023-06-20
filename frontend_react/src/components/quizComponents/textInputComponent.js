@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../../style/style.js'
 
-const TextInputComponent = ({ question }) => {
+const TextInputComponent = ({ question, imgPath }) => {
     const [value, setValue] = useState('');
 
     const handleChange = (e) => {
@@ -16,6 +16,7 @@ const TextInputComponent = ({ question }) => {
                 value={value}
                 onChange={handleChange}
             />
+            <img src={imgPath} style={styles.img}/>
         </div>
     )
 }

@@ -63,6 +63,7 @@ const QuizComponent = () => {
                             return (<Component
                                 key={questionIndex}
                                 question={question}
+                                imgPath={`/media/covers/${quizTitle}CoverImgs/q${questionIndex+1}.jpg`}
                                 onAnswerChange={(answer) => updateAnswer(questionIndex, answer)}
                             />);
                         }

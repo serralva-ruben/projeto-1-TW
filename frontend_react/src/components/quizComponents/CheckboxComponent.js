@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../../style/style.js'
 
-const CheckboxComponent = ({ question }) => {
+const CheckboxComponent = ({ question, imgPath }) => {
     const [selected, setSelected] = useState([]);
 
     const handleCheckboxChange = (e) => {
@@ -28,6 +28,7 @@ const CheckboxComponent = ({ question }) => {
                     </label>
                 </div>
             ))}
+            <img src={imgPath} style={styles.img}/>
         </div>
     );
 };

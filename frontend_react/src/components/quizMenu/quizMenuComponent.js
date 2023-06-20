@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar';
-import musicBackgroundImage from '../../media/covers/music_cover.jpg'
-import literatureBackgroundImage from '../../media/covers/literature_cover.jpg';
-import moviesBackgroundImage from '../../media/covers/movie_cover.jpg'
 
 
 
@@ -21,16 +18,7 @@ const QuizMenuComponent = () => {
     };
 
     const getQuizBackgroundImage = (quizTitle) => {
-        switch (quizTitle) {
-            case 'Quiz sobre música':
-                return `url(${musicBackgroundImage})`;
-            case 'Quiz about Literature':
-                return `url(${literatureBackgroundImage})`;
-            case 'Quiz about Movies':
-                return `url(${moviesBackgroundImage})`;
-            default:
-                return '';
-        }
+        return `url(/media/covers/quizMenu/${quizTitle}_cover.jpg)`
     };
 
     return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../../style/style.js'
 
-const SliderComponent = ({ question }) => {
+const SliderComponent = ({ question, imgPath }) => {
     const [value, setValue] = useState(0);
 
     const handleChange = (e) => {
@@ -18,6 +18,7 @@ const SliderComponent = ({ question }) => {
                 value={value}
                 onChange={handleChange}
             />
+            <img src={imgPath} style={styles.img}/>
         </div>
     )
 }

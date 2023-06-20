@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../../style/style.js'
 
-const RadioComponent = ({ question }) => {
+const RadioComponent = ({ question, imgPath }) => {
     const [value, setValue] = useState('');
 
     const handleChange = (e) => {
@@ -17,6 +17,7 @@ const RadioComponent = ({ question }) => {
                     {option.answerText}
                 </label>
             ))}
+            <img src={imgPath} style={styles.img}/>
         </div>
     )
 }
