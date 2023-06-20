@@ -7,25 +7,24 @@ import TextInputComponent from './quizComponents/TextInputComponent';
 import CheckboxComponent from './quizComponents/CheckboxComponent';
 import styles from '../style/style.js'
 
-const QuizComponent = () => {
-    const [quizzes, setQuizzes] = useState([]);
+const QuizComponent = ({quizTitle}) => {
+    const [currentQuiz, setCurrentQuiz] = useState(null);
     const [answers, setAnswers] = useState({});
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        fetchQuizzes();
-    }, []);
+    useEffect(() => { fetchCurrentQuiz(); }, []);
 
-    const fetchQuizzes = async () => {
-        const response = await fetch('http://localhost:8020/api/quiz/'); // replace with your actual API endpoint
+    const fetchCurrentQuiz = async () => {
+        setLoading(true);
+        const response = await fetch(`http://localhost:8020/api/quiz/${encodeURIComponent(quizTitle)}`); // replace with your actual API endpoint
         const data = await response.json();
-        setQuizzes(data);
+        setCurrentQuiz(data);
+        setLoading(false);
     };
 
     const updateAnswer = (questionIndex, answer) => {
-        setAnswers({
-            ...answers,
-            [questionIndex]: answer
-        });
+        setAnswers({...answers,[questionIndex]: answer});
     }
 
     const handleSubmit = async (event) => {
@@ -35,6 +34,10 @@ const QuizComponent = () => {
         console.log(answers);
     };
 
+    const handleNext = () => { if(currentQuestionIndex<currentQuiz.questions.length)setCurrentQuestionIndex(currentQuestionIndex + 1);};
+
+    const handleBack = () => { if(currentQuestionIndex>0) setCurrentQuestionIndex(currentQuestionIndex - 1);};
+
     const componentMapping = {
         radio: RadioComponent,
         text: TextInputComponent,
@@ -43,33 +46,29 @@ const QuizComponent = () => {
         range: SliderComponent
     };
 
-    return (
-        <div className="quiz-container" id="pageStart">
-            <Navbar/>
-            <h1>Quiz sobre música</h1>
-            <form style={styles.formStyle} onSubmit={handleSubmit}>
-                {quizzes.map((quiz, quizIndex) =>
-                    quiz.questions.map((question, questionIndex) => {
+    if (loading){
+        return <div>Carregando o Quiz...</div>
+    } else{
+        return (
+            <div className="quiz-container" id="pageStart">
+                <Navbar/>
+                <h1>{currentQuiz.title}</h1>
+                <form style={styles.formStyle} onSubmit={handleSubmit}>
+                    {currentQuiz.questions.map((question, questionIndex) => {
                         const Component = componentMapping[question.questionType];
-                        if (Component) {
-                            return (
-                                <Component 
-                                    key={`${quizIndex}-${questionIndex}`} 
-                                    question={question} 
-                                    onAnswerChange={(answer) => updateAnswer(questionIndex, answer)}
-                                />
-                            );
-                        } else {
-                            // Log an error, render a fallback UI, or do nothing.
-                            console.error(`No component found for question type: ${question.questionType}`);
-                            return null;
-                        }
-                    })
-                )}
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    );
+                            return (<Component 
+                            key={questionIndex} 
+                            question={question} 
+                            onAnswerChange={(answer) => updateAnswer(questionIndex, answer)}
+                            />);
+                    })}
+                    <button type="button" onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</button>
+                    <button type="button" onClick={handleNext} disabled={currentQuestionIndex === currentQuiz.questions.length - 1}>Next</button>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        );
+    }
 };
 
 export default QuizComponent;

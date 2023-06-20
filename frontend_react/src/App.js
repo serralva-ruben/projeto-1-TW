@@ -2,8 +2,9 @@ import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import RegisterComponent from './components/LoginRegister/RegisterComponent';
 import LoginComponent from './components/LoginRegister/LoginComponent';
-import ProtectedRoutes from './components/ProtectedRoutes';
-import PublicRoute from './components/PublicRoute';
+import ProtectedRoutes from './components/authorization/ProtectedRoutes';
+import PublicRoute from './components/authorization/PublicRoute';
+import QuizMenuComponent from './components/quizMenu/quizMenuComponent';
 import QuizComponent from './components/QuizComponent';
 
 
