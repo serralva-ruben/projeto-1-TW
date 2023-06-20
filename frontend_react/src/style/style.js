@@ -3,7 +3,7 @@ const styles = {
         marginInline: '5vw',
         padding: '5vw',
         borderColor: 'black',
-        borderStyle: 'dashed',
+        borderStyle: 'solid',
         borderRadius: '15px'
     },
     question: {
@@ -11,7 +11,7 @@ const styles = {
         borderStyle: 'solid',
         padding: '5vw',
         margin: '2vh'
-    }
+    },
 }
 
 export default styles

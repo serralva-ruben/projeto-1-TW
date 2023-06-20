@@ -28,10 +28,10 @@ export default Navbar;
 const styles = {
     navBarContainer: {
       fontSize: "30px",
-      backgroundColor: "#8ab8a8",
-      borderRadius: "30px",
+      backgroundColor: "#cee0c1",
+      borderRadius: "5px",
       borderStyle: "solid",
-      borderWidth: "3px",
+      borderWidth: "2px",
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
@@ -46,7 +46,7 @@ const styles = {
     },
   
     Typography: {
-      margin: "1.3% 0% 0% 0%",
+      marginLeft: "15px",
       fontFamily: "Arial, sans-serif",
       fontWeight: "bold",
       fontSize: "14px",

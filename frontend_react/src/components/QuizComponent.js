@@ -5,8 +5,9 @@ import RadioComponent from './quizComponents/RadioComponent';
 import SelectComponent from './quizComponents/SelectComponent';
 import TextInputComponent from './quizComponents/TextInputComponent';
 import CheckboxComponent from './quizComponents/CheckboxComponent';
-import styles from '../style/style.js'
 import Navbar from './Navbar';
+import '../style/Buttons.css'
+import '../style/App.css'
 
 const QuizComponent = () => {
     const { quizTitle } = useParams();
@@ -19,14 +20,14 @@ const QuizComponent = () => {
 
     const fetchCurrentQuiz = async () => {
         setLoading(true);
-        const response = await fetch(`http://localhost:8020/api/quiz/${encodeURIComponent(quizTitle)}`); // replace with your actual API endpoint
+        const response = await fetch(`http://localhost:8020/api/quiz/${encodeURIComponent(quizTitle)}`);
         const data = await response.json();
         setCurrentQuiz(data);
         setLoading(false);
     };
 
     const updateAnswer = (questionIndex, answer) => {
-        setAnswers({...answers,[questionIndex]: answer});
+        setAnswers({ ...answers, [questionIndex]: answer });
     }
 
     const handleSubmit = async (event) => {
@@ -36,9 +37,9 @@ const QuizComponent = () => {
         console.log(answers);
     };
 
-    const handleNext = () => { if(currentQuestionIndex<currentQuiz.questions.length)setCurrentQuestionIndex(currentQuestionIndex + 1);};
+    const handleNext = () => { if (currentQuestionIndex < currentQuiz.questions.length) setCurrentQuestionIndex(currentQuestionIndex + 1); };
 
-    const handleBack = () => { if(currentQuestionIndex>0) setCurrentQuestionIndex(currentQuestionIndex - 1);};
+    const handleBack = () => { if (currentQuestionIndex > 0) setCurrentQuestionIndex(currentQuestionIndex - 1); };
 
     const componentMapping = {
         radio: RadioComponent,
@@ -48,26 +49,33 @@ const QuizComponent = () => {
         range: SliderComponent
     };
 
-    if (loading){
+    if (loading) {
         return <div>Carregando o Quiz...</div>
-    } else{
+    } else {
         return (
             <div className="quiz-container" id="pageStart">
-                <Navbar/>
+                <Navbar />
                 <h1>{currentQuiz.title}</h1>
-                <form style={styles.formStyle} onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     {currentQuiz.questions.map((question, questionIndex) => {
-                        if(questionIndex===currentQuestionIndex){
-                        const Component = componentMapping[question.questionType];
-                            return (<Component 
-                            key={questionIndex} 
-                            question={question} 
-                            onAnswerChange={(answer) => updateAnswer(questionIndex, answer)}
+                        if (questionIndex === currentQuestionIndex) {
+                            const Component = componentMapping[question.questionType];
+                            return (<Component
+                                key={questionIndex}
+                                question={question}
+                                onAnswerChange={(answer) => updateAnswer(questionIndex, answer)}
                             />);
-                    }})}
-                    <button type="button" onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</button>
-                    <button type="button" onClick={handleNext} disabled={currentQuestionIndex === currentQuiz.questions.length - 1}>Next</button>
-                    <button type="submit">Submit</button>
+                        }
+                    })}
+                    <button type="button" onClick={handleBack} disabled={currentQuestionIndex === 0}
+                        className="quiz-button"
+                    >Back</button>
+                    <button type="button" onClick={handleNext} disabled={currentQuestionIndex === currentQuiz.questions.length - 1}
+                        className="quiz-button"
+                    >Next</button>
+                    <button type="submit"
+                        className="quiz-button"
+                    >Submit</button>
                 </form>
             </div>
         );

@@ -1,0 +1,27 @@
+.quiz-container {
+    margin: 20px;
+    padding: 10px;
+    background-color: #f5f5f5;
+}
+
+.quiz-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.quiz-button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #797979;
+    border: none;
+    border-radius: 4px;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.quiz-button:hover {
+    background-color: #d7d7d7;
+    color: #333;
+}
