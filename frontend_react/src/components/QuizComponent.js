@@ -57,13 +57,14 @@ const QuizComponent = () => {
                 <h1>{currentQuiz.title}</h1>
                 <form style={styles.formStyle} onSubmit={handleSubmit}>
                     {currentQuiz.questions.map((question, questionIndex) => {
+                        if(questionIndex===currentQuestionIndex){
                         const Component = componentMapping[question.questionType];
                             return (<Component 
                             key={questionIndex} 
                             question={question} 
                             onAnswerChange={(answer) => updateAnswer(questionIndex, answer)}
                             />);
-                    })}
+                    }})}
                     <button type="button" onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</button>
                     <button type="button" onClick={handleNext} disabled={currentQuestionIndex === currentQuiz.questions.length - 1}>Next</button>
                     <button type="submit">Submit</button>
