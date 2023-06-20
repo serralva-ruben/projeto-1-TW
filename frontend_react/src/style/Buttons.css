@@ -13,7 +13,7 @@
 .quiz-button {
     padding: 10px 20px;
     margin: 5px;
-    background-color: #797979;
+    background-color: #7695dd;
     border: none;
     border-radius: 4px;
     color: #333;
@@ -22,6 +22,6 @@
 }
 
 .quiz-button:hover {
-    background-color: #d7d7d7;
-    color: #333;
+    background-color: #b7c6e9;
+    color: #333333;
 }
