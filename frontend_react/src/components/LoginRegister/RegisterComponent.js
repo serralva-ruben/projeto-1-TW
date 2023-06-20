@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
-
 function RegisterComponent() {
   const navigate = useNavigate();
 
@@ -12,10 +11,13 @@ function RegisterComponent() {
     const email = formData.get("email");
     const password = formData.get("password");
     const confirm_password = formData.get("confirm_password");
+    const username = formData.get("username"); // new field
 
     const loginData = {
-      password,
       email,
+      username,
+      password,
+      
     };
 
     try {
@@ -42,8 +44,6 @@ function RegisterComponent() {
     } catch (error) { console.log("Error:", error); }
   }
 
-
-
   return (
     <div>
 
@@ -54,6 +54,10 @@ function RegisterComponent() {
       <form onSubmit={handleSubmit} id="registration-form" style={styles.RegistrationContainer}>
         <h1>Registration Form</h1>
         <div style={styles.inputContainer}>
+
+          <label htmlFor="username" style={styles.Typography}>Username:</label>
+          <input type="text" id="username" name="username" required style={styles.inputField} />
+
           <label htmlFor="email" style={styles.Typography}>Email:</label>
           <input type="email" id="email" name="email" required style={styles.inputField} />
 

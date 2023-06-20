@@ -17,6 +17,7 @@ const register = async (req, res, next) => {
       let user = new User({
         username: req.body.username,
         password: hashedPass,
+        email: req.body.email,
       });
       user.save()
         .then(user => {
@@ -24,6 +25,11 @@ const register = async (req, res, next) => {
             message: 'User added successfully!'
           });
         })
+        .catch(error => {
+          res.json({
+            message: 'An error occurred during user creation!'
+          });
+        });
     });
   } catch (error) {
     res.json({
@@ -34,26 +40,43 @@ const register = async (req, res, next) => {
 
 
 const login = async (req, res, next) => {
-  let username = req.body.username;
+  let username = req.body.input;
   let password = req.body.password;
 
-  User.findOne({ $or: [{ username: username }, { name: username }] }).then(user => {
-    console.log(user)
+  User.findOne({ $or: [{ username: username }, { email: username }] }).then(user => {
     if (user) {
       bcrypt.compare(password, user.password, function (err, result) {
-        if (err) { res.json({ error: err }) }
+        if (err) { 
+          return res.status(500).json({ error: err }) 
+        }
         if (result) {
           let token = jwt.sign({ name: user.name }, 'private key :) I hope no one knows me')
-          res.json({
+
+          // Create a user object to send, without the password
+          let userResponse = {
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            scores: user.scores,
+            // Add any other user fields I may want to send
+          }
+
+          return res.json({
             message: 'Login Successful!',
             token: token,
+            user: userResponse,
           })
         }
-        else { res.json({ message: 'Password not matched!' }) }
+        else { 
+          return res.status(401).json({ message: 'Password not matched!' }) 
+        }
       })
-    } else { res.json({ message: 'No user found!' }) }
+    } else { 
+      return res.status(404).json({ message: 'No user found!' }) 
+    }
   })
 };
+
 
 module.exports = {
   register,
