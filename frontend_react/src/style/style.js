@@ -21,6 +21,13 @@ const styles = {
         borderWidth: '3px',
         borderStyle:'solid',
         marginRight: '1rem'
+    },
+    menuText: {
+        textDecoration: 'none',
+        color: '#212121',
+        fontSize: '1em',
+        fontWeight: 'bold',
+        textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
     }
 }
 

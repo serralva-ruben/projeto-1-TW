@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar';
-
+import style from '../../style/style'
 
 
 const QuizMenuComponent = () => {
@@ -26,15 +26,9 @@ const QuizMenuComponent = () => {
             <Navbar />
             <ul>
                 {quizzes.map((quiz, index) =>
-                    <li
-                        key={index}
-                        style={{
-                            backgroundImage: getQuizBackgroundImage(quiz.title),
-                        }}
-                    >
-                        {/* assuming each quiz has a title and id property */}
-                        <Link to={`/quiz/${encodeURIComponent(quiz.title)}`}>{quiz.title}</Link>
-                    </li>
+                    <Link style={style.menuText} key={index} to={`/quiz/${encodeURIComponent(quiz.title)}`}>
+                        <li style={{backgroundImage: getQuizBackgroundImage(quiz.title)}}> {quiz.title}</li>
+                    </Link>
                 )}
             </ul>
         </div>

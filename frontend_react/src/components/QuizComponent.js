@@ -58,15 +58,16 @@ const QuizComponent = () => {
                 <h1>{currentQuiz.title}</h1>
                 <form onSubmit={handleSubmit}>
                     {currentQuiz.questions.map((question, questionIndex) => {
-                        if (questionIndex === currentQuestionIndex) {
-                            const Component = componentMapping[question.questionType];
-                            return (<Component
-                                key={questionIndex}
-                                question={question}
-                                imgPath={`/media/covers/${quizTitle}CoverImgs/q${questionIndex+1}.jpg`}
-                                onAnswerChange={(answer) => updateAnswer(questionIndex, answer)}
-                            />);
-                        }
+                        const Component = componentMapping[question.questionType];
+                        return (
+                            <div key={questionIndex} style={{ display: questionIndex === currentQuestionIndex ? 'block' : 'none' }}>
+                                <Component
+                                    question={question}
+                                    imgPath={`/media/covers/${quizTitle}CoverImgs/q${questionIndex+1}.jpg`}
+                                    onAnswerChange={(answer) => updateAnswer(questionIndex, answer)}
+                                />
+                            </div>
+                        );
                     })}
                     <button type="button" onClick={handleBack} disabled={currentQuestionIndex === 0}
                         className="quiz-button"
