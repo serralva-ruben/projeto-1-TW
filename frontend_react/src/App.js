@@ -7,14 +7,14 @@ import PublicRoute from './components/authorization/PublicRoute';
 import QuizMenuComponent from './components/quizMenu/quizMenuComponent';
 import QuizComponent from './components/QuizComponent';
 
-
 function App() {
   return (
     <div className="App">
       <Routes>
         {/* <Route path="/" element={<Navigate to="/Login" replace />} /> */}
         <Route element={<ProtectedRoutes />}>
-          <Route path="/" element={<QuizComponent />} />
+          <Route path="/" element={<QuizMenuComponent />} />
+          <Route path="/quiz/:quizTitle" element={<QuizComponent />} />
         </Route>
         <Route element={<PublicRoute />}>
           <Route path="/Register" element={<RegisterComponent />} />
@@ -22,7 +22,6 @@ function App() {
         </Route>
       </Routes>
     </div>
-
   );
 }
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // this assumes you're using react-router for navigation
+import { Link } from 'react-router-dom';
 import Navbar from '../Navbar';
 const QuizMenuComponent = () => {
     const [quizzes, setQuizzes] = useState([]);
@@ -16,12 +16,13 @@ const QuizMenuComponent = () => {
 
     return (
         <div className="quiz-menu-container">
+            <Navbar/>
             <h1>Select a Quiz</h1>
             <ul>
                 {quizzes.map((quiz, index) => 
                     <li key={index}>
                         {/* assuming each quiz has a title and id property */}
-                        <Link to={`/quiz/${quiz.id}`}>{quiz.title}</Link> 
+                        <Link to={`/quiz/${encodeURIComponent(quiz.title)}`}>{quiz.title}</Link> 
                     </li>
                 )}
             </ul>

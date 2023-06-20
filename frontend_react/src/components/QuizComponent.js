@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './Navbar';
+import { useParams } from 'react-router-dom';
 import SliderComponent from './quizComponents/SliderComponent';
 import RadioComponent from './quizComponents/RadioComponent';
 import SelectComponent from './quizComponents/SelectComponent';
 import TextInputComponent from './quizComponents/TextInputComponent';
 import CheckboxComponent from './quizComponents/CheckboxComponent';
 import styles from '../style/style.js'
+import Navbar from './Navbar';
 
-const QuizComponent = ({quizTitle}) => {
+const QuizComponent = () => {
+    const { quizTitle } = useParams();
     const [currentQuiz, setCurrentQuiz] = useState(null);
     const [answers, setAnswers] = useState({});
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);

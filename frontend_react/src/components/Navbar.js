@@ -13,7 +13,7 @@ function Navbar() {
     return (
         <div style={styles.navBarContainer}>
             <ul style={styles.list}>
-                <Link to="/index/" style={styles.Typography}> Home </Link>
+                <Link to="/" style={styles.Typography}> Home </Link>
                 <button onClick={logout} style={styles.Typography}>logout</button>
             </ul>
         </div>
