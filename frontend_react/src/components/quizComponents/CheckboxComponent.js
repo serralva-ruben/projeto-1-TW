@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from '../../style/style.js'
 
 const CheckboxComponent = ({ question }) => {
     const [selected, setSelected] = useState([]);
@@ -12,7 +13,7 @@ const CheckboxComponent = ({ question }) => {
     };
 
     return (
-        <div className="question">
+        <div className="question" style={styles.question}>
             <h2>{question.questionText}</h2>
             {question.answerOptions.map((option, index) => (
                 <div key={index}>
@@ -30,5 +31,6 @@ const CheckboxComponent = ({ question }) => {
         </div>
     );
 };
+
 
 export default CheckboxComponent;

@@ -45,7 +45,7 @@ function LoginComponent() {
     <div>
       
       <form onSubmit={login} id="login-form" style={styles.LoginContainer}>
-      <h1>Login TimeBus</h1>
+      <h1>Login Quiz</h1>
         <div style={styles.formGroup}>
           <div style={styles.inputContainer}>
             <label htmlFor="email" style={styles.Typography}>

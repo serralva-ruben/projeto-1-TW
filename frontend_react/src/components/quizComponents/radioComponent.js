@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from '../../style/style.js'
 
 const RadioComponent = ({ question }) => {
     const [value, setValue] = useState('');
@@ -8,7 +9,7 @@ const RadioComponent = ({ question }) => {
     }
 
     return (
-        <div className="question">
+        <div className="question" style={styles.question}>
             <h2>{question.questionText}</h2>
             {question.answerOptions.map((option, index) => (
                 <label key={index}>

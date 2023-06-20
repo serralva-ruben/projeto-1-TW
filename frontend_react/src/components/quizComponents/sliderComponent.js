@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from '../../style/style.js'
 
 const SliderComponent = ({ question }) => {
     const [value, setValue] = useState(0);
@@ -8,7 +9,7 @@ const SliderComponent = ({ question }) => {
     }
 
     return (
-        <div className="question">
+        <div className="question" style={styles.question}>
             <h2>{question.questionText}</h2>
             <input
                 type="range"
@@ -20,5 +21,6 @@ const SliderComponent = ({ question }) => {
         </div>
     )
 }
+
 
 export default SliderComponent;
