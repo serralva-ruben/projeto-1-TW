@@ -16,6 +16,7 @@ function Navbar() {
                 <Link to="/" style={styles.Typography}> Home </Link>
                 <button onClick={logout} style={styles.Typography}>logout</button>
             </ul>
+            <div></div>
         </div>
     );
 }
