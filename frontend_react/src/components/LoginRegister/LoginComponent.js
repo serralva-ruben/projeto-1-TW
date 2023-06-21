@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UserContext from '../../UserContext';
-import ErrorMessagePopup from './ErrorMessagePopup';
 
 function LoginComponent() {
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
-  const [error, setError] = useState('');
+  const [failedLogin, setFailedLogin] = useState(false);
 
   const login = async (event) => {
     event.preventDefault();
@@ -40,7 +39,7 @@ function LoginComponent() {
       }
     } catch (error) {
       console.log('Error:', error);
-      setError(error.message);
+      setFailedLogin(true);
     }
   };
 
@@ -48,6 +47,11 @@ function LoginComponent() {
       <div>
         <form onSubmit={login} id="login-form" style={styles.LoginContainer}>
           <h1>Login Quiz</h1>
+          <div style={styles.errorContainer}>
+            <div style={failedLogin ? styles.error : styles.noError}>
+              {failedLogin ? 'Invalid login credentials' : ' '}
+            </div>
+          </div>
           <div style={styles.formGroup}>
             <div style={styles.inputContainer}>
               <label htmlFor="input" style={styles.Typography}>
@@ -67,7 +71,6 @@ function LoginComponent() {
             Not a user? Click <Link to="/Register">here to register</Link>
           </p>
         </form>
-        {error && <ErrorMessagePopup message={error} />}
       </div>
   );
 }
@@ -130,6 +133,28 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     marginBottom: '20px',
+  },
+
+  error: {
+    backgroundColor: '#ff463b',
+    padding: '1rem',
+    borderRadius: '5px',
+    borderWidth: '1px',
+    borderColor: 'black',
+    borderStyle: 'solid',
+    marginTop: ' 1rem',
+    marginBottom: '1rem',
+    fontFamily: 'Arial, sans-serif',
+  },
+  noError: {
+    padding: '1rem',
+    marginTop: ' 1rem',
+    marginBottom: '1rem',
+    fontFamily: 'Arial, sans-serif',
+  },
+  errorContainer: {
+    position: 'relative',
+    height: '6rem',  // Adjust this to match the height of your error message
   },
 };
 
