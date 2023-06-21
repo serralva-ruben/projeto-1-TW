@@ -53,7 +53,7 @@ const QuizComponent = () => {
         return <div>Carregando o Quiz...</div>
     } else {
         return (
-            <div className="quiz-container" id="pageStart">
+            <div>
                 <Navbar />
                 <h1>{currentQuiz.title}</h1>
                 <form onSubmit={handleSubmit}>

@@ -79,6 +79,7 @@ html{
 
 .question{
   background-color: #d4ebc4;
+  height: 50vh;
 }
 .question label{
   display: block;

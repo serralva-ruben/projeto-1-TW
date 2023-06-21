@@ -29,7 +29,7 @@ const styles = {
         borderColor: 'Black',
         borderWidth: '3px',
         borderStyle:'solid',
-        marginRight: '1rem'
+        marginLeft: '50vw'
     },
     menuText: {
         textDecoration: 'none',
@@ -61,15 +61,15 @@ const styles = {
         justifyContent: "space-between",
         alignItems: "center",
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
-      },
-      list: {
+    },
+    list: {
         listStyle: "none",
         padding: "0",
         display: "flex",
         gap: "2rem",
         alignItems: "center",
-      },
-      Typography: {
+    },
+    Typography: {
         marginLeft: "15px",
         fontFamily: "Arial, sans-serif",
         fontWeight: "bold",
@@ -82,7 +82,7 @@ const styles = {
         cursor: "pointer",
         transition: "background-color 0.3s ease",
         boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.2)",
-      },
+    },
 }
 
 export default styles

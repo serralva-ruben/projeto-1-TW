@@ -41,7 +41,6 @@ function LoginComponent() {
 
   return (
     <div>
-      
       <form onSubmit={login} id="login-form" style={styles.LoginContainer}>
       <h1>Login Quiz</h1>
         <div style={styles.formGroup}>
@@ -58,9 +57,6 @@ function LoginComponent() {
         <p>
           Not a user? Click <Link to="/Register">here to register</Link>
         </p>
- 
-
-
       </form>
     </div>
   );
