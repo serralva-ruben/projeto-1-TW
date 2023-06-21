@@ -21,10 +21,18 @@ function Navbar() {
     return (
         <div style={styles.navBarContainer}>
             <ul style={styles.list}>
-                <Link to="/" style={styles.Typography}> Home </Link>
-                <button onClick={logout} style={styles.Typography}>logout</button>
+                <Link to="/" style={styles.Typography}>
+                    Home
+                </Link>
             </ul>
-            {user && <div style={styles.userBadge}>{user.username.charAt(0).toUpperCase()}</div>}
+            {user && (
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div style={styles.userBadge}>{user.username.charAt(0).toUpperCase()}</div>
+                    <button onClick={logout} style={styles.Typography}>
+                        Logout
+                    </button>
+                </div>
+            )}
         </div>
     );
 }
