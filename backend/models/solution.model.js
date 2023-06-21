@@ -7,7 +7,7 @@ const QuizSolutionSchema = new mongoose.Schema({
         unique: true,
     },
     solutions: {
-        type: [String], // assuming solutions are strings, adjust as necessary
+        type: [String],
         required: true,
     }
 });
