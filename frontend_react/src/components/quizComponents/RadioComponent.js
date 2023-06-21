@@ -20,7 +20,6 @@ const RadioComponent = ({ question, imgPath, onAnswerChange }) => {
                 </label>
             ))}
             </div>
-
             <img src={imgPath} style={styles.img}/>
         </div>
     )

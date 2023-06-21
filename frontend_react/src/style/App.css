@@ -97,8 +97,13 @@ html {
   justify-content: center;
 }
 
-.question label img{
-  display: flex;
+.question img{
+  position: absolute;
+  right: 0px;
+  width: 300px;
+  border: 3px solid #73AD21;
+  padding: 10px;
+
 }
 
 .question {
@@ -106,10 +111,4 @@ html {
   height: 50vh;
   position: relative;
   overflow: hidden;  
-}
-
-.question .question-image {
-  max-width: 100%;  
-  max-height: 100%; 
-  object-fit: cover;  
 }

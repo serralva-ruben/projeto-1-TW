@@ -29,7 +29,8 @@ const styles = {
         borderColor: 'Black',
         borderWidth: '3px',
         borderStyle:'solid',
-        marginLeft: '30vw'
+        marginLeft: '30vw',
+        marginRight: '2vw'
     },
     
     menuText: {

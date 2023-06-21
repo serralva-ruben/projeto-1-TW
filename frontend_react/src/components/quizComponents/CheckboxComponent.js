@@ -18,22 +18,22 @@ const CheckboxComponent = ({ question, imgPath, onAnswerChange }) => {
     return (
         <div className="question" style={styles.question}>
             <h2>{question.questionText}</h2>
+            <div id='inputDiv'>
             {question.answerOptions.map((option, index) => (
                 <div key={index}>
-                    <label>
-                    <div id='inputDiv'>
+                    <label >
                         <input
                             type="checkbox"
                             value={option.answerText}
                             checked={selected.includes(option.answerText)}
                             onChange={handleCheckboxChange}
                         />
-                        {option.answerText}
-                        </div>
+                        {option.answerText}                        
                     </label>
                 </div>
             ))}
-            <img src={imgPath} style={styles.img}/>
+            </div>
+            <img src={imgPath} style={styles.img} />
         </div>
     );
 };
