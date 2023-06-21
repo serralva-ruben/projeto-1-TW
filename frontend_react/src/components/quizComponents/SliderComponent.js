@@ -12,16 +12,15 @@ const SliderComponent = ({ question, imgPath, onAnswerChange }) => {
     return (
         <div className="question" style={styles.question}>
             <h2>{question.questionText}</h2>
-            <div id='inputDiv'>
-                <input
-                    type="range"
-                    min="0"
-                    max="10"
-                    value={value}
-                    onChange={handleChange}
-                />
-            </div>
-            <img src={imgPath} style={styles.img} />
+            <input
+                type="range"
+                min="0"
+                max="9"
+                value={value}
+                onChange={handleChange}
+            />
+            <img src={imgPath} style={styles.img}/>
+            <div>{value}</div>
         </div>
     )
 }
