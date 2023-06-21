@@ -12,4 +12,4 @@ const QuizSolutionSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('quizzesSolutions', QuizSolutionSchema);
+module.exports = mongoose.model('quizzessolutions', QuizSolutionSchema);
