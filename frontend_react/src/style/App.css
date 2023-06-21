@@ -91,7 +91,6 @@ html {
 #inputDiv{
   display: inline-flex;
   flex-direction: column;
-  background-color: red;
   width: 50%;
   margin: 10px;
   justify-content: center;

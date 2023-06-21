@@ -15,6 +15,8 @@ const QuizComponent = () => {
     const [answers, setAnswers] = useState({});
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [showSummary, setShowSummary] = useState(false);
+    const [correctedAnswers, setCorrectedAnswers] = useState(null)
 
     useEffect(() => { fetchCurrentQuiz(); }, []);
 
@@ -41,14 +43,12 @@ const QuizComponent = () => {
                 body: JSON.stringify({
                     title: currentQuiz.title, 
                     answers
-                }) 
+                })
             });
             const data = await response.json();
-            
-            // Handle the response data here
-            // This could be displaying the results, redirecting the user, etc.
-    
-            console.log(data);
+            console.log(data)
+            setCorrectedAnswers(data)
+            setShowSummary(true);
         } catch (err) {
             console.error('Error:', err);
         }
@@ -74,6 +74,7 @@ const QuizComponent = () => {
                 <Navbar />
                 <h1>{currentQuiz.title}</h1>
                 <form onSubmit={handleSubmit}>
+                    {/*Render the correct quiz component */}
                     {currentQuiz.questions.map((question, questionIndex) => {
                         const Component = componentMapping[question.questionType];
                         return (
@@ -82,21 +83,26 @@ const QuizComponent = () => {
                                     question={question}
                                     imgPath={`/media/covers/${quizTitle}CoverImgs/q${questionIndex + 1}.jpg`}
                                     onAnswerChange={(answer) => updateAnswer(questionIndex, answer)}
+                                    showSummary={showSummary}
+                                    correctedAnswers = {correctedAnswers}
                                 />
                             </div>
                         );
                     })}
-                    <button type="button" onClick={handleBack} disabled={currentQuestionIndex === 0}
-                        className="quiz-button"
-                    >Back</button>
-                    <button type="button" onClick={handleNext} disabled={currentQuestionIndex === currentQuiz.questions.length - 1}
-                        className="quiz-button"
-                    >Next</button>
-                    <button type="submit"
-                        className="quiz-button"
-                    >Submit</button>
+                    {!showSummary && <>
+                        <button type="button" onClick={handleBack} disabled={currentQuestionIndex === 0}
+                            className="quiz-button"
+                        >Back</button>
+                        <button type="button" onClick={handleNext} disabled={currentQuestionIndex === currentQuiz.questions.length - 1}
+                            className="quiz-button"
+                        >Next</button>
+                        <button type="submit"
+                            className="quiz-button"
+                        >Submit</button>
+                    </>}
                 </form>
-                {currentQuiz.questions.map((question, questionIndex)=>{
+                {/*Render the navigation menu on the bottom */}
+                {!showSummary && currentQuiz.questions.map((question, questionIndex)=>{
                     return(<button key={questionIndex} 
                     style={{ 
                         backgroundColor: answers[questionIndex] ? 'green' : 'grey',

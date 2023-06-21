@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styles from '../../style/style.js'
+import SummaryComponent from '../QuizSummaryComponent.js';
 
-const CheckboxComponent = ({ question, imgPath, onAnswerChange }) => {
+const CheckboxComponent = ({ question, imgPath, onAnswerChange, showSummary, correctedAnswers}) => {
     const [selected, setSelected] = useState([]);
 
     const handleCheckboxChange = (e) => {
@@ -17,6 +18,7 @@ const CheckboxComponent = ({ question, imgPath, onAnswerChange }) => {
 
     return (
         <div className="question" style={styles.question}>
+            {!showSummary && <>
             <h2>{question.questionText}</h2>
             <div id='inputDiv'>
             {question.answerOptions.map((option, index) => (
@@ -34,7 +36,12 @@ const CheckboxComponent = ({ question, imgPath, onAnswerChange }) => {
             ))}
             </div>
             <img src={imgPath} style={styles.img} />
-        </div>
+            </>}
+            {/*Render the show summary component */}
+            {showSummary && <SummaryComponent
+                correctedAnswers={correctedAnswers}
+            />}
+        </div> 
     );
 };
 

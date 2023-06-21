@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styles from '../../style/style.js'
+import SummaryComponent from '../QuizSummaryComponent.js';
 
-const TextInputComponent = ({ question, imgPath, onAnswerChange }) => {
+const TextInputComponent = ({ question, imgPath, onAnswerChange, showSummary, correctedAnswers }) => {
     const [value, setValue] = useState('');
 
     const handleChange = (e) => {
@@ -11,7 +12,7 @@ const TextInputComponent = ({ question, imgPath, onAnswerChange }) => {
 
     return (
         <div className="question" style={styles.question}>
-            <h2>{question.questionText}</h2>
+            {!showSummary && <><h2>{question.questionText}</h2>
             <div id='inputDiv'>
                 <input
                     type="text"
@@ -19,7 +20,11 @@ const TextInputComponent = ({ question, imgPath, onAnswerChange }) => {
                     onChange={handleChange}
                 />
             </div>
-            <img src={imgPath} style={styles.img} />
+            <img src={imgPath} style={styles.img} /></>}
+            {/*Render the show summary component */}
+            {showSummary && <SummaryComponent
+                correctedAnswers={correctedAnswers}
+            />}
         </div>
     )
 }
