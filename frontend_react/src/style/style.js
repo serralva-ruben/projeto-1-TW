@@ -60,6 +60,7 @@ const styles = {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        padding: '0 20px',
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
     },
     list: {
