@@ -1,8 +1,8 @@
 const QuizSolution = require('../models/solution.model');
 
-const getQuizSolution = async (req, res) => {
+const getQuizSolutionByName = async (req, res) => {
     try {
-        const quizTitle = req.params.title;
+        const quizTitle = req.params.quizTitle;
 
         const solution = await QuizSolution.findOne({ quizTitle: quizTitle });
 
@@ -16,7 +16,7 @@ const getQuizSolution = async (req, res) => {
     }
 };
 
-const getAllQuizzes = async (req, res) => {
+const getAllQuizzesSolutions = async (req, res) => {
     try {
         const quizzes = await QuizSolution.find({});
 
@@ -31,6 +31,6 @@ const getAllQuizzes = async (req, res) => {
 };
 
 module.exports = {
-    getQuizSolution,
-    getAllQuizzes,
+    getQuizSolutionByName,
+    getAllQuizzesSolutions,
   }
