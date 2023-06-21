@@ -12,7 +12,6 @@ function Navbar() {
         localStorage.removeItem('user')
         navigate('/Login')
     }
-
     useEffect(()=>{
       const storedUser = localStorage.getItem('user');
       if(storedUser) setUser(JSON.parse(storedUser))

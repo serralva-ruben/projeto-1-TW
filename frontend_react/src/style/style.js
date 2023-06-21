@@ -39,7 +39,7 @@ const styles = {
         textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
     },
     userBadge: {
-        height: '5vh',
+        height: '4rem',
         aspectRatio: '1/1',
         marginRight: '1vw',
         backgroundColor: getRandomColor(),
@@ -83,6 +83,21 @@ const styles = {
         transition: "background-color 0.3s ease",
         boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.2)",
     },
+    userWidget: {
+        color: '#000000',
+        textDecoration: 'none',
+        fontWeight: 'bold',
+        fontFamily: 'Arial, sans-serif',
+        backgroundColor: '#7d93e8',
+        border: '#282c34 solid 2px',
+        height: '10rem',
+        margin: '1rem',
+        marginInline: '2rem',
+        borderRadius: '10px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+    }
 }
 
 export default styles

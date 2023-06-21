@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar';
 import style from '../../style/style'
-
+import UserWidgetComponent from '../userWidgetComponent'
 
 const QuizMenuComponent = () => {
     const [quizzes, setQuizzes] = useState([]);
@@ -24,6 +24,7 @@ const QuizMenuComponent = () => {
     return (
         <div className="quiz-menu-container">
             <Navbar />
+            <UserWidgetComponent />
             <ul>
                 {quizzes.map((quiz, index) =>
                     <Link style={style.menuText} key={index} to={`/quiz/${encodeURIComponent(quiz.title)}`}>
