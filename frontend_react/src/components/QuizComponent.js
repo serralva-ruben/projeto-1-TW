@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import SliderComponent from './quizComponents/SliderComponent';
-import RadioComponent from './quizComponents/RadioComponent';
-import SelectComponent from './quizComponents/SelectComponent';
-import TextInputComponent from './quizComponents/TextInputComponent';
-import CheckboxComponent from './quizComponents/CheckboxComponent';
+import SliderComponent from './quizComponents/sliderComponent';
+import RadioComponent from './quizComponents/radioComponent';
+import SelectComponent from './quizComponents/selectComponent';
+import TextInputComponent from './quizComponents/textInputComponent';
+import CheckboxComponent from './quizComponents/checkboxComponent';
 import Navbar from './Navbar';
 import '../style/Buttons.css'
 import '../style/App.css'
