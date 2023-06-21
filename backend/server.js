@@ -7,6 +7,7 @@ const userRoute =  require("./routes/user.route");
 const authRoute = require("./routes/auth.route");
 const quizRoute = require("./routes/quiz.route");
 const quizSolutionRoute = require("./routes/quizSolution.route")
+const verifyAnswers = require("./routes/verify.route")
 
 const cors = require('cors');
 
@@ -23,7 +24,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/quiz", quizRoute)
 app.use("/api/quizSolution", quizSolutionRoute)
-
+app.use("/api/verify", verifyAnswers)
 
 const connect = async () => {
   try {

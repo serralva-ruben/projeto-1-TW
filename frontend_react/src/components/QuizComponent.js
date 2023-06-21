@@ -32,9 +32,26 @@ const QuizComponent = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // here you would probably send the answers object to your API for evaluation
-        // const response = await fetch('http://localhost:8020/api/quiz/submit', { method: 'POST', body: JSON.stringify(answers) });
-        console.log(answers);
+        try {
+            const response = await fetch('http://localhost:8020/api/verify', { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title: currentQuiz.title, 
+                    answers
+                }) 
+            });
+            const data = await response.json();
+            
+            // Handle the response data here
+            // This could be displaying the results, redirecting the user, etc.
+    
+            console.log(data);
+        } catch (err) {
+            console.error('Error:', err);
+        }
     };
 
     const handleNext = () => { if (currentQuestionIndex < currentQuiz.questions.length) setCurrentQuestionIndex(currentQuestionIndex + 1); };
@@ -80,7 +97,8 @@ const QuizComponent = () => {
                     >Submit</button>
                 </form>
                 {currentQuiz.questions.map((question, questionIndex)=>{
-                    return(<button style={{ 
+                    return(<button key={questionIndex} 
+                    style={{ 
                         backgroundColor: answers[questionIndex] ? 'green' : 'grey',
                         borderColor: questionIndex === currentQuestionIndex ? 'blue' : 'grey',
                         borderRadius: '5px',
