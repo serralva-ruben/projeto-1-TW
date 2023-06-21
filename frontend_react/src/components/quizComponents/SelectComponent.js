@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../../style/style.js'
+import '../../style/App.css'
 
 const SelectComponent = ({ question, imgPath, onAnswerChange }) => {
     const [value, setValue] = useState('');
@@ -17,7 +18,7 @@ const SelectComponent = ({ question, imgPath, onAnswerChange }) => {
                     <option key={index} value={option.answerText}>{option.answerText}</option>
                 ))}
             </select>
-            <img src={imgPath} style={styles.img}/>
+            <img src={imgPath} style={styles.img} className="question-image"/>
         </div>
     )
 }

@@ -12,12 +12,15 @@ const RadioComponent = ({ question, imgPath, onAnswerChange }) => {
     return (
         <div className="question" style={styles.question}>
             <h2>{question.questionText}</h2>
+            <div id='inputDiv'>
             {question.answerOptions.map((option, index) => (
                 <label key={index}>
                     <input type="radio" name={question.questionText} value={option.answerText} checked={value === option.answerText} onChange={handleChange} />
                     {option.answerText}
                 </label>
             ))}
+            </div>
+
             <img src={imgPath} style={styles.img}/>
         </div>
     )

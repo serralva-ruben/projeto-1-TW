@@ -40,11 +40,11 @@
 
 /*  */
 
-html{
+html {
   background-color: #cbc4c4;
 }
 
-.quiz-container{
+.quiz-container {
   background-color: #cbc4c4;
 }
 
@@ -68,12 +68,48 @@ html{
   font-family: Arial, sans-serif;
 }
 
-.question{
+.question {
   background-color: #d4ebc4;
   height: 50vh;
 }
-.question label{
+
+.question label {
   display: block;
-  text-align:left;
+  text-align: left;
   font-size: 24px;
+}
+
+/* #main-div img{
+  display: flex;
+  align-items:center;
+}
+
+.imagine{
+  display: none;
+} */
+
+#inputDiv{
+  display: inline-flex;
+  flex-direction: column;
+  background-color: red;
+  width: 50%;
+  margin: 10px;
+  justify-content: center;
+}
+
+.question label img{
+  display: flex;
+}
+
+.question {
+  background-color: #d4ebc4;
+  height: 50vh;
+  position: relative;
+  overflow: hidden;  
+}
+
+.question .question-image {
+  max-width: 100%;  
+  max-height: 100%; 
+  object-fit: cover;  
 }

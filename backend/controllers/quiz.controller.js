@@ -16,20 +16,61 @@ const getQuiz = async (req, res, next) => {
   res.status(200).send(quiz);
 };
 
-const createQuiz = async (req, res) => {
+const evaluateQuiz = async (req, res) => {
   try {
-    const { title, questions, questionType, answerOptions, isCorrect } = req.body;
-    const newQuiz = await Quiz.create({ title, questions, questionType, answerOptions, isCorrect });
-    console.log(newQuiz);
+    const submittedAnswers = req.body; 
+    const quizTitle = req.params.quizTitle; 
+    const quizSolutions = await quizzessolutions.findOne({ title: quizTitle });
+    const score = calculateScore(submittedAnswers, quizSolutions.solutions);
 
-    res.status(201).json(newQuiz);
+    res.json({ score });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to create Quiz' });
+    console.error(error);
+    res.status(500).json({ error: 'Failed to evaluate quiz answers' });
   }
 };
+
+
+const calculateScore = (submittedAnswers, correctAnswers) => {
+  let score = 0;
+
+  for (let i = 0; i < submittedAnswers.length; i++) {
+    const submittedAnswer = submittedAnswers[i];
+    const correctAnswer = correctAnswers[i];
+
+    if (Array.isArray(submittedAnswer)) {
+      if (arraysMatch(submittedAnswer, correctAnswer)) {
+        score += 1;
+      }
+    } else {
+      if (submittedAnswer === correctAnswer) {
+        score += 1;
+      }
+    }
+  }
+
+  return score;
+};
+
+
+const arraysMatch = (arr1, arr2) => {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+
 
 module.exports = {
   getQuizzes,
   getQuiz,
-  createQuiz,
+  evaluateQuiz,
 }

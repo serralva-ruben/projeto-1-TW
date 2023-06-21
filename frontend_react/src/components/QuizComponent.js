@@ -32,9 +32,16 @@ const QuizComponent = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // here you would probably send the answers object to your API for evaluation
-        // const response = await fetch('http://localhost:8020/api/quiz/submit', { method: 'POST', body: JSON.stringify(answers) });
-        console.log(answers);
+        const response = await fetch('http://localhost:8020/api/quiz/submit', {
+            method: 'POST',
+            body: JSON.stringify(answers),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        // Handle the response from the server (e.g., display results, update UI, etc.)
+        const result = await response.json();
+        console.log(result);
     };
 
     const handleNext = () => { if (currentQuestionIndex < currentQuiz.questions.length) setCurrentQuestionIndex(currentQuestionIndex + 1); };
@@ -60,10 +67,10 @@ const QuizComponent = () => {
                     {currentQuiz.questions.map((question, questionIndex) => {
                         const Component = componentMapping[question.questionType];
                         return (
-                            <div key={questionIndex} style={{ display: questionIndex === currentQuestionIndex ? 'block' : 'none' }}>
+                            <div key={questionIndex} id="main-div" style={{ display: questionIndex === currentQuestionIndex ? 'block' : 'none' }}>
                                 <Component
                                     question={question}
-                                    imgPath={`/media/covers/${quizTitle}CoverImgs/q${questionIndex+1}.jpg`}
+                                    imgPath={`/media/covers/${quizTitle}CoverImgs/q${questionIndex + 1}.jpg`}
                                     onAnswerChange={(answer) => updateAnswer(questionIndex, answer)}
                                 />
                             </div>
@@ -79,8 +86,8 @@ const QuizComponent = () => {
                         className="quiz-button"
                     >Submit</button>
                 </form>
-                {currentQuiz.questions.map((question, questionIndex)=>{
-                    return(<button style={{ 
+                {currentQuiz.questions.map((question, questionIndex) => {
+                    return (<button style={{
                         backgroundColor: answers[questionIndex] ? 'green' : 'grey',
                         borderColor: questionIndex === currentQuestionIndex ? 'blue' : 'grey',
                         borderRadius: '5px',
@@ -88,9 +95,9 @@ const QuizComponent = () => {
                         borderWidth: '4px',
                         width: '4vw',
                         height: '4vw'
-                        }}
-                        onClick={()=>setCurrentQuestionIndex(questionIndex)}>
-                        {questionIndex+1}
+                    }}
+                        onClick={() => setCurrentQuestionIndex(questionIndex)}>
+                        {questionIndex + 1}
                     </button>)
                 })}
             </div>

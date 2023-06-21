@@ -29,8 +29,9 @@ const styles = {
         borderColor: 'Black',
         borderWidth: '3px',
         borderStyle:'solid',
-        marginLeft: '50vw'
+        marginLeft: '30vw'
     },
+    
     menuText: {
         textDecoration: 'none',
         color: '#212121',

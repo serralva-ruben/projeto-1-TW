@@ -21,6 +21,7 @@ const CheckboxComponent = ({ question, imgPath, onAnswerChange }) => {
             {question.answerOptions.map((option, index) => (
                 <div key={index}>
                     <label>
+                    <div id='inputDiv'>
                         <input
                             type="checkbox"
                             value={option.answerText}
@@ -28,6 +29,7 @@ const CheckboxComponent = ({ question, imgPath, onAnswerChange }) => {
                             onChange={handleCheckboxChange}
                         />
                         {option.answerText}
+                        </div>
                     </label>
                 </div>
             ))}
