@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const QuizSolutionSchema = new mongoose.Schema({
     quizTitle: {
@@ -7,7 +8,7 @@ const QuizSolutionSchema = new mongoose.Schema({
         unique: true,
     },
     solutions: {
-        type: [String],
+        type: [Schema.Types.Mixed],
         required: true,
     }
 });

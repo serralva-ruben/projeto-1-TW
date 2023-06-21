@@ -32,16 +32,26 @@ const QuizComponent = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const response = await fetch('http://localhost:8020/api/quiz/submit', {
-            method: 'POST',
-            body: JSON.stringify(answers),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        // Handle the response from the server (e.g., display results, update UI, etc.)
-        const result = await response.json();
-        console.log(result);
+        try {
+            const response = await fetch('http://localhost:8020/api/verify', { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title: currentQuiz.title, 
+                    answers
+                }) 
+            });
+            const data = await response.json();
+            
+            // Handle the response data here
+            // This could be displaying the results, redirecting the user, etc.
+    
+            console.log(data);
+        } catch (err) {
+            console.error('Error:', err);
+        }
     };
 
     const handleNext = () => { if (currentQuestionIndex < currentQuiz.questions.length) setCurrentQuestionIndex(currentQuestionIndex + 1); };
@@ -86,8 +96,9 @@ const QuizComponent = () => {
                         className="quiz-button"
                     >Submit</button>
                 </form>
-                {currentQuiz.questions.map((question, questionIndex) => {
-                    return (<button style={{
+                {currentQuiz.questions.map((question, questionIndex)=>{
+                    return(<button key={questionIndex} 
+                    style={{ 
                         backgroundColor: answers[questionIndex] ? 'green' : 'grey',
                         borderColor: questionIndex === currentQuestionIndex ? 'blue' : 'grey',
                         borderRadius: '5px',
