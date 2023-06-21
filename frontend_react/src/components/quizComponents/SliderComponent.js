@@ -15,11 +15,12 @@ const SliderComponent = ({ question, imgPath, onAnswerChange }) => {
             <input
                 type="range"
                 min="0"
-                max="100"
+                max="9"
                 value={value}
                 onChange={handleChange}
             />
             <img src={imgPath} style={styles.img}/>
+            <div>{value}</div>
         </div>
     )
 }
