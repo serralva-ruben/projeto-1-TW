@@ -79,6 +79,20 @@ const QuizComponent = () => {
                         className="quiz-button"
                     >Submit</button>
                 </form>
+                {currentQuiz.questions.map((question, questionIndex)=>{
+                    return(<button style={{ 
+                        backgroundColor: answers[questionIndex] ? 'green' : 'grey',
+                        borderColor: questionIndex === currentQuestionIndex ? 'blue' : 'grey',
+                        borderRadius: '5px',
+                        margin: '10px',
+                        borderWidth: '4px',
+                        width: '4vw',
+                        height: '4vw'
+                        }}
+                        onClick={()=>setCurrentQuestionIndex(questionIndex)}>
+                        {questionIndex+1}
+                    </button>)
+                })}
             </div>
         );
     }

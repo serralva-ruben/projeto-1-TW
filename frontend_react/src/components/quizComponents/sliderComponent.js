@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import styles from '../../style/style.js'
 
-const SliderComponent = ({ question, imgPath }) => {
+const SliderComponent = ({ question, imgPath, onAnswerChange }) => {
     const [value, setValue] = useState(0);
 
     const handleChange = (e) => {
         setValue(e.target.value);
+        onAnswerChange(e.target.value);
     }
 
     return (

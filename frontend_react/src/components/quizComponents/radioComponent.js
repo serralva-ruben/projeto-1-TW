@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import styles from '../../style/style.js'
 
-const RadioComponent = ({ question, imgPath }) => {
+const RadioComponent = ({ question, imgPath, onAnswerChange }) => {
     const [value, setValue] = useState('');
 
     const handleChange = (e) => {
         setValue(e.target.value);
+        onAnswerChange(e.target.value);
     }
 
     return (

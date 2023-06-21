@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import styles from '../../style/style.js'
 
-const CheckboxComponent = ({ question, imgPath }) => {
+const CheckboxComponent = ({ question, imgPath, onAnswerChange }) => {
     const [selected, setSelected] = useState([]);
 
     const handleCheckboxChange = (e) => {
+        let newSelected;
         if (e.target.checked) {
-            setSelected([...selected, e.target.value]);
+            newSelected = [...selected, e.target.value];
         } else {
-            setSelected(selected.filter(item => item !== e.target.value));
+            newSelected = selected.filter(item => item !== e.target.value);
         }
+        setSelected(newSelected);
+        onAnswerChange(newSelected.length > 0 ? newSelected : null);
     };
 
     return (
