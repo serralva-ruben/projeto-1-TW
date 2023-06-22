@@ -138,8 +138,9 @@ const styles = {
 
     },
     logoutButton: {
-        height: '3.5rem',
+        height: '3rem',
         aspectRatio: '1/2',
+        fontSize:'0.5rem',
         backgroundColor: 'red',
         marginLeft:'1rem',
         color: 'white',
@@ -147,8 +148,9 @@ const styles = {
         flexDirection:'column',
         justifyContent: 'center',
         alignItems: 'center',
-        borderWidth: '0.2px',
-        borderRadius: '2px',
+        borderWidth: '2px',
+        borderRadius: '5px',
+        borderColor: 'black',
         textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
     },
@@ -171,6 +173,10 @@ const styles = {
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
     },
     homeImg: {
+        height: '1.5rem',
+        aspectRatio: '1/1',
+    },
+    logoutImg:{
         height: '1.5rem',
         aspectRatio: '1/1',
     },

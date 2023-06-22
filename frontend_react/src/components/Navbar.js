@@ -30,7 +30,7 @@ function Navbar() {
             {user && (
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <div style={styles.userBadge}>{user.username.charAt(0).toUpperCase()}</div>
-                    <button onClick={logout} style={styles.logoutButton}><img style={styles.homeImg} src = '/media/navbaricons/power-off.png'/>Logout</button>    
+                    <button onClick={logout} style={styles.logoutButton}><img style={styles.logoutImg} src = '/media/navbaricons/power-off.png'/>Logout</button>    
                 </div>
             )}
         </div>
