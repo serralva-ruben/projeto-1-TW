@@ -1,7 +1,7 @@
 #!/bin/bash
 
-osascript -e 'tell app "Terminal"
-    do script "cd backend && npm start" in window 1
-    delay 6
-    do script "cd frontend_react && npm start" in window 1
+osascript -e 'tell application "Terminal"
+    do script "cd backend && npm start"
+    delay 10
+    do script "cd frontend_react && npm start" in front window
 end tell'
