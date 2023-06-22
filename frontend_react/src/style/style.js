@@ -95,30 +95,47 @@ const styles = {
         flexDirection: 'column',
         justifyContent: 'space-between',
     },
-    summary:{
+    summaryContainer: {
+        width: '80vw',
+        height: '80vh'
+    },
+    summaryItems:{
         display: 'grid',
-        gridTemplateColumns: 'auto auto auto',
+        gridTemplateColumns: 'auto auto auto auto auto',
         overflowY: 'auto',
+        justifyContent: 'center',
     },
     summaryItemCorrect:{
-        margin: '1rem',
+        margin: '2rem',
         borderColor: 'black',
         borderStyle: 'solid',
         borderRadius: '5px',
         borderWidth: '1px',
         padding: '10px',
-        height:'auto',
-        backgroundColor:'green'
+        backgroundColor:'green',
+        aspectRatio: '1',
+        height: '2rem',
+        
     },
     summaryItemFalse:{
-        margin: '1rem',
+        margin: '2rem',
         borderColor: 'black',
         borderStyle: 'solid',
         borderRadius: '5px',
         borderWidth: '1px',
         padding: '10px',
-        height:'auto',
-        backgroundColor:'red'
+        backgroundColor:'red',
+        aspectRatio: '1',
+        height: '2rem',
+    },
+    summaryButton: {
+        marginBottom: '0',
+        backgroundColor: 'lightblue',
+        borderColor: 'black',
+        borderRadius: '5px',
+        padding: '10px',
+        textDecoration: 'none',
+
     },
     logoutButton: {
         height: '3.5rem',
@@ -162,7 +179,7 @@ const styles = {
         left: '50%',
         transform: 'translateX(-50%)',
         height: '4rem',
-    }
+    },
 }
 
 export default styles

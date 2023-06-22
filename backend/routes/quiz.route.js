@@ -4,8 +4,7 @@ const { getQuiz, getQuizzes, evaluateQuiz } = require("../controllers/quiz.contr
 const router = express.Router();
 
 router.get("/:title", getQuiz);
-router.get("/", getQuizzes)
-// router.put("/", updateUser);
-router.post("/submit", evaluateQuiz)
+router.get("/", getQuizzes);
+router.post("/submit", evaluateQuiz);
 
 module.exports = router;

@@ -69,31 +69,10 @@ const deleteUser = async (req, res, next) => {
   }
 };
 
-const addScore = async (req, res) => {
-  try {
-    const { userId, score } = req.body;
-    const user = await User.findByIdAndUpdate(
-      userId,
-      { score: score },
-      { new: true }
-    );
-
-    if (user) {
-      res.status(200).json({ message: 'Score updated successfully' });
-    } else {
-      res.status(404).json({ error: 'User not found' });
-    }
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to update score' });
-  }
-};
-
-
 module.exports = {
   getUsers,
   getUser,
   createUser,
   updateUser,
   deleteUser,
-  addScore
 }

@@ -16,9 +16,9 @@ const UserSchema = new mongoose.Schema({
     unique: true
   },
   scores: [{
-    quizId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Quiz'
+    quizTitle: {
+      type: String,
+      required: true
     },
     score: Number
   }]

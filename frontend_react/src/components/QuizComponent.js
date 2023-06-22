@@ -16,7 +16,7 @@ const QuizComponent = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [loading, setLoading] = useState(true);
     const [showSummary, setShowSummary] = useState(false);
-    const [correctedAnswers, setCorrectedAnswers] = useState(null)
+    const [correctedAnswers, setCorrectedAnswers] = useState([])
 
     useEffect(() => { fetchCurrentQuiz(); }, []);
 
@@ -42,7 +42,8 @@ const QuizComponent = () => {
                 },
                 body: JSON.stringify({
                     title: currentQuiz.title, 
-                    answers
+                    answers,
+                    username: JSON.parse(localStorage.getItem('user')).username
                 })
             });
             const data = await response.json();
