@@ -192,11 +192,6 @@ const styles = {
     },
     scoresGraph: {
         marginTop: '-4rem'
-    },
-    img: {
-        width:'20vw',
-        aspectRatio: '1',
-        objectFit: 'cover',
     }
 }
 
