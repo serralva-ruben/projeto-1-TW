@@ -2,17 +2,18 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'r
 
 const ScoresGraph = ({ scores, width, height }) => {
     return (
-      <LineChart
-        width={width}
-        height={height}
-        data={scores}
-      >
-        <CartesianGrid strokeDasharray="10 10" />
-        <XAxis dataKey="quizTitle" />
-        <YAxis />
-        <Line type="monotone" dataKey="score" stroke="#8884d8" activeDot={{ r: 8 }} />
-      </LineChart>
+        <LineChart
+            width={width}
+            height={height}
+            data={scores}
+            style={{ background: 'rgba(255, 255, 255, 0.2)' }} // Set background color to white
+        >
+            <CartesianGrid strokeDasharray="10 10" />
+            <XAxis dataKey="quizTitle" tick={{ fontSize: 12, fill: '#ffffff' }} />
+            <YAxis tick={{ fontSize: 16, fill: '#ffffff' }} />
+            <Line type="monotone" dataKey="score" stroke="#007bff" strokeWidth={2} activeDot={{ r: 8 }} />
+        </LineChart>
     );
-  };
-  
-  export default ScoresGraph;
+};
+
+export default ScoresGraph;
