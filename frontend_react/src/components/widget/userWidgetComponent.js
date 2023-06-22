@@ -9,8 +9,12 @@ const UserWidgetComponent = () => {
     const { user, setUser } = useContext(UserContext);
     const [time, setTime] = useState(new Date().toLocaleTimeString());
     const [image, setImage] = useState('');
+    const [windowSize, setWindowSize] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight,
+    });
 
-    useEffect(()=>{
+    useEffect(() => {
         const fetchDataAndUpdateLocalStorage = async () => {
             try {
                 const token = localStorage.getItem('jwt');
@@ -49,8 +53,21 @@ const UserWidgetComponent = () => {
                 setImage("/media/widgetBackgrounds/night.jpg");
             }
         }, 1000);
-        return () => clearInterval(timer);
-    },[]);
+
+        const handleResize = () => {
+            setWindowSize({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            clearInterval(timer);
+        };
+    }, []);
 
     const userWidgetStyle = {
         ...styles.userWidget,
@@ -66,6 +83,14 @@ const UserWidgetComponent = () => {
         flex: '1',
     };
 
+    const scoreGraphStyle = {
+        ...styles.scoresGraph,
+        marginTop: '1rem',
+    };
+
+    const graphWidth = windowSize.width < 768 ? windowSize.width * 0.8 : 300;
+    const graphHeight = windowSize.width < 768 ? graphWidth * 0.5 : 150;
+
     return (
         <div style={userWidgetStyle}>
             <div style={styles.userWidgetContainer}>
@@ -74,11 +99,8 @@ const UserWidgetComponent = () => {
                 </div>
                 <div style={timeStyle}>{time}</div>
             </div>
-            <div style={styles.scoresGraph}>
-                    {user && <ScoresGraph scores={user.scores} width={graphWidth} height={graphHeight} />}
-                <div style={styles.scoresGraph}>
-                    {user && (<ScoresGraph scores={user.scores} width={graphWidth} height={100}/>)}
-                </div>
+            <div style={scoreGraphStyle}>
+                {user && <ScoresGraph scores={user.scores} width={graphWidth} height={graphHeight} />}
             </div>
         </div>
     );
