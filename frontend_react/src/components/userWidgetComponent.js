@@ -23,13 +23,10 @@ const UserWidgetComponent = () => {
             setTime(currentTime.toLocaleTimeString());
             const currentHour = currentTime.getHours();
             if (currentHour >= 5 && currentHour < 12) {
-                // Morning image
                 setImage("/media/widgetBackgrounds/morning.jpg");
             } else if (currentHour >= 12 && currentHour < 18) {
-                // Afternoon image
                 setImage("/media/widgetBackgrounds/afternoon.jpg");
             } else {
-                // Evening/Night image
                 setImage("/media/widgetBackgrounds/night.jpg");
             }
         }, 1000);

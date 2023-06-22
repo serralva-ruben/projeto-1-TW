@@ -32,7 +32,6 @@ const styles = {
     userBadge: {
         height: '4rem',
         aspectRatio: '1/1',
-        marginRight: '1vw',
         backgroundColor: getRandomColor(),
         color: 'white',
         display: 'flex',
@@ -54,7 +53,7 @@ const styles = {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: '0 20px',
+        padding: '5px 10px',
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
     },
     list: {
@@ -120,6 +119,42 @@ const styles = {
         padding: '10px',
         height:'auto',
         backgroundColor:'red'
+    },
+    logoutButton: {
+        height: '4rem',
+        aspectRatio: '1/2',
+        backgroundColor: 'red',
+        marginLeft:'1rem',
+        color: 'white',
+        display: 'flex',
+        flexDirection:'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: '0.2px',
+        borderRadius: '2px',
+        textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+        boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
+    },
+    homeButton: {
+        height: '2rem',
+        marginLeft: '1rem',
+        borderRadius: '5px',
+        fontSize: '0.5rem',
+        padding: '0.5rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        textDecoration: 'none',
+        backgroundColor: 'lightblue',
+        borderWidth: '1px',
+        borderColor: 'black',
+        borderStyle: 'solid',
+        color: 'blue'
+
+    },
+    homeImg: {
+        height: '1.5rem',
+        aspectRatio: '1/1',
     }
 }
 
