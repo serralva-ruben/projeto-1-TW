@@ -52,12 +52,6 @@ const UserWidgetComponent = () => {
         return () => clearInterval(timer);
     },[]);
 
-        return () => {
-            window.removeEventListener('resize', handleResize);
-            clearInterval(timer);
-        };
-    }, []);
-
     const userWidgetStyle = {
         ...styles.userWidget,
         backgroundImage: `url(${image})`,
@@ -72,10 +66,6 @@ const UserWidgetComponent = () => {
         flex: '1',
     };
 
-    const scoreGraph = {
-        ...styles.scoresGraph,
-    };
-
     return (
         <div style={userWidgetStyle}>
             <div style={styles.userWidgetContainer}>
@@ -84,10 +74,11 @@ const UserWidgetComponent = () => {
                 </div>
                 <div style={timeStyle}>{time}</div>
             </div>
-            <div style={scoreGraphStyle}>
-                {user && <ScoresGraph scores={user.scores} width={graphWidth} height={graphHeight} />}
             <div style={styles.scoresGraph}>
-                {user && (<ScoresGraph scores={user.scores} width={graphWidth} height={100}/>)}
+                    {user && <ScoresGraph scores={user.scores} width={graphWidth} height={graphHeight} />}
+                <div style={styles.scoresGraph}>
+                    {user && (<ScoresGraph scores={user.scores} width={graphWidth} height={100}/>)}
+                </div>
             </div>
         </div>
     );
