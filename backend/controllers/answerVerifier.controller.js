@@ -5,19 +5,22 @@ const verifyAnswers = async (req, res) => {
     const { title, answers } = req.body;
 
     const solution = await QuizSolution.findOne({ quizTitle: title });
-    console.log(solution)
     if (!solution) {
       return res.status(404).json({ message: "No solution found for this quiz title" });
     }
-    console.log(solution)
     const correctAnswers = solution.solutions;
-    console.log(correctAnswers)
-    const result = correctAnswers.map((answer, index) => {
+    const result = correctAnswers.map((sol, index) => {
+      if (Array.isArray(sol) && Array.isArray(answers[index])) {
+          return {
+              question: index + 1,
+              correct: JSON.stringify(sol.sort()) === JSON.stringify(answers[index].sort())
+          };
+      }
       return {
-        question: index + 1,
-        correct: answer === answers[index]
+          question: index + 1,
+          correct: sol === answers[index]
       };
-    });
+  });
 
     res.json(result);
 
