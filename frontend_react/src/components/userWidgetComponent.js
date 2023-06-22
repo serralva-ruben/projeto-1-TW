@@ -7,6 +7,7 @@ const UserWidgetComponent = () => {
     const navigate = useNavigate();
     const { user, setUser } = useContext(UserContext);
     const [time, setTime] = useState(new Date().toLocaleTimeString());
+    const [image, setImage] = useState('');
 
     useEffect(()=>{
         const storedUser = localStorage.getItem('user');
@@ -18,17 +19,39 @@ const UserWidgetComponent = () => {
         }
 
         const timer = setInterval(() => {
-            setTime(new Date().toLocaleTimeString());
+            const currentTime = new Date();
+            setTime(currentTime.toLocaleTimeString());
+            const currentHour = currentTime.getHours();
+            if (currentHour >= 5 && currentHour < 12) {
+                // Morning image
+                setImage("/media/widgetBackgrounds/morning.jpg");
+            } else if (currentHour >= 12 && currentHour < 18) {
+                // Afternoon image
+                setImage("/media/widgetBackgrounds/afternoon.jpg");
+            } else {
+                // Evening/Night image
+                setImage("/media/widgetBackgrounds/night.jpg");
+            }
         }, 1000);
         return () => clearInterval(timer);
-      },[]);
+    },[]);
+
+    
+    const userWidgetStyle = {
+        ...styles.userWidget,
+        backgroundImage: `url(${image})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+    };
 
     return (
-        <div style={styles.userWidget}>
+        <div style={userWidgetStyle}>
             <div>Welcome back {user ? user.username: 'undefined'}</div>
             <div>{time}</div>
         </div>
     );
 }
+
 
 export default UserWidgetComponent;

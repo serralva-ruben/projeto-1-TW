@@ -19,20 +19,9 @@ const styles = {
         borderColor: 'black',
         borderStyle: 'solid',
         padding: '5vw',
-        margin: '2vh'
+        margin: '1rem',
+        overflowY: 'auto',
     },
-    img: {
-        width: '20vw',
-        height: '20vw',
-        objectFit: 'cover',
-        borderRadius: '15%',
-        borderColor: 'Black',
-        borderWidth: '3px',
-        borderStyle:'solid',
-        marginLeft: '30vw',
-        marginRight: '2vw'
-    },
-    
     menuText: {
         textDecoration: 'none',
         color: '#212121',
@@ -90,19 +79,47 @@ const styles = {
         boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.2)",
     },
     userWidget: {
-        color: '#000000',
+        color: 'white',
+        padding: '1rem',
         textDecoration: 'none',
         fontWeight: 'bold',
         fontFamily: 'Arial, sans-serif',
+        fontSize:'1.8rem',
+        textShadow: '2px 2px 4px #000000', 
         backgroundColor: '#7d93e8',
         border: '#282c34 solid 2px',
         height: '10rem',
         margin: '1rem',
         marginInline: '2rem',
-        borderRadius: '10px',
+        borderRadius: '30px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
+    },
+    summary:{
+        display: 'grid',
+        gridTemplateColumns: 'auto auto auto',
+        overflowY: 'auto',
+    },
+    summaryItemCorrect:{
+        margin: '1rem',
+        borderColor: 'black',
+        borderStyle: 'solid',
+        borderRadius: '5px',
+        borderWidth: '1px',
+        padding: '10px',
+        height:'auto',
+        backgroundColor:'green'
+    },
+    summaryItemFalse:{
+        margin: '1rem',
+        borderColor: 'black',
+        borderStyle: 'solid',
+        borderRadius: '5px',
+        borderWidth: '1px',
+        padding: '10px',
+        height:'auto',
+        backgroundColor:'red'
     }
 }
 

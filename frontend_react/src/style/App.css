@@ -94,13 +94,13 @@ html {
 }
 
 .question img{
-  width: 20vw;
-    height: 20vw;
-    object-fit: cover;
-    border-radius: 15%;
-    border-color: black;
-    border-width: 3px;
-    border-style: solid;
+  object-fit: contain;
+  border-radius: 15%;
+  border-color: black;
+  border-width: 3px;
+  border-style: solid;
+  width: 25%;
+  height: auto;
 }
 
 .question {
@@ -116,6 +116,7 @@ html {
 
 
 #answersIMGContainer {
+
   display: flex;
   justify-content: space-between;
   align-items: center;

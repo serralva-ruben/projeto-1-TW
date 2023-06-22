@@ -1,11 +1,12 @@
 import React from 'react';
+import styles from '../style/style';
 
 const SummaryComponent = ({correctedAnswers}) => {
   return (
-    <div>
+    <div style={styles.summary}>
       {correctedAnswers.map((question)=>(
-        <div key={question.question}>
-          {question.question.toString()+" "+question.correct}
+        <div style={question.correct ? styles.summaryItemCorrect : styles.summaryItemFalse} key={question.question}>
+          {question.question}
         </div>
       ))}
     </div>
