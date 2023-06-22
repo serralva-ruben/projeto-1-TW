@@ -30,7 +30,7 @@ const styles = {
         textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
     },
     userBadge: {
-        height: '4rem',
+        height: '3rem',
         aspectRatio: '1/1',
         backgroundColor: getRandomColor(),
         color: 'white',
@@ -121,7 +121,7 @@ const styles = {
         backgroundColor:'red'
     },
     logoutButton: {
-        height: '4rem',
+        height: '3.5rem',
         aspectRatio: '1/2',
         backgroundColor: 'red',
         marginLeft:'1rem',
@@ -137,7 +137,7 @@ const styles = {
     },
     homeButton: {
         height: '2rem',
-        marginLeft: '1rem',
+        marginLeft: '0.2rem',
         borderRadius: '5px',
         fontSize: '0.5rem',
         padding: '0.5rem',
@@ -155,6 +155,12 @@ const styles = {
     homeImg: {
         height: '1.5rem',
         aspectRatio: '1/1',
+    },
+    logo: {
+        position: 'absolute',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        height: '4rem',
     }
 }
 

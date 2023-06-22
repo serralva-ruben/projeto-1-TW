@@ -23,10 +23,9 @@ function Navbar() {
     return (
         <div style={styles.navBarContainer}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
+                <Link to="/" style={styles.homeButton}><img style={styles.homeImg} src = '/media/navbaricons/home.png'/>Home</Link>
                 <img src= '/media/navbaricons/UAC_logo.png' alt="UAC Logo" style={styles.logo} /> {/* University logo */}
                 
-                <Link to="/" style={styles.homeButton}><img style={styles.homeImg} src = '/media/navbaricons/home.png'/>Home</Link>
-
             </div>
             {user && (
                 <div style={{ display: 'flex', alignItems: 'center' }}>
