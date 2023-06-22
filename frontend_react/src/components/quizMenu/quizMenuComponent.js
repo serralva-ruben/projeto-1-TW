@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar';
 import style from '../../style/style'
-import UserWidgetComponent from '../userWidgetComponent'
+import UserWidgetComponent from '../widget/userWidgetComponent'
 
 const QuizMenuComponent = () => {
     const [quizzes, setQuizzes] = useState([]);

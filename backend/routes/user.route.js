@@ -3,7 +3,7 @@ const { deleteUser, getUser, updateUser, addScore } = require("../controllers/us
 
 const router = express.Router();
 
-router.get("/:id", getUser);
+router.get("/:username", getUser);
 router.put("/", updateUser);
 router.delete("/:id", deleteUser);
 

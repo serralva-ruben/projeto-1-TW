@@ -34,6 +34,7 @@ const QuizComponent = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const usernameLocalStorage = JSON.parse(localStorage.getItem('user')).username;
         try {
             const response = await fetch('http://localhost:8020/api/verify', { 
                 method: 'POST',
@@ -43,13 +44,16 @@ const QuizComponent = () => {
                 body: JSON.stringify({
                     title: currentQuiz.title, 
                     answers,
-                    username: JSON.parse(localStorage.getItem('user')).username
+                    username: usernameLocalStorage
                 })
             });
             const data = await response.json();
             console.log(data)
             setCorrectedAnswers(data)
             setShowSummary(true);
+            const userResponse = await fetch(`http://localhost:8020/api/user/${usernameLocalStorage}`);
+            const userData = await userResponse.json();
+            localStorage.setItem('user', JSON.stringify(userData));
         } catch (err) {
             console.error('Error:', err);
         }

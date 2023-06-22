@@ -186,6 +186,13 @@ const styles = {
         transform: 'translateX(-50%)',
         height: '4rem',
     },
+    userWidgetContainer: {
+        display: 'block',
+        justifyContent: 'space-between'
+    },
+    scoresGraph: {
+        marginTop: '-4rem'
+    }
 }
 
 export default styles

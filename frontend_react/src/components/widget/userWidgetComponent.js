@@ -1,7 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { useNavigate } from "react-router-dom"
-import styles from '../style/style';
-import UserContext from '../UserContext';
+import styles from '../../style/style';
+import UserContext from '../../UserContext';
+import ScoresGraph from './ScoreGraph';
 
 const UserWidgetComponent = () => { 
     const navigate = useNavigate();
@@ -10,9 +11,19 @@ const UserWidgetComponent = () => {
     const [image, setImage] = useState('');
 
     useEffect(()=>{
+        const fetchDataAndUpdateLocalStorage = async () => {
+            try {
+                const usernameLocalStorage = JSON.parse(localStorage.getItem('user')).username;
+                const userResponse = await fetch(`http://localhost:8020/api/users/${usernameLocalStorage}`);
+                const userData = await userResponse.json();
+                setUser(userData)
+                localStorage.setItem('user', JSON.stringify(userData));
+            } catch (error) {console.error(error);}
+        };
+        fetchDataAndUpdateLocalStorage();
         const storedUser = localStorage.getItem('user');
-        if(storedUser) setUser(JSON.parse(storedUser))
-        else {
+        if(!storedUser)
+        {
             localStorage.removeItem('jwt');
             localStorage.removeItem('user')
             navigate('/Login')
@@ -42,10 +53,20 @@ const UserWidgetComponent = () => {
         backgroundRepeat: 'no-repeat',
     };
 
+    const scoreGraph = {
+        ...styles.scoresGraph,
+    };
+
     return (
         <div style={userWidgetStyle}>
-            <div>Welcome back {user ? user.username: 'undefined'}</div>
-            <div>{time}</div>
+            <div style={styles.userWidgetContainer}>
+                <div>Welcome back {user ? user.username: 'undefined'}</div>
+                <div>{time}</div>
+            </div>
+            <div style={scoreGraph}>
+                {user && (<ScoresGraph scores={user.scores} width={300} height={150}/>)}
+            </div>
+            
         </div>
     );
 }
