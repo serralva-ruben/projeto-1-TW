@@ -1,10 +1,10 @@
 const express = require("express");
 const { getQuiz, getQuizzes, evaluateQuiz } = require("../controllers/quiz.controller.js");
-
+const authenticate = require('../middleware/authenticate')
 const router = express.Router();
 
-router.get("/:title", getQuiz);
-router.get("/", getQuizzes);
-router.post("/submit", evaluateQuiz);
+router.get("/:title",authenticate, getQuiz);
+router.get("/", authenticate,getQuizzes);
+router.post("/submit", authenticate,evaluateQuiz);
 
 module.exports = router;

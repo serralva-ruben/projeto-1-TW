@@ -21,8 +21,13 @@ const QuizComponent = () => {
     useEffect(() => { fetchCurrentQuiz(); }, []);
 
     const fetchCurrentQuiz = async () => {
+        const token = localStorage.getItem('jwt')
         setLoading(true);
-        const response = await fetch(`http://localhost:8020/api/quiz/${encodeURIComponent(quizTitle)}`);
+        const response = await fetch(`http://localhost:8020/api/quiz/${encodeURIComponent(quizTitle)}`,{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
         const data = await response.json();
         setCurrentQuiz(data);
         setLoading(false);
@@ -36,10 +41,12 @@ const QuizComponent = () => {
         event.preventDefault();
         const usernameLocalStorage = JSON.parse(localStorage.getItem('user')).username;
         try {
+            const token = localStorage.getItem('jwt')
             const response = await fetch('http://localhost:8020/api/verify', { 
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     title: currentQuiz.title, 
@@ -51,7 +58,11 @@ const QuizComponent = () => {
             console.log(data)
             setCorrectedAnswers(data)
             setShowSummary(true);
-            const userResponse = await fetch(`http://localhost:8020/api/user/${usernameLocalStorage}`);
+            const userResponse = await fetch(`http://localhost:8020/api/user/${usernameLocalStorage}`,{
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             const userData = await userResponse.json();
             localStorage.setItem('user', JSON.stringify(userData));
         } catch (err) {

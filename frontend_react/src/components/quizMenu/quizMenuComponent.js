@@ -12,7 +12,12 @@ const QuizMenuComponent = () => {
     }, []);
 
     const fetchQuizzes = async () => {
-        const response = await fetch('http://localhost:8020/api/quiz/');
+        const token = localStorage.getItem('jwt')
+        const response = await fetch('http://localhost:8020/api/quiz/',{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
         const data = await response.json();
         setQuizzes(data);
     };

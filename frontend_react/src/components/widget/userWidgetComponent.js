@@ -13,8 +13,13 @@ const UserWidgetComponent = () => {
     useEffect(()=>{
         const fetchDataAndUpdateLocalStorage = async () => {
             try {
+                const token = localStorage.getItem('jwt')
                 const usernameLocalStorage = JSON.parse(localStorage.getItem('user')).username;
-                const userResponse = await fetch(`http://localhost:8020/api/users/${usernameLocalStorage}`);
+                const userResponse = await fetch(`http://localhost:8020/api/users/${usernameLocalStorage}`,{
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
                 const userData = await userResponse.json();
                 setUser(userData)
                 localStorage.setItem('user', JSON.stringify(userData));
