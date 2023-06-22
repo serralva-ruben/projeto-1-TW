@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from '../../style/style.js'
 import SummaryComponent from '../QuizSummaryComponent.js';
 
-const CheckboxComponent = ({ question, imgPath, onAnswerChange, showSummary, correctedAnswers}) => {
+const CheckboxComponent = ({ question, imgPath, onAnswerChange, showSummary, correctedAnswers }) => {
     const [selected, setSelected] = useState([]);
 
     const handleCheckboxChange = (e) => {
@@ -19,29 +19,31 @@ const CheckboxComponent = ({ question, imgPath, onAnswerChange, showSummary, cor
     return (
         <div className="question" style={styles.question}>
             {!showSummary && <>
-            <h2>{question.questionText}</h2>
-            <div id='inputDiv'>
-            {question.answerOptions.map((option, index) => (
-                <div key={index}>
-                    <label >
-                        <input
-                            type="checkbox"
-                            value={option.answerText}
-                            checked={selected.includes(option.answerText)}
-                            onChange={handleCheckboxChange}
-                        />
-                        {option.answerText}                        
-                    </label>
+                <h2>{question.questionText}</h2>
+                <div id='answersIMGContainer'>
+                    <div id='inputDiv'>
+                        {question.answerOptions.map((option, index) => (
+                            <div key={index}>
+                                <label >
+                                    <input
+                                        type="checkbox"
+                                        value={option.answerText}
+                                        checked={selected.includes(option.answerText)}
+                                        onChange={handleCheckboxChange}
+                                    />
+                                    {option.answerText}
+                                </label>
+                            </div>
+                        ))}
+                    </div>
+                    <img src={imgPath} style={styles.img} />
                 </div>
-            ))}
-            </div>
-            <img src={imgPath} style={styles.img} />
             </>}
             {/*Render the show summary component */}
             {showSummary && <SummaryComponent
                 correctedAnswers={correctedAnswers}
             />}
-        </div> 
+        </div>
     );
 };
 

@@ -13,13 +13,17 @@ const SelectComponent = ({ question, imgPath, onAnswerChange, showSummary, corre
 
     return (
         <div className="question" style={styles.question}>
-            {!showSummary&& <><h2>{question.questionText}</h2>
-            <select value={value} onChange={handleChange}>
-                {question.answerOptions.map((option, index) => (
-                    <option key={index} value={option.answerText}>{option.answerText}</option>
-                ))}
-            </select>
-            <img src={imgPath} style={styles.img} className="question-image"/></>}
+            {!showSummary && <>
+                <h2>{question.questionText}</h2>
+                <div id='answersIMGContainer'>
+                    <select value={value} onChange={handleChange}>
+                        {question.answerOptions.map((option, index) => (
+                            <option key={index} value={option.answerText}>{option.answerText}</option>
+                        ))}
+                    </select>
+                    <img src={imgPath} style={styles.img} className="question-image" />
+                </div>
+            </>}
             {/*Render the show summary component */}
             {showSummary && <SummaryComponent
                 correctedAnswers={correctedAnswers}

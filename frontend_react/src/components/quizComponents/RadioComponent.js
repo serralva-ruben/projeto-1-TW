@@ -12,16 +12,20 @@ const RadioComponent = ({ question, imgPath, onAnswerChange, showSummary, correc
 
     return (
         <div className="question" style={styles.question}>
-            {!showSummary && <><h2>{question.questionText}</h2>
-                <div id='inputDiv'>
-                    {question.answerOptions.map((option, index) => (
-                        <label key={index}>
-                            <input type="radio" name={question.questionText} value={option.answerText} checked={value === option.answerText} onChange={handleChange} />
-                            {option.answerText}
-                        </label>
-                    ))}
+            {!showSummary && <>
+                <h2>{question.questionText}</h2>
+                <div id='answersIMGContainer'>
+                    <div id='inputDiv'>
+                        {question.answerOptions.map((option, index) => (
+                            <label key={index}>
+                                <input type="radio" name={question.questionText} value={option.answerText} checked={value === option.answerText} onChange={handleChange} />
+                                {option.answerText}
+                            </label>
+                        ))}
+                    </div>
+                    <img src={imgPath} style={styles.img} />
                 </div>
-                <img src={imgPath} style={styles.img} /></>}
+            </>}
             {/*Render the show summary component */}
             {showSummary && <SummaryComponent
                 correctedAnswers={correctedAnswers}

@@ -89,25 +89,36 @@ html {
 } */
 
 #inputDiv{
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
-  width: 50%;
-  margin: 10px;
-  justify-content: center;
 }
 
 .question img{
-  position: absolute;
-  right: 0px;
-  width: 300px;
-  border: 3px solid #73AD21;
-  padding: 10px;
-
+  width: 20vw;
+    height: 20vw;
+    object-fit: cover;
+    border-radius: 15%;
+    border-color: black;
+    border-width: 3px;
+    border-style: solid;
 }
 
 .question {
-  background-color: #d4ebc4;
-  height: 50vh;
-  position: relative;
-  overflow: hidden;  
+  border-color: black;
+  border-style: solid;
+  padding: 5vw;
+  margin: 2vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+#answersIMGContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 5rem;
 }
