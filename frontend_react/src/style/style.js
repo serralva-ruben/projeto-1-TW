@@ -191,7 +191,7 @@ const styles = {
         justifyContent: 'space-between'
     },
     scoresGraph: {
-        marginTop: '-4rem'
+        marginTop: '0.5rem'
     },
     img: {
         width:'20vw',

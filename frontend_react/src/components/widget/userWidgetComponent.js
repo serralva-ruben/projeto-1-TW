@@ -9,7 +9,8 @@ const UserWidgetComponent = () => {
     const { user, setUser } = useContext(UserContext);
     const [time, setTime] = useState(new Date().toLocaleTimeString());
     const [image, setImage] = useState('');
-
+    const [graphWidth, setGraphWidth] = useState(window.innerWidth * 0.7);
+    
     useEffect(()=>{
         const fetchDataAndUpdateLocalStorage = async () => {
             try {
@@ -46,7 +47,15 @@ const UserWidgetComponent = () => {
                 setImage("/media/widgetBackgrounds/night.jpg");
             }
         }, 1000);
-        return () => clearInterval(timer);
+
+        window.addEventListener('resize', handleResize);
+
+        function handleResize() {setGraphWidth(window.innerWidth * 0.7)}
+        
+        return () => {
+            window.removeEventListener('resize', handleResize)
+            clearInterval(timer)
+        };
     },[]);
 
     
@@ -58,18 +67,14 @@ const UserWidgetComponent = () => {
         backgroundRepeat: 'no-repeat',
     };
 
-    const scoreGraph = {
-        ...styles.scoresGraph,
-    };
-
     return (
         <div style={userWidgetStyle}>
             <div style={styles.userWidgetContainer}>
                 <div>Welcome back {user ? user.username: 'undefined'}</div>
                 <div>{time}</div>
             </div>
-            <div style={scoreGraph}>
-                {user && (<ScoresGraph scores={user.scores} width={300} height={150}/>)}
+            <div style={styles.scoresGraph}>
+                {user && (<ScoresGraph scores={user.scores} width={graphWidth} height={100}/>)}
             </div>
             
         </div>
