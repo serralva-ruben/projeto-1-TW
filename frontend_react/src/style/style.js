@@ -149,8 +149,9 @@ const styles = {
         borderWidth: '1px',
         borderColor: 'black',
         borderStyle: 'solid',
-        color: 'blue'
-
+        color: 'blue',
+        textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+        boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
     },
     homeImg: {
         height: '1.5rem',
