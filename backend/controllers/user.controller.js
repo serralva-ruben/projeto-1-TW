@@ -12,9 +12,11 @@ const getUsers = async (req, res) => {
 
 
 const getUser = async (req, res, next) => {
-  const user = await User.findById(req.params.id);
-
-  res.status(200).send(user);
+  try {
+    const user = await User.findOne({ username: req.params.username });
+    if (!user) {return res.status(404).json({ message: "User not found" });}
+    res.status(200).json(user);
+  } catch (err) {res.status(500).json({ message: err.message });}
 };
 
 
@@ -69,31 +71,10 @@ const deleteUser = async (req, res, next) => {
   }
 };
 
-const addScore = async (req, res) => {
-  try {
-    const { userId, score } = req.body;
-    const user = await User.findByIdAndUpdate(
-      userId,
-      { score: score },
-      { new: true }
-    );
-
-    if (user) {
-      res.status(200).json({ message: 'Score updated successfully' });
-    } else {
-      res.status(404).json({ error: 'User not found' });
-    }
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to update score' });
-  }
-};
-
-
 module.exports = {
   getUsers,
   getUser,
   createUser,
   updateUser,
   deleteUser,
-  addScore
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar';
 import style from '../../style/style'
-import UserWidgetComponent from '../userWidgetComponent'
+import UserWidgetComponent from '../widget/userWidgetComponent'
 
 const QuizMenuComponent = () => {
     const [quizzes, setQuizzes] = useState([]);
@@ -12,7 +12,12 @@ const QuizMenuComponent = () => {
     }, []);
 
     const fetchQuizzes = async () => {
-        const response = await fetch('http://localhost:8020/api/quiz/');
+        const token = localStorage.getItem('jwt')
+        const response = await fetch('http://localhost:8020/api/quiz/',{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
         const data = await response.json();
         setQuizzes(data);
     };

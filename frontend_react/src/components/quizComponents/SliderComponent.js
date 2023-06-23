@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styles from '../../style/style.js'
+import SummaryComponent from '../QuizSummaryComponent.js';
 
-const SliderComponent = ({ question, imgPath, onAnswerChange }) => {
+const SliderComponent = ({ question, imgPath, onAnswerChange, showSummary, correctedAnswers }) => {
     const [value, setValue] = useState(0);
 
     const handleChange = (e) => {
@@ -11,16 +12,23 @@ const SliderComponent = ({ question, imgPath, onAnswerChange }) => {
 
     return (
         <div className="question" style={styles.question}>
-            <h2>{question.questionText}</h2>
-            <input
-                type="range"
-                min="0"
-                max="9"
-                value={value}
-                onChange={handleChange}
-            />
-            <img src={imgPath} style={styles.img}/>
-            <div>{value}</div>
+            {!showSummary && <>
+                <h2>{question.questionText}</h2>
+                <div id='answersIMGContainer'>
+                <input
+                    type="range"
+                    min="0"
+                    max="9"
+                    value={value}
+                    onChange={handleChange}
+                />
+                <div>{value}</div>
+                <img src={imgPath} style={styles.img} />
+                </div></>}
+            {/*Render the show summary component */}
+            {showSummary && <SummaryComponent
+                correctedAnswers={correctedAnswers}
+            />}
         </div>
     )
 }

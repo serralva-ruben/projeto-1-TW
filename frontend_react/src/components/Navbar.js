@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UserContext from '../UserContext';
 import styles from '../style/style';
-import UACLogo from './UAC_logo.png'; // Import the university logo
+
 
 function Navbar() {
     const navigate = useNavigate();
@@ -23,19 +23,14 @@ function Navbar() {
     return (
         <div style={styles.navBarContainer}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-                <img src={UACLogo} alt="UAC Logo" style={styles.logo} /> {/* University logo */}
-                <ul style={styles.list}>
-                    <Link to="/" style={styles.Typography}>
-                        Home
-                    </Link>
-                </ul>
+                <Link to="/" style={styles.homeButton}><img style={styles.homeImg} src = '/media/navbaricons/home.png'/>Home</Link>
+                <img src= '/media/navbaricons/UAC_logo.png' alt="UAC Logo" style={styles.logo} /> {/* University logo */}
+                
             </div>
             {user && (
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <div style={styles.userBadge}>{user.username.charAt(0).toUpperCase()}</div>
-                    <button onClick={logout} style={styles.Typography}>
-                        Logout
-                    </button>
+                    <button onClick={logout} style={styles.logoutButton}><img style={styles.logoutImg} src = '/media/navbaricons/power-off.png'/>Logout</button>    
                 </div>
             )}
         </div>

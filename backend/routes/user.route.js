@@ -1,11 +1,10 @@
 const express = require("express");
-const { deleteUser, getUser, updateUser } = require("../controllers/user.controller.js");
-
+const { deleteUser, getUser, updateUser, addScore } = require("../controllers/user.controller.js");
+const authenticate = require('../middleware/authenticate')
 const router = express.Router();
 
-router.get("/:id", getUser);
-// router.post("/score", addScore);
-router.put("/", updateUser)
-router.delete("/:id", deleteUser);
+router.get("/:username",authenticate ,getUser);
+router.put("/",authenticate ,updateUser);
+router.delete("/:id",authenticate ,deleteUser);
 
 module.exports = router;

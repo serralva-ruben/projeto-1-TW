@@ -15,12 +15,19 @@ const QuizComponent = () => {
     const [answers, setAnswers] = useState({});
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [showSummary, setShowSummary] = useState(false);
+    const [correctedAnswers, setCorrectedAnswers] = useState([])
 
     useEffect(() => { fetchCurrentQuiz(); }, []);
 
     const fetchCurrentQuiz = async () => {
+        const token = localStorage.getItem('jwt')
         setLoading(true);
-        const response = await fetch(`http://localhost:8020/api/quiz/${encodeURIComponent(quizTitle)}`);
+        const response = await fetch(`http://localhost:8020/api/quiz/${encodeURIComponent(quizTitle)}`,{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
         const data = await response.json();
         setCurrentQuiz(data);
         setLoading(false);
@@ -32,23 +39,32 @@ const QuizComponent = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const usernameLocalStorage = JSON.parse(localStorage.getItem('user')).username;
         try {
+            const token = localStorage.getItem('jwt')
             const response = await fetch('http://localhost:8020/api/verify', { 
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     title: currentQuiz.title, 
-                    answers
-                }) 
+                    answers,
+                    username: usernameLocalStorage
+                })
             });
             const data = await response.json();
-            
-            // Handle the response data here
-            // This could be displaying the results, redirecting the user, etc.
-    
-            console.log(data);
+            console.log(data)
+            setCorrectedAnswers(data)
+            setShowSummary(true);
+            const userResponse = await fetch(`http://localhost:8020/api/user/${usernameLocalStorage}`,{
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            const userData = await userResponse.json();
+            localStorage.setItem('user', JSON.stringify(userData));
         } catch (err) {
             console.error('Error:', err);
         }
@@ -74,6 +90,7 @@ const QuizComponent = () => {
                 <Navbar />
                 <h1>{currentQuiz.title}</h1>
                 <form onSubmit={handleSubmit}>
+                    {/*Render the correct quiz component */}
                     {currentQuiz.questions.map((question, questionIndex) => {
                         const Component = componentMapping[question.questionType];
                         return (
@@ -82,21 +99,26 @@ const QuizComponent = () => {
                                     question={question}
                                     imgPath={`/media/covers/${quizTitle}CoverImgs/q${questionIndex + 1}.jpg`}
                                     onAnswerChange={(answer) => updateAnswer(questionIndex, answer)}
+                                    showSummary={showSummary}
+                                    correctedAnswers = {correctedAnswers}
                                 />
                             </div>
                         );
                     })}
-                    <button type="button" onClick={handleBack} disabled={currentQuestionIndex === 0}
-                        className="quiz-button"
-                    >Back</button>
-                    <button type="button" onClick={handleNext} disabled={currentQuestionIndex === currentQuiz.questions.length - 1}
-                        className="quiz-button"
-                    >Next</button>
-                    <button type="submit"
-                        className="quiz-button"
-                    >Submit</button>
+                    {!showSummary && <>
+                        <button type="button" onClick={handleBack} disabled={currentQuestionIndex === 0}
+                            className="quiz-button"
+                        >Back</button>
+                        <button type="button" onClick={handleNext} disabled={currentQuestionIndex === currentQuiz.questions.length - 1}
+                            className="quiz-button"
+                        >Next</button>
+                        <button type="submit"
+                            className="quiz-button"
+                        >Submit</button>
+                    </>}
                 </form>
-                {currentQuiz.questions.map((question, questionIndex)=>{
+                {/*Render the navigation menu on the bottom */}
+                {!showSummary && currentQuiz.questions.map((question, questionIndex)=>{
                     return(<button key={questionIndex} 
                     style={{ 
                         backgroundColor: answers[questionIndex] ? 'green' : 'grey',
