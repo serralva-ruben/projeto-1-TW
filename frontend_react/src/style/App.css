@@ -87,14 +87,13 @@ html {
 .imagine{
   display: none;
 } */
-
-#inputDiv{
+#inputDiv {
   display: inline-flex;
   flex-direction: column;
   background-color: red;
-  width: 50%;
+  width: 50%; 
   margin: 10px;
-  justify-content: center;
+  order: -1; 
 }
 
 .question img{
@@ -109,6 +108,7 @@ html {
 .question {
   background-color: #d4ebc4;
   height: 50vh;
-  position: relative;
+  position: relative;  
   overflow: hidden;  
+  display: flex; 
 }
