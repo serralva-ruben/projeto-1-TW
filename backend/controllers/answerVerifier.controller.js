@@ -12,7 +12,6 @@ const verifyAnswers = async (req, res) => {
     
     const correctAnswers = solution.solutions;
 
-
     //calculate score
     const result = correctAnswers.map((sol, index) => {
       let answer = answers[index]

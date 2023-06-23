@@ -5,6 +5,5 @@ const router = express.Router();
 
 router.get("/:title",authenticate, getQuiz);
 router.get("/", authenticate,getQuizzes);
-router.post("/submit", authenticate,evaluateQuiz);
 
 module.exports = router;
