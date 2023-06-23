@@ -52,7 +52,7 @@ const QuizComponent = () => {
                     title: currentQuiz.title, 
                     answers,
                     username: usernameLocalStorage
-                })
+                }) 
             });
             const data = await response.json();
             console.log(data)
