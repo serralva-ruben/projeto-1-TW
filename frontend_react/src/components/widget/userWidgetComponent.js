@@ -1,44 +1,38 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import React, {useContext, useEffect, useState} from 'react';
+import { useNavigate } from "react-router-dom"
 import styles from '../../style/style';
 import UserContext from '../../UserContext';
 import ScoresGraph from './ScoreGraph';
 
-const UserWidgetComponent = () => {
+const UserWidgetComponent = () => { 
     const navigate = useNavigate();
     const { user, setUser } = useContext(UserContext);
     const [time, setTime] = useState(new Date().toLocaleTimeString());
     const [image, setImage] = useState('');
-    const [windowSize, setWindowSize] = useState({
-        width: window.innerWidth,
-        height: window.innerHeight,
-    });
-
-    useEffect(() => {
+    const [graphWidth, setGraphWidth] = useState(window.innerWidth * 0.3);
+    
+    useEffect(()=>{
         const fetchDataAndUpdateLocalStorage = async () => {
             try {
-                const token = localStorage.getItem('jwt');
+                const token = localStorage.getItem('jwt')
                 const usernameLocalStorage = JSON.parse(localStorage.getItem('user')).username;
-                const userResponse = await fetch(`http://localhost:8020/api/users/${usernameLocalStorage}`, {
+                const userResponse = await fetch(`http://localhost:8020/api/users/${usernameLocalStorage}`,{
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
                 });
                 const userData = await userResponse.json();
-                setUser(userData);
+                setUser(userData)
                 localStorage.setItem('user', JSON.stringify(userData));
-            } catch (error) {
-                console.error(error);
-            }
+            } catch (error) {console.error(error);}
         };
-
         fetchDataAndUpdateLocalStorage();
-
         const storedUser = localStorage.getItem('user');
-        if (!storedUser) {
+        if(!storedUser)
+        {
             localStorage.removeItem('jwt');
-            localStorage.removeItem('user');
-            navigate('/Login');
+            localStorage.removeItem('user')
+            navigate('/Login')
         }
 
         const timer = setInterval(() => {
@@ -54,56 +48,38 @@ const UserWidgetComponent = () => {
             }
         }, 1000);
 
-        const handleResize = () => {
-            setWindowSize({
-                width: window.innerWidth,
-                height: window.innerHeight,
-            });
-        };
-
         window.addEventListener('resize', handleResize);
 
+        function handleResize() {setGraphWidth(window.innerWidth * 0.3)}
+        
         return () => {
-            window.removeEventListener('resize', handleResize);
-            clearInterval(timer);
+            window.removeEventListener('resize', handleResize)
+            clearInterval(timer)
         };
-    }, []);
+    },[]);
 
+    
     const userWidgetStyle = {
         ...styles.userWidget,
         backgroundImage: `url(${image})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        flexDirection: 'row',
-        alignItems: 'center',
     };
-
-    const timeStyle = {
-        flex: '1',
-    };
-
-    const scoreGraphStyle = {
-        ...styles.scoresGraph,
-        marginTop: '1rem',
-    };
-
-    const graphWidth = windowSize.width < 768 ? windowSize.width * 0.8 : 300;
-    const graphHeight = windowSize.width < 768 ? graphWidth * 0.5 : 150;
 
     return (
         <div style={userWidgetStyle}>
             <div style={styles.userWidgetContainer}>
-                <div>
-                    Welcome back {user ? user.username : 'undefined'}
-                </div>
-                <div style={timeStyle}>{time}</div>
+                <div>Welcome back {user ? user.username: 'undefined'}</div>
+                <div>{time}</div>
             </div>
-            <div style={scoreGraphStyle}>
-                {user && <ScoresGraph scores={user.scores} width={graphWidth} height={graphHeight} />}
+            <div style={styles.scoresGraph}>
+                {user && (<ScoresGraph scores={user.scores} width={graphWidth} height={100}/>)}
             </div>
+            
         </div>
     );
 }
+
 
 export default UserWidgetComponent;

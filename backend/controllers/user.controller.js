@@ -10,7 +10,6 @@ const getUsers = async (req, res) => {
   }
 };
 
-
 const getUser = async (req, res, next) => {
   try {
     const user = await User.findOne({ username: req.params.username });
@@ -18,7 +17,6 @@ const getUser = async (req, res, next) => {
     res.status(200).json(user);
   } catch (err) {res.status(500).json({ message: err.message });}
 };
-
 
 const createUser = async (req, res) => {
   try {

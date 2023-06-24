@@ -191,12 +191,28 @@ const styles = {
         justifyContent: 'space-between'
     },
     scoresGraph: {
-        marginTop: '0.5rem'
+        marginTop: '-2rem',
     },
     img: {
         width:'20vw',
         aspectRatio: '1',
         objectFit: 'cover',
+    },
+    scoreBoardName: {
+        fontSize: '1rem',
+    },
+    scoreBoardContainer: {
+        background: 'red',
+        justifyContent: 'center',
+        textAlign: 'left',
+        overflowY: 'auto',
+        width: '15rem',
+        marginLeft: '2rem',
+        paddingInline: '2rem',
+        borderRadius: '15px',
+        borderWidth: '3px',
+        borderStyle: 'solid',
+        
     }
 }
 
