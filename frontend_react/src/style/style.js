@@ -202,14 +202,14 @@ const styles = {
         fontSize: '1rem',
     },
     scoreBoardContainer: {
-        background: 'red',
+        background: '#cee0c1',
         justifyContent: 'center',
         textAlign: 'left',
         overflowY: 'auto',
-        width: '15rem',
+        width: '10rem',
         marginLeft: '2rem',
         paddingInline: '2rem',
-        borderRadius: '15px',
+        borderRadius: '10px',
         borderWidth: '3px',
         borderStyle: 'solid',
         
