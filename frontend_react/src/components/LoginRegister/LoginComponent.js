@@ -29,7 +29,6 @@ function LoginComponent() {
       const answer = await response.json();
 
       if (response.ok && answer.token) {
-        console.log('Login successful:', answer);
         localStorage.setItem('jwt', answer.token);
         localStorage.setItem('user', JSON.stringify(answer.user));
         setUser(answer.user);

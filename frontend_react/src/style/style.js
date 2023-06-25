@@ -191,12 +191,31 @@ const styles = {
         justifyContent: 'space-between'
     },
     scoresGraph: {
-        marginTop: '0.5rem'
+        marginTop: '-2rem',
     },
     img: {
         width:'20vw',
         aspectRatio: '1',
         objectFit: 'cover',
+    },
+    scoreBoardName: {
+        fontSize: '1rem',
+    },
+    scoreBoardContainer: {
+        background: '#cee0c1',
+        justifyContent: 'center',
+        textAlign: 'left',
+        overflowY: 'auto',
+        width: '20rem',
+        marginLeft: '2rem',
+        paddingInline: '2rem',
+        borderRadius: '10px',
+        borderWidth: '3px',
+        borderStyle: 'solid',   
+    },
+    badgeIcon:{
+        height: '1rem',
+        marginRight: '0.5rem'
     }
 }
 

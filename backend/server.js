@@ -7,7 +7,8 @@ const userRoute =  require("./routes/user.route");
 const authRoute = require("./routes/auth.route");
 const quizRoute = require("./routes/quiz.route");
 const quizSolutionRoute = require("./routes/quizSolution.route")
-const verifyAnswers = require("./routes/verify.route")
+const verifyAnswersRoute = require("./routes/verify.route")
+const scoresRoute = require("./routes/scores.route")
 
 const cors = require('cors');
 
@@ -17,14 +18,14 @@ const port = 8020;
 
 
 app.use(cors());
-// { origin: "http://localhost:3000", credentials: true }
 app.use(express.json());
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/quiz", quizRoute)
 app.use("/api/quizSolution", quizSolutionRoute)
-app.use("/api/verify", verifyAnswers)
+app.use("/api/verify", verifyAnswersRoute)
+app.use("/api/scores", scoresRoute)
 
 const connect = async () => {
   try {
