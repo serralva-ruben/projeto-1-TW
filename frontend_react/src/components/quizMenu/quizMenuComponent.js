@@ -8,14 +8,13 @@ const QuizMenuComponent = () => {
     const [quizzes, setQuizzes] = useState([]);
     const [scores, setScores] = useState([]);
     const [loading, setLoading] = useState(true);
-    console.log(scores)
+    console.log(quizzes)
 
     useEffect(() => {
         const fetchData = async () => {
             await fetchQuizzes();
             setLoading(false)
         };
-
         fetchData();
     }, []);
 
@@ -44,7 +43,7 @@ const QuizMenuComponent = () => {
             return scoreData
         });
         const scoreData = await Promise.all(scorePromises);
-        console.log(scoreData)
+        
         setScores(scoreData)
     }
 
@@ -84,7 +83,6 @@ const QuizMenuComponent = () => {
                                     <>Quiz info</>
                                     <h1 style={style.scoreBoardName}>Total questions: {quiz.questions.length}</h1>
                                     <h1 style={style.scoreBoardName}>Total points: {getTotalPoints(quiz)}</h1>
-                                    <h1 style={style.scoreBoardName}></h1>
                                 </div>
                             </div>                            
                         </li>
