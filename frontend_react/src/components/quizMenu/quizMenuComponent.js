@@ -33,7 +33,7 @@ const QuizMenuComponent = () => {
     const fetchScores = async(quizzes) => {
         const token = localStorage.getItem('jwt')
         const scorePromises = quizzes.map(async (quiz) =>{
-            const response = await fetch(`http://localhost:8020/api/scores/${quiz.title}/`,{
+            const response = await fetch(`http://localhost:8020/api/scores/best/${quiz.title}/`,{
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
