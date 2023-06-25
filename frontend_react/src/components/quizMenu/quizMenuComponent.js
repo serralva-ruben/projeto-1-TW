@@ -66,7 +66,7 @@ const QuizMenuComponent = () => {
                             {quiz.title}
                             <div style={style.scoreBoardContainer}>
                             {scores[quizIndex]?.map((score, scoreIndex)=>(
-                                <h1 style={style.scoreBoardName}>{score.username} {score.score}/{quiz.questions.length}</h1>              
+                                <h1 key={scoreIndex} style={style.scoreBoardName}>{score.username} {Math.round(parseFloat(score.score['$numberDecimal']) * quiz.questions.length)}/{quiz.questions.length}</h1>              
                             ))}
                             </div>
                         </li>

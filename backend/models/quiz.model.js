@@ -15,6 +15,10 @@ const QuizSchema = new mongoose.Schema({
       type: String,
       required: true
     },
+    questionPoints: {
+      type: Number,
+      required: true
+    },
     answerOptions: [{
       answerText: {
         type: String,

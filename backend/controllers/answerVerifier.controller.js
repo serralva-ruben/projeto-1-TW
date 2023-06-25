@@ -1,4 +1,5 @@
 const QuizSolution = require('../models/solution.model');
+const Quiz = require('../models/quiz.model');
 const User = require('../models/user.model');
 
 const verifyAnswers = async (req, res) => {
@@ -8,6 +9,7 @@ const verifyAnswers = async (req, res) => {
     const { title, answers, username } = req.body;
 
     const solution = await QuizSolution.findOne({ quizTitle: title });
+    const quiz = await Quiz.findOne({title: title})
     if (!solution) return res.status(404).json({ message: "No solution found for this quiz title" });
     
     const correctAnswers = solution.solutions;
@@ -25,7 +27,9 @@ const verifyAnswers = async (req, res) => {
 
       else score.correct = sol === answer
 
-      if(score.correct) scorePoints++
+      if(score.correct) scorePoints += quiz.questions[index].questionPoints
+
+      console.log("points : "+scorePoints)
 
       return score
       
@@ -37,7 +41,12 @@ const verifyAnswers = async (req, res) => {
 
   if (!user) {return res.status(404).json({ message: "User not found" });}
 
-  user.scores.push({quizTitle: title, score: scorePoints})
+  let totalPoints = 0;
+  quiz.questions.map((question)=>{
+    totalPoints += question.questionPoints;
+  })
+
+  user.scores.push({quizTitle: title, score: (scorePoints/totalPoints)})
   
   try {
     await user.save();
@@ -48,7 +57,9 @@ const verifyAnswers = async (req, res) => {
   res.json(result);
 
   } 
-  catch (err) {res.status(500).json({ message: err.message });}
+  catch (err) {
+    console.log(err)
+    res.status(500).json({ message: err.message });}
 };
 
 module.exports = {
