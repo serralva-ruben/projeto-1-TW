@@ -206,7 +206,7 @@ const styles = {
         justifyContent: 'center',
         textAlign: 'left',
         overflowY: 'auto',
-        width: '10rem',
+        width: '20rem',
         marginLeft: '2rem',
         paddingInline: '2rem',
         borderRadius: '10px',

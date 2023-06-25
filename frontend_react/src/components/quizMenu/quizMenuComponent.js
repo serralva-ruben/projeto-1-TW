@@ -48,6 +48,14 @@ const QuizMenuComponent = () => {
         setScores(scoreData)
     }
 
+    const getTotalPoints = (quiz) =>{
+        let totalPoints = 0
+        quiz.questions.map((question)=>{
+            totalPoints += question.questionPoints
+        })
+        return totalPoints
+    }
+
     const getQuizBackgroundImage = (quizTitle) => {
         return `url(/media/covers/quizMenu/${quizTitle}_cover.jpg)`
     };
@@ -64,13 +72,21 @@ const QuizMenuComponent = () => {
                     <Link style={style.menuText} key={quizIndex} to={`/quiz/${encodeURIComponent(quiz.title)}`}>
                         <li style={{backgroundImage: getQuizBackgroundImage(quiz.title),overflowY: 'auto'}}> 
                             {quiz.title}
-                            {scores[quizIndex]?.length>0 && //only render the scoreboard if the there are scores to show
-                            <div style={style.scoreBoardContainer}>
-                            <>ScoreBoard</>
-                                {scores[quizIndex]?.map((score, scoreIndex)=>(
-                                    <h1 key={scoreIndex} style={style.scoreBoardName}>{score.username} {Math.round(parseFloat(score.score['$numberDecimal']) * quiz.questions.length)}/{quiz.questions.length}</h1>
-                                ))}
-                            </div>}
+                            <div style= {{display: 'flex', justifyContent: 'space-between'}}>
+                                {scores[quizIndex]?.length>0 && //only render the scoreboard if the there are scores to show
+                                <div style={style.scoreBoardContainer}>
+                                <>ScoreBoard</>
+                                    {scores[quizIndex]?.map((score, scoreIndex)=>(
+                                        <h1 key={scoreIndex} style={style.scoreBoardName}>{score.username} {Math.round(parseFloat(score.score['$numberDecimal']) * quiz.questions.length)}/{quiz.questions.length } - Points: {Math.round(getTotalPoints(quiz)*parseFloat(score.score['$numberDecimal']))}/{getTotalPoints(quiz)}</h1>
+                                    ))}
+                                </div>}
+                                <div style={style.scoreBoardContainer}>
+                                    <>Quiz info</>
+                                    <h1 style={style.scoreBoardName}>Total questions: {quiz.questions.length}</h1>
+                                    <h1 style={style.scoreBoardName}>Total points: {getTotalPoints(quiz)}</h1>
+                                    <h1 style={style.scoreBoardName}></h1>
+                                </div>
+                            </div>                            
                         </li>
                     </Link>
                 )}

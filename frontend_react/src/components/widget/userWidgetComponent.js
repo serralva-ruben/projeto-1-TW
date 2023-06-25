@@ -9,7 +9,7 @@ const UserWidgetComponent = () => {
     const { user, setUser } = useContext(UserContext);
     const [time, setTime] = useState(new Date().toLocaleTimeString());
     const [image, setImage] = useState('');
-    const [graphWidth, setGraphWidth] = useState(window.innerWidth * 0.3);
+    const [graphWidth, setGraphWidth] = useState(window.innerWidth * 0.85);
     
     useEffect(()=>{
         const fetchDataAndUpdateLocalStorage = async () => {
@@ -41,7 +41,7 @@ const UserWidgetComponent = () => {
             const currentHour = currentTime.getHours();
             if (currentHour >= 5 && currentHour < 12) {
                 setImage("/media/widgetBackgrounds/morning.jpg");
-            } else if (currentHour >= 12 && currentHour < 18) {
+            } else if (currentHour >= 12 && currentHour < 20) {
                 setImage("/media/widgetBackgrounds/afternoon.jpg");
             } else {
                 setImage("/media/widgetBackgrounds/night.jpg");
@@ -50,7 +50,7 @@ const UserWidgetComponent = () => {
 
         window.addEventListener('resize', handleResize);
 
-        function handleResize() {setGraphWidth(window.innerWidth * 0.3)}
+        function handleResize() {setGraphWidth(window.innerWidth * 0.85)}
         
         return () => {
             window.removeEventListener('resize', handleResize)
@@ -74,7 +74,7 @@ const UserWidgetComponent = () => {
                 <div>{time}</div>
             </div>
             <div style={styles.scoresGraph}>
-                {user && (<ScoresGraph scores={user.scores} width={graphWidth} height={100}/>)}
+                {user && (<ScoresGraph scores={user.scores} width={graphWidth} height={90}/>)}
             </div>
             
         </div>
