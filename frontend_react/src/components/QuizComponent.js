@@ -7,7 +7,7 @@ import TextInputComponent from './quizComponents/TextInputComponent';
 import CheckboxComponent from './quizComponents/CheckboxComponent';
 import Navbar from './Navbar';
 import '../style/Buttons.css'
-import '../style/App.css'
+import '../style/Quiz.css'
 
 const QuizComponent = () => {
     const { quizTitle } = useParams();

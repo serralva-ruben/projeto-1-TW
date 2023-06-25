@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UserContext from '../UserContext';
 import styles from '../style/style';
+import '../style/Navbar.css'
 
 
 function Navbar() {
@@ -21,16 +22,16 @@ function Navbar() {
     }, []);
 
     return (
-        <div style={styles.navBarContainer}>
+        <div id='navBarContainer'>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-                <Link to="/" style={styles.homeButton}><img style={styles.homeImg} src = '/media/navbaricons/home.png' alt = "Home"/>Home</Link>
-                <img src= '/media/navbaricons/UAC_logo.png' alt="UAC Logo" style={styles.logo} /> {/* University logo */}
+                <Link to="/" id='homeButton'><img id='homeImg' alt = "Home"/>Home</Link>
+                <img src= '/media/navbaricons/UAC_logo.png' alt="UAC Logo" id='logo' /> {/* University logo */}
                 
             </div>
             {user && (
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <div style={styles.userBadge}>{user.username.charAt(0).toUpperCase()}</div>
-                    <button onClick={logout} style={styles.logoutButton}><img style={styles.logoutImg} src = '/media/navbaricons/power-off.png' alt = "Logout"/>Logout</button>
+                    <div style={styles.userBadge} id='userBadge'>{user.username.charAt(0).toUpperCase()}</div>
+                    <button onClick={logout} id='logoutButton'><img id='logoutImg'  src = '/media/navbaricons/power-off.png' alt = "Logout"/>Logout</button>
                 </div>
             )}
         </div>
@@ -38,3 +39,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
