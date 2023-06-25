@@ -74,7 +74,7 @@ const QuizMenuComponent = () => {
                             <div style= {{display: 'flex', justifyContent: 'space-between'}}>
                                 {scores[quizIndex]?.length>0 && //only render the scoreboard if the there are scores to show
                                 <div style={style.scoreBoardContainer}>
-                                <>ScoreBoard</>
+                                <>Score board</>
                                     {scores[quizIndex]?.map((score, scoreIndex)=>(
                                         <h1 key={scoreIndex} style={style.scoreBoardName}>
                                         <img style={style.badgeIcon} src={scoreIndex===0 ? process.env.PUBLIC_URL + "/media/covers/quizMenu/trophies/gold.png" : scoreIndex===1 ? process.env.PUBLIC_URL + "/media/covers/quizMenu/trophies/silver.png" : process.env.PUBLIC_URL + "/media/covers/quizMenu/trophies/bronze.png"}/>
