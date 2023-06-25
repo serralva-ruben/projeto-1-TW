@@ -15,7 +15,7 @@ const QuizMenuComponent = () => {
             await fetchQuizzes();
             setLoading(false)
         };
-    
+
         fetchData();
     }, []);
 
@@ -64,11 +64,13 @@ const QuizMenuComponent = () => {
                     <Link style={style.menuText} key={quizIndex} to={`/quiz/${encodeURIComponent(quiz.title)}`}>
                         <li style={{backgroundImage: getQuizBackgroundImage(quiz.title),overflowY: 'auto'}}> 
                             {quiz.title}
+                            {scores[quizIndex]?.length>0 && //only render the scoreboard if the there are scores to show
                             <div style={style.scoreBoardContainer}>
-                            {scores[quizIndex]?.map((score, scoreIndex)=>(
-                                <h1 key={scoreIndex} style={style.scoreBoardName}>{score.username} {Math.round(parseFloat(score.score['$numberDecimal']) * quiz.questions.length)}/{quiz.questions.length}</h1>              
-                            ))}
-                            </div>
+                            <>ScoreBoard</>
+                                {scores[quizIndex]?.map((score, scoreIndex)=>(
+                                    <h1 key={scoreIndex} style={style.scoreBoardName}>{score.username} {Math.round(parseFloat(score.score['$numberDecimal']) * quiz.questions.length)}/{quiz.questions.length}</h1>
+                                ))}
+                            </div>}
                         </li>
                     </Link>
                 )}
