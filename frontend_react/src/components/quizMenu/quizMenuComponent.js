@@ -76,7 +76,10 @@ const QuizMenuComponent = () => {
                                 <div style={style.scoreBoardContainer}>
                                 <>ScoreBoard</>
                                     {scores[quizIndex]?.map((score, scoreIndex)=>(
-                                        <h1 key={scoreIndex} style={style.scoreBoardName}>{score.username} {Math.round(parseFloat(score.score['$numberDecimal']) * quiz.questions.length)}/{quiz.questions.length } - Points: {Math.round(getTotalPoints(quiz)*parseFloat(score.score['$numberDecimal']))}/{getTotalPoints(quiz)}</h1>
+                                        <h1 key={scoreIndex} style={style.scoreBoardName}>
+                                        <img style={style.badgeIcon} src={scoreIndex===0 ? process.env.PUBLIC_URL + "/media/covers/quizMenu/trophies/gold.png" : scoreIndex===1 ? process.env.PUBLIC_URL + "/media/covers/quizMenu/trophies/silver.png" : process.env.PUBLIC_URL + "/media/covers/quizMenu/trophies/bronze.png"}/>
+                                            {scoreIndex+1}º - {score.username} {Math.round(parseFloat(score.score['$numberDecimal']) * quiz.questions.length)}/{quiz.questions.length } - 
+                                            Points: {Math.round(getTotalPoints(quiz)*parseFloat(score.score['$numberDecimal']))}/{getTotalPoints(quiz)}</h1>
                                     ))}
                                 </div>}
                                 <div style={style.scoreBoardContainer}>

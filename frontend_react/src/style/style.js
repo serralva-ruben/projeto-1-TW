@@ -211,8 +211,11 @@ const styles = {
         paddingInline: '2rem',
         borderRadius: '10px',
         borderWidth: '3px',
-        borderStyle: 'solid',
-        
+        borderStyle: 'solid',   
+    },
+    badgeIcon:{
+        height: '1rem',
+        marginRight: '0.5rem'
     }
 }
 
