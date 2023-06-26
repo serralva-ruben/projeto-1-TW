@@ -17,6 +17,13 @@
   order: -1;
 }
 
+.img {
+    width: 20vw;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+
 .question img {
   object-fit: contain;
   border-radius: 15%;
@@ -69,4 +76,8 @@
   font-size: 1em;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h1{
+  text-align: center;
 }

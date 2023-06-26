@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styles from '../../style/style.js'
-import '../../style/App.css'
 import SummaryComponent from '../QuizSummaryComponent.js';
+import '../../style/Quiz.css'
+
 
 const SelectComponent = ({ question, imgPath, onAnswerChange, showSummary, correctedAnswers }) => {
     const [value, setValue] = useState('');
@@ -12,7 +12,7 @@ const SelectComponent = ({ question, imgPath, onAnswerChange, showSummary, corre
     }
 
     return (
-        <div className="question" style={styles.question}>
+        <div className="question">
             {!showSummary && <>
                 <h2>{question.questionText}</h2>
                 <div id='answersIMGContainer'>
@@ -21,7 +21,7 @@ const SelectComponent = ({ question, imgPath, onAnswerChange, showSummary, corre
                             <option key={index} value={option.answerText}>{option.answerText}</option>
                         ))}
                     </select>
-                    <img src={imgPath} style={styles.img} className="question-image" />
+                    <img src={imgPath} className="img" />
                 </div>
             </>}
             {/*Render the show summary component */}

@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { useNavigate } from "react-router-dom"
-import styles from '../../style/style';
+import '../../style/Widget.css'
 import UserContext from '../../UserContext';
 import ScoresGraph from './ScoreGraph';
 
@@ -60,20 +60,16 @@ const UserWidgetComponent = () => {
 
     
     const userWidgetStyle = {
-        ...styles.userWidget,
         backgroundImage: `url(${image})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
     };
 
     return (
-        <div style={userWidgetStyle}>
-            <div style={styles.userWidgetContainer}>
+        <div style={userWidgetStyle} id='userWidget' >
+            <div id='userWidgetContainer' >
                 <div>Welcome back {user ? user.username: 'undefined'}</div>
                 <div>{time}</div>
             </div>
-            <div style={styles.scoresGraph}>
+            <div id='scoresGraph' >
                 {user && (<ScoresGraph scores={user.scores} width={graphWidth} height={90}/>)}
             </div>
             

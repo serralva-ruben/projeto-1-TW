@@ -23,7 +23,7 @@ const QuizComponent = () => {
     const fetchCurrentQuiz = async () => {
         const token = localStorage.getItem('jwt')
         setLoading(true);
-        const response = await fetch(`http://localhost:8020/api/quiz/${encodeURIComponent(quizTitle)}`,{
+        const response = await fetch(`http://localhost:8020/api/quiz/${encodeURIComponent(quizTitle)}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -42,14 +42,14 @@ const QuizComponent = () => {
         const usernameLocalStorage = JSON.parse(localStorage.getItem('user')).username;
         try {
             const token = localStorage.getItem('jwt')
-            const response = await fetch('http://localhost:8020/api/verify', { 
+            const response = await fetch('http://localhost:8020/api/verify', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    title: currentQuiz.title, 
+                    title: currentQuiz.title,
                     answers,
                     username: usernameLocalStorage
                 })
@@ -58,7 +58,7 @@ const QuizComponent = () => {
             console.log(data)
             setCorrectedAnswers(data)
             setShowSummary(true);
-            const userResponse = await fetch(`http://localhost:8020/api/user/${usernameLocalStorage}`,{
+            const userResponse = await fetch(`http://localhost:8020/api/user/${usernameLocalStorage}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -100,35 +100,38 @@ const QuizComponent = () => {
                                     imgPath={`/media/covers/${quizTitle}CoverImgs/q${questionIndex + 1}.jpg`}
                                     onAnswerChange={(answer) => updateAnswer(questionIndex, answer)}
                                     showSummary={showSummary}
-                                    correctedAnswers = {correctedAnswers}
+                                    correctedAnswers={correctedAnswers}
                                 />
                             </div>
                         );
                     })}
                     {!showSummary && <>
-                        <button type="button" onClick={handleBack} disabled={currentQuestionIndex === 0}
-                            className="quiz-button"
-                        >Back</button>
-                        <button type="button" onClick={handleNext} disabled={currentQuestionIndex === currentQuiz.questions.length - 1}
-                            className="quiz-button"
-                        >Next</button>
-                        <button type="submit"
-                            className="quiz-button"
-                        >Submit</button>
+                        <div className="buttons-container">
+                            <button type="button" onClick={handleBack} disabled={currentQuestionIndex === 0}
+                                className="quiz-button"
+                            >Back</button>
+                            <button type="button" onClick={handleNext} disabled={currentQuestionIndex === currentQuiz.questions.length - 1}
+                                className="quiz-button"
+                            >Next</button>
+                            <button type="submit"
+                                className="quiz-button"
+                            >Submit</button>
+                        </div>
+
                     </>}
                 </form>
                 {/*Render the navigation menu on the bottom */}
-                {!showSummary && currentQuiz.questions.map((question, questionIndex)=>{
-                    return(<button key={questionIndex} 
-                    style={{ 
-                        backgroundColor: answers[questionIndex] ? 'green' : 'grey',
-                        borderColor: questionIndex === currentQuestionIndex ? 'blue' : 'grey',
-                        borderRadius: '5px',
-                        margin: '10px',
-                        borderWidth: '4px',
-                        width: '4vw',
-                        height: '4vw'
-                    }}
+                {!showSummary && currentQuiz.questions.map((question, questionIndex) => {
+                    return (<button key={questionIndex}
+                        style={{
+                            backgroundColor: answers[questionIndex] ? 'green' : 'grey',
+                            borderColor: questionIndex === currentQuestionIndex ? 'blue' : 'grey',
+                            borderRadius: '5px',
+                            margin: '10px',
+                            borderWidth: '4px',
+                            width: '4vw',
+                            height: '4vw'
+                        }}
                         onClick={() => setCurrentQuestionIndex(questionIndex)}>
                         {questionIndex + 1}
                     </button>)

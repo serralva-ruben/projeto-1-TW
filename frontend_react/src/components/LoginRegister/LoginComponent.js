@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UserContext from '../../UserContext';
+import '../../style/Login.css'
 
 function LoginComponent() {
   const { setUser } = useContext(UserContext);
@@ -44,26 +45,26 @@ function LoginComponent() {
 
   return (
       <div>
-        <form onSubmit={login} id="login-form" style={styles.LoginContainer}>
+        <form onSubmit={login} id="login-container">
           <h1>Login Quiz</h1>
-          <div style={styles.errorContainer}>
+          <div id='errorContainer'>
             <div style={failedLogin ? styles.error : styles.noError}>
               {failedLogin ? 'Invalid login credentials' : ' '}
             </div>
           </div>
-          <div style={styles.formGroup}>
-            <div style={styles.inputContainer}>
-              <label htmlFor="input" style={styles.Typography}>
+          <div id='formGroup' >
+            <div id='inputContainer' >
+              <label htmlFor="input" className='Typography' >
                 Email or Username:
               </label>
-              <input type="text" id="input" name="input" required style={styles.inputField} />
-              <label htmlFor="password" style={styles.Typography}>
+              <input type="text" id="input" name="input" required className='inputField' />
+              <label htmlFor="password" className='Typography'>
                 Password:
               </label>
-              <input type="password" id="password" name="password" required style={styles.inputField} />
+              <input type="password" id="password" name="password" required className='inputField' />
             </div>
           </div>
-          <button type="submit" style={styles.LoginButton}>
+          <button type="submit" id='LoginButton' >
             Login
           </button>
           <p>
@@ -75,65 +76,6 @@ function LoginComponent() {
 }
 
 const styles = {
-  LoginContainer: {
-    margin: '5%',
-    justifyContent: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    borderColor: 'black',
-    borderWidth: '3px',
-    borderStyle: 'solid',
-    borderRadius: '5px',
-    padding: '5%',
-    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',
-    backgroundColor: '#f9f9f9',
-  },
-
-  Typography: {
-    fontSize: '18px',
-    fontFamily: 'Arial, sans-serif',
-    fontWeight: 'bold',
-    marginBottom: '20px',
-  },
-
-  LoginButton: {
-    height: '40px',
-    width: '120px',
-    margin: '20px',
-    backgroundColor: '#3498db',
-    color: 'white',
-    borderRadius: '5px',
-    border: 'none',
-    cursor: 'pointer',
-    fontSize: '16px',
-    fontFamily: 'Arial, sans-serif',
-    fontWeight: 'bold',
-    boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.2)',
-    transition: 'background-color 0.3s ease',
-  },
-
-  inputContainer: {
-    display: 'grid',
-    gap: '10px',
-    gridTemplateColumns: '1fr 2fr',
-  },
-
-  inputField: {
-    padding: '10px',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
-    fontSize: '16px',
-    fontFamily: 'Arial, sans-serif',
-    zIndex: 1,
-  },
-
-  formGroup: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: '20px',
-  },
-
   error: {
     backgroundColor: '#ff463b',
     padding: '1rem',
@@ -150,10 +92,6 @@ const styles = {
     marginTop: ' 1rem',
     marginBottom: '1rem',
     fontFamily: 'Arial, sans-serif',
-  },
-  errorContainer: {
-    position: 'relative',
-    height: '6rem',  // Adjust this to match the height of your error message
   },
 };
 

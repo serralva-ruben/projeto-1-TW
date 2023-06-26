@@ -1,0 +1,65 @@
+#login-container {
+    margin: 5%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-color: black;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 5%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+}
+
+.Typography {
+    font-size: 18px;
+    font-family: 'Arial, sans-serif';
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+
+.inputField {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-family: 'Arial, sans-serif';
+    z-index: 1;
+}
+
+.LoginButton {
+    height: 40px;
+    width: 120px;
+    margin: 20px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Arial, sans-serif';
+    font-weight: bold;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+#errorContainer {
+    position: relative;
+    height: 6rem;  
+}
+
+#formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#inputContainer {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 2fr;
+}
+

@@ -19,9 +19,16 @@
     color: #333;
     font-size: 16px;
     cursor: pointer;
+    justify-content: center;
 }
 
 .quiz-button:hover {
     background-color: #b7c6e9;
     color: #333333;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }

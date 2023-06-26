@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import RegisterComponent from './components/LoginRegister/RegisterComponent';
 import LoginComponent from './components/LoginRegister/LoginComponent';
 import ProtectedRoutes from './components/authorization/ProtectedRoutes';

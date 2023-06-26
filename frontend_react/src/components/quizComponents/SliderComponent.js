@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import styles from '../../style/style.js'
 import SummaryComponent from '../QuizSummaryComponent.js';
+import '../../style/Quiz.css'
 
 const SliderComponent = ({ question, imgPath, onAnswerChange, showSummary, correctedAnswers }) => {
     const [value, setValue] = useState(0);
@@ -11,7 +11,7 @@ const SliderComponent = ({ question, imgPath, onAnswerChange, showSummary, corre
     }
 
     return (
-        <div className="question" style={styles.question}>
+        <div className="question">
             {!showSummary && <>
                 <h2>{question.questionText}</h2>
                 <div id='answersIMGContainer'>
@@ -23,7 +23,7 @@ const SliderComponent = ({ question, imgPath, onAnswerChange, showSummary, corre
                     onChange={handleChange}
                 />
                 <div>{value}</div>
-                <img src={imgPath} style={styles.img} />
+                <img src={imgPath} className='img' />
                 </div></>}
             {/*Render the show summary component */}
             {showSummary && <SummaryComponent

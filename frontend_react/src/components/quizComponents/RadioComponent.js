@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import styles from '../../style/style.js'
 import SummaryComponent from '../QuizSummaryComponent.js';
+import '../../style/Quiz.css'
 
 const RadioComponent = ({ question, imgPath, onAnswerChange, showSummary, correctedAnswers }) => {
     const [value, setValue] = useState('');
@@ -11,7 +11,7 @@ const RadioComponent = ({ question, imgPath, onAnswerChange, showSummary, correc
     }
 
     return (
-        <div className="question" style={styles.question}>
+        <div className="question">
             {!showSummary && <>
                 <h2>{question.questionText}</h2>
                 <div id='answersIMGContainer'>
@@ -23,7 +23,7 @@ const RadioComponent = ({ question, imgPath, onAnswerChange, showSummary, correc
                             </label>
                         ))}
                     </div>
-                    <img src={imgPath} style={styles.img} />
+                    <img src={imgPath} className='img' />
                 </div>
             </>}
             {/*Render the show summary component */}

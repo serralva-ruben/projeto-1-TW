@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const correctAnswers = {
     q1: "a",
@@ -61,7 +61,6 @@ function useCheckAnswers(answers) {
             
             const responseData = await response.json();
             console.log('Success:', responseData);
-            // Handle successful submission here, e.g., redirect to a summary page
         } catch (error) {
             console.error('Error:', error);
         }

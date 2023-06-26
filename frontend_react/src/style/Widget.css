@@ -1,0 +1,31 @@
+#userWidget {
+    color: white;
+    padding: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 4px #000000;
+    background-color: #7d93e8;
+    border: solid 2px #282c34;
+    height: 10rem;
+    margin: 1rem;
+    margin-inline: 2rem;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#userWidgetContainer {
+    display: block;
+    justify-content: space-between;
+    text-align: center;
+}
+
+#scoresGraph{
+    margin-top: -2em;
+}
