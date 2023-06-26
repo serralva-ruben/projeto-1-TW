@@ -1,4 +1,4 @@
-#login-container {
+.LoginContainer {
     margin: 5%;
     justify-content: center;
     display: flex;
@@ -15,19 +15,9 @@
 
 .Typography {
     font-size: 18px;
-    font-family: 'Arial, sans-serif';
+    font-family: Arial, sans-serif;
     font-weight: bold;
     margin-bottom: 20px;
-}
-
-
-.inputField {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    font-family: 'Arial, sans-serif';
-    z-index: 1;
 }
 
 .LoginButton {
@@ -40,26 +30,53 @@
     border: none;
     cursor: pointer;
     font-size: 16px;
-    font-family: 'Arial, sans-serif';
+    font-family: Arial, sans-serif;
     font-weight: bold;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
 }
 
-#errorContainer {
-    position: relative;
-    height: 6rem;  
-}
-
-#formGroup {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-}
-
-#inputContainer {
+.inputContainer {
     display: grid;
     gap: 10px;
     grid-template-columns: 1fr 2fr;
 }
 
+.inputField {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    z-index: 1;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.error {
+    background-color: #ff463b;
+    padding: 1rem;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-family: Arial, sans-serif;
+}
+
+.noError {
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-family: Arial, sans-serif;
+}
+
+.errorContainer {
+    position: relative;
+    height: 6rem;
+}

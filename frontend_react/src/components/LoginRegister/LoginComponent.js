@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UserContext from '../../UserContext';
-import '../../style/Login.css'
+import '../../style/Login.css';
 
 function LoginComponent() {
   const { setUser } = useContext(UserContext);
@@ -45,26 +45,26 @@ function LoginComponent() {
 
   return (
       <div>
-        <form onSubmit={login} id="login-container">
+        <form onSubmit={login} id="login-form" className="LoginContainer">
           <h1>Login Quiz</h1>
-          <div id='errorContainer'>
-            <div style={failedLogin ? styles.error : styles.noError}>
+          <div className="errorContainer">
+            <div className={failedLogin ? 'error' : 'noError'}>
               {failedLogin ? 'Invalid login credentials' : ' '}
             </div>
           </div>
-          <div id='formGroup' >
-            <div id='inputContainer' >
-              <label htmlFor="input" className='Typography' >
+          <div className="formGroup">
+            <div className="inputContainer">
+              <label htmlFor="input" className="Typography">
                 Email or Username:
               </label>
-              <input type="text" id="input" name="input" required className='inputField' />
-              <label htmlFor="password" className='Typography'>
+              <input type="text" id="input" name="input" required className="inputField" />
+              <label htmlFor="password" className="Typography">
                 Password:
               </label>
-              <input type="password" id="password" name="password" required className='inputField' />
+              <input type="password" id="password" name="password" required className="inputField" />
             </div>
           </div>
-          <button type="submit" id='LoginButton' >
+          <button type="submit" className="LoginButton">
             Login
           </button>
           <p>
@@ -74,25 +74,5 @@ function LoginComponent() {
       </div>
   );
 }
-
-const styles = {
-  error: {
-    backgroundColor: '#ff463b',
-    padding: '1rem',
-    borderRadius: '5px',
-    borderWidth: '1px',
-    borderColor: 'black',
-    borderStyle: 'solid',
-    marginTop: ' 1rem',
-    marginBottom: '1rem',
-    fontFamily: 'Arial, sans-serif',
-  },
-  noError: {
-    padding: '1rem',
-    marginTop: ' 1rem',
-    marginBottom: '1rem',
-    fontFamily: 'Arial, sans-serif',
-  },
-};
 
 export default LoginComponent;
