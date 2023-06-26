@@ -11,7 +11,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 5px 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 #homeButton{
@@ -30,7 +30,7 @@
     border-style: solid;
     color: blue;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 #homeImg {
@@ -57,7 +57,7 @@
     align-items: center;
     border-radius: 5px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 #logoutButton {
@@ -75,7 +75,7 @@
     border-radius: 5px;
     border-color: black;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 #logoutImg {
