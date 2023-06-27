@@ -20,6 +20,7 @@ const TextInputComponent = ({ question, imgPath, onAnswerChange, showSummary, co
                         type="text"
                         value={value}
                         onChange={handleChange}
+                        placeholder="answear here"
                     />
                 </div>
                 <img src={imgPath} className='img'/>

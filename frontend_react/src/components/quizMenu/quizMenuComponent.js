@@ -75,7 +75,7 @@ const QuizMenuComponent = () => {
                             <div className='div-flex'>
                                 {scores[quizIndex]?.length>0 && //only render the scoreboard if the there are scores to show
                                 <div className='score-board-container'>
-                                <>Score board</>
+                                <h5 className='score-board-title'>Score board</h5>
                                     {scores[quizIndex]?.map((score, scoreIndex)=>(
                                         <h1 key={scoreIndex} className='score-board-name'>
                                         <img id='badge-icon' src={scoreIndex===0 ? process.env.PUBLIC_URL + "/media/covers/quizMenu/trophies/gold.png" : scoreIndex===1 ? process.env.PUBLIC_URL + "/media/covers/quizMenu/trophies/silver.png" : process.env.PUBLIC_URL + "/media/covers/quizMenu/trophies/bronze.png"}/>
@@ -84,7 +84,7 @@ const QuizMenuComponent = () => {
                                     ))}
                                 </div>}
                                 <div className='score-board-container'>
-                                    <>Quiz info</>
+                                    <h5 className='score-board-title'>Quiz info</h5>
                                     <h1 className='score-board-name'>Total questions: {quiz.questions.length}</h1>
                                     <h1 className='score-board-name'>Total points: {getTotalPoints(quiz)}</h1>
                                 </div>

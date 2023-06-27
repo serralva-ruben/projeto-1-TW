@@ -12,24 +12,29 @@ const SliderComponent = ({ question, imgPath, onAnswerChange, showSummary, corre
 
     return (
         <div className="question">
-            {!showSummary && <>
+        {!showSummary && (
+            <>
                 <h2>{question.questionText}</h2>
-                <div id='answersIMGContainer'>
-                <input
-                    type="range"
-                    min="0"
-                    max="9"
-                    value={value}
-                    onChange={handleChange}
-                />
-                <div>{value}</div>
-                <img src={imgPath} className='img' />
-                </div></>}
-            {/*Render the show summary component */}
-            {showSummary && <SummaryComponent
+                <div id="answersIMGContainer">
+                    <input
+                        type="range"
+                        min="0"
+                        max="9"
+                        value={value}
+                        onChange={handleChange}
+                    />
+                    <div style={{fontSize: '30px', fontFamily: 'Monda'}}>{value}</div>
+                    <img src={imgPath} className="img" />
+                </div>
+            </>
+        )}
+        {/*Render the show summary component */}
+        {showSummary && (
+            <SummaryComponent
                 correctedAnswers={correctedAnswers}
-            />}
-        </div>
+            />
+        )}
+    </div>
     )
 }
 

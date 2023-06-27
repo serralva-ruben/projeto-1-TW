@@ -1,6 +1,6 @@
 
-.quiz-container {
-  background-color: #cbc4c4;
+html {
+  background-color: #fcf2ed;
 }
 
 .quiz-menu-container li {
@@ -28,7 +28,7 @@
   text-align: left;
   overflow-y: auto;
   width: 20rem;
-  margin-left: 2rem;
+  margin: 1%;
   padding-inline: 2rem;
   border-radius: 10px;
   border-width: 3px;
@@ -59,4 +59,10 @@
 
 .listItems{
   text-align: center;
+}
+
+.score-board-title{
+  display: flex;
+  margin: 0;
+  justify-content: center;
 }

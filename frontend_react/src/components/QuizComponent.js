@@ -128,9 +128,11 @@ const QuizComponent = () => {
                             borderColor: questionIndex === currentQuestionIndex ? 'blue' : 'grey',
                             borderRadius: '5px',
                             margin: '10px',
+                            marginLeft: questionIndex === 0 ? '25px' : '10px',
                             borderWidth: '4px',
                             width: '4vw',
-                            height: '4vw'
+                            height: '4vw',
+                            cursor: 'pointer'
                         }}
                         onClick={() => setCurrentQuestionIndex(questionIndex)}>
                         {questionIndex + 1}

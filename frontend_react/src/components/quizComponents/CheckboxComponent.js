@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SummaryComponent from '../QuizSummaryComponent.js';
+import '../../style/Quiz.css'
 
 const CheckboxComponent = ({ question, imgPath, onAnswerChange, showSummary, correctedAnswers }) => {
     const [selected, setSelected] = useState([]);
