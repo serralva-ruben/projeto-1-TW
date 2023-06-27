@@ -14,7 +14,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-#homeButton{
+#homeButton {
     height: 2rem;
     margin-left: 0.2rem;
     border-radius: 5px;
@@ -39,7 +39,10 @@
     background-image: url("../../public/media/navbaricons/home.png");
     background-size: cover;
     width: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
 }
+
 
 #logo {
     position: absolute;
