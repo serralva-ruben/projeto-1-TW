@@ -56,6 +56,19 @@ const QuizMenuComponent = () => {
         return totalPoints
     }
 
+    function getImage(scoreIndex) {
+        switch(scoreIndex) {
+          case 0:
+            return "/media/covers/quizMenu/trophies/gold.png";
+          case 1:
+            return "/media/covers/quizMenu/trophies/silver.png";
+          case 2:
+            return "/media/covers/quizMenu/trophies/bronze.png";
+          default:
+            return null;
+        }
+      }
+
     const getQuizBackgroundImage = (quizTitle) => {
         return `url(/media/covers/quizMenu/${quizTitle}_cover.jpg)`
     };
@@ -70,7 +83,7 @@ const QuizMenuComponent = () => {
             <ul>
                 {quizzes.map((quiz, quizIndex) =>
                     <Link id='menu-text' key={quizIndex} to={`/quiz/${encodeURIComponent(quiz.title)}`}>
-                        <li style={{backgroundImage: getQuizBackgroundImage(quiz.title),overflowY: 'auto'}} className='listItems'> 
+                        <li style={{backgroundImage: getQuizBackgroundImage(quiz.title),overflowY: 'auto',height:'11rem'}} className='listItems'> 
                             {quiz.title}
                             <div className='div-flex'>
                                 {scores[quizIndex]?.length>0 && //only render the scoreboard if the there are scores to show
@@ -78,7 +91,7 @@ const QuizMenuComponent = () => {
                                 <h5 className='score-board-title'>Score board</h5>
                                     {scores[quizIndex]?.map((score, scoreIndex)=>(
                                         <h1 key={scoreIndex} className='score-board-name'>
-                                        <img id='badge-icon' src={scoreIndex===0 ? process.env.PUBLIC_URL + "/media/covers/quizMenu/trophies/gold.png" : scoreIndex===1 ? process.env.PUBLIC_URL + "/media/covers/quizMenu/trophies/silver.png" : process.env.PUBLIC_URL + "/media/covers/quizMenu/trophies/bronze.png"}/>
+                                        {(0<=scoreIndex && scoreIndex<=2) && <img id='badge-icon' src={getImage(scoreIndex)}/>}
                                             {scoreIndex+1}º - {score.username} {Math.round(parseFloat(score.score['$numberDecimal']) * quiz.questions.length)}/{quiz.questions.length } - 
                                             Points: {Math.round(getTotalPoints(quiz)*parseFloat(score.score['$numberDecimal']))}/{getTotalPoints(quiz)}</h1>
                                     ))}

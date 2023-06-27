@@ -4,7 +4,7 @@ import RegisterComponent from './components/LoginRegister/RegisterComponent';
 import LoginComponent from './components/LoginRegister/LoginComponent';
 import ProtectedRoutes from './components/authorization/ProtectedRoutes';
 import PublicRoute from './components/authorization/PublicRoute';
-import QuizMenuComponent from './components/quizMenu/quizMenuComponent';
+import QuizMenuComponent from './components/quizMenu/QuizMenuComponent';
 import QuizComponent from './components/QuizComponent';
 import UserContext from './UserContext';
 

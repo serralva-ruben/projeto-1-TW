@@ -121,6 +121,7 @@ const QuizComponent = () => {
                     </>}
                 </form>
                 {/*Render the navigation menu on the bottom */}
+                <div className='navigation-Container'>
                 {!showSummary && currentQuiz.questions.map((question, questionIndex) => {
                     return (<button key={questionIndex}
                         style={{
@@ -138,6 +139,7 @@ const QuizComponent = () => {
                         {questionIndex + 1}
                     </button>)
                 })}
+                </div>
             </div>
         );
     }

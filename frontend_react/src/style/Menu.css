@@ -32,7 +32,9 @@ html {
   padding-inline: 2rem;
   border-radius: 10px;
   border-width: 3px;
-  border-style: solid;   
+  border-style: solid;
+  height: fit-content;
+  padding: 1rem;
 }
 
 .score-board-name{
@@ -65,4 +67,9 @@ html {
   display: flex;
   margin: 0;
   justify-content: center;
+}
+
+.navigation-Container{
+  justify-content: center;
+  display: flex;
 }
