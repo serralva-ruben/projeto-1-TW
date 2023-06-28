@@ -28,8 +28,8 @@ const UserBadge = () => {
                     {user.scores.map((attempt) => (
                         <tr key={attempt._id.$oid}>
                             <td>{attempt.quizTitle}</td>
-                            <td>{attempt.score.$numberDecimal}</td>
-                            <td>{attempt.dateTime}</td>
+                            <td>{(attempt.score.$numberDecimal * 100).toFixed(2)}%</td>
+                            <td>{attempt.timestamp ? new Date(attempt.timestamp).toLocaleString() : ''}</td>
                         </tr>
                     ))}
                     </tbody>
