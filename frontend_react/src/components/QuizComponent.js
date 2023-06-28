@@ -58,13 +58,6 @@ const QuizComponent = () => {
             console.log(data)
             setCorrectedAnswers(data)
             setShowSummary(true);
-            const userResponse = await fetch(`http://localhost:8020/api/user/${usernameLocalStorage}`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            const userData = await userResponse.json();
-            localStorage.setItem('user', JSON.stringify(userData));
         } catch (err) {
             console.error('Error:', err);
         }
