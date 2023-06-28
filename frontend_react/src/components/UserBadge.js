@@ -1,16 +1,20 @@
 import React, { useContext } from 'react';
 import UserContext from '../UserContext';
 import Navbar from "./Navbar";
+import '../style/UserBadge.css';
 
 
 const UserBadge = () => {
     const { user } = useContext(UserContext);
 
+    if (!user || !user.scores) {
+        return null;
+    }
+
     return (
         <div>
             <Navbar />
-            <h1>User Badge</h1>
-            <div>
+            <div className="user_results">
                 <h2>User Attempts</h2>
                 <table>
                     <thead>
