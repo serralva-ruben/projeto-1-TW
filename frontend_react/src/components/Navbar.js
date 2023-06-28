@@ -31,10 +31,8 @@ function Navbar() {
             </div>
             {user && (
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <button onClick={openUserBadgePage} id='userBadgeButton'>
-                        <div style={styles.userBadge} id='userBadge'>
-                            {user.username.charAt(0).toUpperCase()}
-                        </div>
+                    <button id='userBadge' onClick={openUserBadgePage} style={styles.userBadge}>
+                        {user.username.charAt(0).toUpperCase()}
                     </button>
                     <button onClick={logout} id='logoutButton'><img id='logoutImg' src='/media/navbaricons/power-off.png' alt="Logout" />Logout</button>
                 </div>
