@@ -1,10 +1,12 @@
 import React, { useContext, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import UserContext from '../UserContext';
 import '../style/Navbar.css';
 
 function Navbar() {
     const navigate = useNavigate();
+    const location = useLocation();
+
     const { user, setUser } = useContext(UserContext);
 
     const logout = () => {
@@ -20,7 +22,8 @@ function Navbar() {
     }, []);
 
     const openUserBadgePage = () => {
-        navigate('/UserBadge');
+        if(location.pathname=='/UserBadge') navigate('/')
+        else navigate('/UserBadge');
     };
 
     return (
