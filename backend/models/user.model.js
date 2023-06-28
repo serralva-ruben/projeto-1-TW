@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const moment = require('moment');
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -16,17 +15,19 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  scores: [{
-    quizTitle: {
-      type: String,
-      required: true
-    },
-    score: mongoose.Schema.Types.Decimal128,
-    timestamp: {
-      type: String,
-      default: moment().format('MM/DD/YYYY, HH:mm:ss')
+  scores: [
+    {
+      quizTitle: {
+        type: String,
+        required: true
+      },
+      score: mongoose.Schema.Types.Decimal128,
+      timestamp: {
+        type: Date,
+        default: Date.now
+      }
     }
-  }]
+  ]
 });
 
 module.exports = mongoose.model('User', UserSchema);
