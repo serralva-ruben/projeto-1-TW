@@ -11,18 +11,19 @@ const UserBadge = () => {
         fetchQuizzes();
     }, []);
 
-    if (!user || !user.scores) {return null;}
-
     const fetchQuizzes = async () => {
-        const token = localStorage.getItem('jwt')
-        const response = await fetch('http://localhost:8020/api/quiz',{
-            headers: {'Authorization': `Bearer ${token}`}
+        const token = localStorage.getItem('jwt');
+        const response = await fetch('http://localhost:8020/api/quiz', {
+            headers: { 'Authorization': `Bearer ${token}` }
         });
         const data = await response.json();
-        const quizMap = data.reduce((map, quiz) => ({...map, [quiz.title]: quiz.questions.length}), {});
+        const quizMap = data.reduce((map, quiz) => ({ ...map, [quiz.title]: quiz.questions.length }), {});
         setQuizzes(quizMap);
     };
 
+    const getSymbol = (isCorrect) => {
+        return isCorrect ? '✔️' : '❌';
+    };
 
     return (
         <div>
@@ -34,8 +35,8 @@ const UserBadge = () => {
                     <tr>
                         <th>Quiz Name</th>
                         <th>Score</th>
-                        <th>Right Answers</th>
-                        <th>Wrong Answers</th>
+                        <th>{getSymbol(true)}</th>
+                        <th>{getSymbol(false)}</th>
                         <th>Date and Time</th>
                     </tr>
                     </thead>
@@ -48,7 +49,7 @@ const UserBadge = () => {
                         const rightAnswers = Math.round(attempt.score.$numberDecimal * totalQuestions);
                         const wrongAnswers = totalQuestions - rightAnswers;
 
-                        return(
+                        return (
                             <tr key={attempt._id.$oid}>
                                 <td>{attempt.quizTitle}</td>
                                 <td>{(attempt.score.$numberDecimal * 100).toFixed(2)}%</td>
@@ -56,7 +57,8 @@ const UserBadge = () => {
                                 <td>{wrongAnswers}</td>
                                 <td>{attempt.timestamp ? new Date(attempt.timestamp).toLocaleString() : ''}</td>
                             </tr>
-                        )})}
+                        );
+                    })}
                     </tbody>
                 </table>
             </div>
