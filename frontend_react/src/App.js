@@ -7,6 +7,7 @@ import PublicRoute from './components/authorization/PublicRoute';
 import QuizMenuComponent from './components/quizMenu/QuizMenuComponent';
 import QuizComponent from './components/QuizComponent';
 import UserContext from './UserContext';
+import UserBadge from "./components/UserBadge";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -16,6 +17,7 @@ function App() {
       <UserContext.Provider value={{ user, setUser }}>
         <Routes>
           <Route element={<ProtectedRoutes />}>
+            <Route path="/UserBadge" element={<UserBadge />} />
             <Route path="/" element={<QuizMenuComponent />} />
             <Route path="/quiz/:quizTitle" element={<QuizComponent />} />
           </Route>

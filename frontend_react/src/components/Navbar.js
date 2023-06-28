@@ -1,8 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UserContext from '../UserContext';
-import '../style/Navbar.css'
-
+import '../style/Navbar.css';
 
 function Navbar() {
     const navigate = useNavigate();
@@ -20,25 +19,29 @@ function Navbar() {
         else logout();
     }, []);
 
+    const openUserBadgePage = () => {
+        navigate('/UserBadge');
+    };
+
     return (
         <div id='navBarContainer'>
             <div style={{ display: 'flex', alignItems: 'center' }}>
                 <Link to="/" id='homeButton'><img id='homeImg' alt="Home" />Home</Link>
                 <img src='/media/navbaricons/UAC_logo.png' alt="UAC Logo" id='logo' /> {/* University logo */}
-
             </div>
             {user && (
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <div style={styles.userBadge} id='userBadge'>{user.username.charAt(0).toUpperCase()}</div>
+                    <button onClick={openUserBadgePage} id='userBadgeButton'>
+                        <div style={styles.userBadge} id='userBadge'>
+                            {user.username.charAt(0).toUpperCase()}
+                        </div>
+                    </button>
                     <button onClick={logout} id='logoutButton'><img id='logoutImg' src='/media/navbaricons/power-off.png' alt="Logout" />Logout</button>
                 </div>
             )}
         </div>
     );
 }
-
-export default Navbar;
-
 
 const getRandomColor = () => {
     const letters = '0123456789ABCDEF';
@@ -49,10 +52,10 @@ const getRandomColor = () => {
     return color;
 }
 
-
 const styles = {
     userBadge: {
         backgroundColor: getRandomColor(),
-    }
+    },
 };
 
+export default Navbar;
