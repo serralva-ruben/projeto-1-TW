@@ -17,6 +17,7 @@ const SelectComponent = ({ question, imgPath, onAnswerChange, showSummary, corre
                 <h2>{question.questionText}</h2>
                 <div id='answersIMGContainer'>
                     <select value={value} onChange={handleChange}>
+                        <option value=" "></option>
                         {question.answerOptions.map((option, index) => (
                             <option key={index} value={option.answerText}>{option.answerText}</option>
                         ))}
