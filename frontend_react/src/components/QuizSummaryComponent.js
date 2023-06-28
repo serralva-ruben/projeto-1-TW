@@ -30,9 +30,11 @@ const styles = {
     backgroundColor: 'green',
     aspectRatio: '1',
     height: '2rem',
+    
 
   },
   summaryItemFalse: {
+    display: 'flex',
     margin: '2rem',
     borderColor: 'black',
     borderStyle: 'solid',
@@ -42,5 +44,6 @@ const styles = {
     backgroundColor: 'red',
     aspectRatio: '1',
     height: '2rem',
+    justifyContent: 'center'
   }
 }
