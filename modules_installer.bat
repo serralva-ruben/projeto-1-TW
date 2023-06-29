@@ -1,9 +1,10 @@
 @echo off
 cd backend
-npm install dotenv
+call npm install dotenv
 
-cd ..\frontend_react
-npm install react-scripts
-npm install recharts
+cd ..
+cd frontend_react
+call npm install react-scripts
+call npm install recharts
 
 exit
