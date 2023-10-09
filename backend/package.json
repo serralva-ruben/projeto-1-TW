@@ -21,7 +21,7 @@
     "jsonwebtoken": "^9.0.0",
     "moment": "^2.29.4",
     "moments": "^0.0.2",
-    "mongoose": "^7.0.5",
+    "mongoose": "^7.3.3",
     "path": "^0.12.7",
     "pine": "^1.1.1",
     "stripe": "^12.4.0"
